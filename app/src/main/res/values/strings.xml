@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MvvmDemo</string>
+
+    <string name="action_home">首页</string>
+    <string name="action_view">列表</string>
+    <string name="action_me">我的</string>
+
+    <string name="toast_double_click_to_exit">再按一下退出~</string>
+</resources>

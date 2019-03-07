@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--首頁导航栏字体图标大小，设置后选择大小才不会变化-->
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">10sp</dimen>
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">10sp</dimen>
+    <dimen name="design_bottom_navigation_height" tools:override="true">55dp</dimen>
+    <dimen name="design_bottom_navigation_margin" tools:override="true">5dp</dimen>
+
+</resources>

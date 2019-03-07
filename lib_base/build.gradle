@@ -1,0 +1,93 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    //noinspection GradleCompatible
+    api 'com.android.support:appcompat-v7:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    api 'com.android.support:design:28.0.0'
+
+    /* RxJava */
+    api 'io.reactivex.rxjava2:rxjava:2.2.3'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    /* RxLifecycle 生命周期管理*/
+    api ('com.trello.rxlifecycle2:rxlifecycle:2.2.2'){
+        exclude group: 'com.android.support'
+    }
+    api ('com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'){
+        exclude group: 'com.android.support'
+    }
+    /* rxbinding */
+    api ('com.jakewharton.rxbinding2:rxbinding:2.1.1'){
+        exclude group: 'com.android.support'
+    }
+    /* rx 6.0权限请求 */
+    api ('com.github.tbruyelle:rxpermissions:0.10.2'){
+        exclude group: 'com.android.support'
+    }
+    /* OkHttp3 */
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okio:okio:1.14.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    /* Retrofit2 */
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    /* Gson */
+    api 'com.google.code.gson:gson:2.8.2'
+    /** recyclerview的databinding 套装*/
+    api ('me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0'){
+        exclude group: 'com.android.support'
+    }
+    api ('me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0'){
+        exclude group: 'com.android.support'
+    }
+    /*Google AAC*/
+    api 'android.arch.lifecycle:extensions:1.1.1'
+    api 'android.arch.lifecycle:compiler:1.1.1'
+    /* Logger */
+    api 'com.orhanobut:logger:2.1.1'
+    /* Alert & Dialog */
+    api 'com.crowdfire.cfalertdialog:cfalertdialog:1.1.0'
+    /* EventBus */
+    api 'org.greenrobot:eventbus:3.1.1'
+    /* 多图片选择器: https://github.com/LuckSiege/PictureSelector  */
+    api ('com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'){
+        exclude group: 'com.android.support'
+    }
+}

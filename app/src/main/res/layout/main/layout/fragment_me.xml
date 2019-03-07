@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.example.mymodulesdemo.ui.main.me.MeViewModel"/>
+        <import type="com.example.mymodulesdemo.R"/>
+        <variable
+            name="viewModel"
+            type="MeViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout_bar"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="?android:actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/ib_setting"
+                android:layout_width="@dimen/dimen_40_dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/ic_setting"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                binding:onClickCommand="@{viewModel.onSettingClick}"/>
+
+            <ImageButton
+                android:id="@+id/ib_message"
+                android:layout_width="@dimen/dimen_40_dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/ic_message"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                binding:onClickCommand="@{viewModel.onMessageClick}"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout_user_info"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_0_dp"
+            android:background="@drawable/bg_gradient"
+            android:padding="@dimen/dimen_10_dp"
+            app:layout_constraintDimensionRatio="H,3:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_bar"
+            binding:onClickCommand="@{viewModel.onLoginClickOrInfo}">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/dimen_80_dp"
+                android:layout_height="@dimen/dimen_80_dp"
+                android:src="@mipmap/ic_avatar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                binding:onClickCommand="@{viewModel.onLoginClickOrInfo}"
+                binding:url="@{viewModel.entity.image}"
+                binding:placeholderRes="@{R.mipmap.ic_avatar}"
+                binding:isCircle="@{true}"/>
+
+            <TextView
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="@dimen/dimen_40_dp"
+                android:layout_marginStart="@dimen/dimen_10_dp"
+                android:gravity="center_vertical"
+                android:hint="点击登录"
+                android:textColorHint="@color/black"
+                android:text="@{viewModel.entity.userName}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16_sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_tip"
+                app:layout_constraintLeft_toRightOf="@+id/iv_avatar"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_avatar"
+                binding:onClickCommand="@{viewModel.onLoginClickOrInfo}" />
+
+            <TextView
+                android:id="@+id/tv_tip"
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10_dp"
+                android:layout_marginBottom="@dimen/dimen_10_dp"
+                android:gravity="center_vertical"
+                android:text="登录后数据不丢失"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_14_sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+                app:layout_constraintLeft_toRightOf="@+id/iv_avatar"
+                app:layout_constraintRight_toRightOf="parent"
+                binding:onClickCommand="@{viewModel.onLoginClickOrInfo}" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/line1"
+            style="@style/LineStyle"
+            app:layout_constraintTop_toBottomOf="@+id/layout_user_info"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/dimen_25_dp"/>
+
+        <TextView
+            android:id="@+id/tv_order"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line1"
+            android:paddingStart="@dimen/dimen_10_dp"
+            android:paddingEnd="@dimen/dimen_10_dp"
+            android:drawableStart="@mipmap/ic_order"
+            android:drawableEnd="@mipmap/ic_right"
+            android:drawablePadding="@dimen/dimen_10_dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_14_sp"
+            android:textColor="@color/text_color"
+            android:text="我的订单"/>
+
+        <View
+            android:id="@+id/line2"
+            style="@style/LineStyle"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_collection"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line2"
+            android:paddingStart="@dimen/dimen_10_dp"
+            android:paddingEnd="@dimen/dimen_10_dp"
+            android:drawableStart="@mipmap/ic_collection"
+            android:drawableEnd="@mipmap/ic_right"
+            android:drawablePadding="@dimen/dimen_10_dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_14_sp"
+            android:textColor="@color/text_color"
+            android:text="我的收藏"/>
+
+        <View
+            android:id="@+id/line3"
+            style="@style/LineStyle"
+            app:layout_constraintTop_toBottomOf="@+id/tv_collection"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line3"
+            android:paddingStart="@dimen/dimen_10_dp"
+            android:paddingEnd="@dimen/dimen_10_dp"
+            android:drawableStart="@mipmap/ic_money"
+            android:drawableEnd="@mipmap/ic_right"
+            android:drawablePadding="@dimen/dimen_10_dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_14_sp"
+            android:textColor="@color/text_color"
+            android:text="我的资产"/>
+
+        <View
+            android:id="@+id/line4"
+            style="@style/LineStyle"
+            app:layout_constraintTop_toBottomOf="@+id/tv_money"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+
+        <View
+            android:id="@+id/line5"
+            style="@style/LineStyle"
+            app:layout_constraintTop_toBottomOf="@+id/tv_money"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/dimen_25_dp"/>
+
+        <TextView
+            android:id="@+id/tv_about"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line5"
+            android:paddingStart="@dimen/dimen_10_dp"
+            android:paddingEnd="@dimen/dimen_10_dp"
+            android:drawableStart="@mipmap/ic_about"
+            android:drawableEnd="@mipmap/ic_right"
+            android:drawablePadding="@dimen/dimen_10_dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_14_sp"
+            android:textColor="@color/text_color"
+            android:text="关于我们"
+            binding:onClickCommand="@{viewModel.onAboutClick}"/>
+
+        <View
+            style="@style/LineStyle"
+            app:layout_constraintTop_toBottomOf="@+id/tv_about"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">lib_base</string>
+
+    <string name="toast_permission_denied">Permission has been disabled. Please go to Settings to open it</string>
+    <string name="framework_text_dialog_confirm">Confirm</string>
+    <string name="framework_text_dialog_cancel">Cancel</string>
+    <string name="framework_text_empty">No Data</string>
+    <string name="framework_text_error">Load failed, click to retry</string>
+    <string name="framework_crash_hint">Sorry，the application is about to exit because of an exception.</string>
+
+    <string name="sn_loading_view_hint">Loading…</string>
+
+</resources>
