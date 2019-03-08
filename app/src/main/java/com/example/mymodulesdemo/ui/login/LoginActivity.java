@@ -14,22 +14,11 @@ import com.example.mymodulesdemo.databinding.ActivityLoginBinding;
  */
 public class LoginActivity extends BaseActivity<ActivityLoginBinding,LoginViewModel> {
 
-    /**
-     * 初始化根布局
-     *
-     * @param savedInstanceState
-     * @return 布局layout的id
-     */
     @Override
     public int getLayoutId(Bundle savedInstanceState) {
         return R.layout.activity_login;
     }
 
-    /**
-     * 初始化ViewModel的id
-     *
-     * @return ViewModel的id
-     */
     @Override
     protected int initVariableId() {
         return BR.viewModel;

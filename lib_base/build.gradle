@@ -90,4 +90,9 @@ dependencies {
     api ('com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'){
         exclude group: 'com.android.support'
     }
+    /* Banner */
+    api 'com.bigkoo:ConvenientBanner:2.1.4'
+    /* 下拉刷新 */
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-20'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-20'
 }

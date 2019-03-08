@@ -1,33 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.example.mymodulesdemo.ui.main.home.HomeViewModel"/>
+
+        <import type="com.example.mymodulesdemo.ui.main.home.HomeViewModel" />
 
         <variable
             name="viewModel"
-            type="HomeViewModel"/>
+            type="HomeViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:binding="http://schemas.android.com/apk/res-auto">
+        android:layout_height="match_parent">
 
         <include
             android:id="@+id/layout_back_title_bar"
             layout="@layout/layout_back_title_bar"
-            binding:toolbarViewModel="@{viewModel}"/>
+            binding:toolbarViewModel="@{viewModel}" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/swipe_fresh_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            binding:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="@string/action_home"/>
+            app:layout_constraintTop_toBottomOf="@+id/layout_back_title_bar"
+            app:srlAccentColor="@color/colorPrimary"
+            app:srlEnableLoadMoreWhenContentNotFull="false"
+            app:srlEnablePreviewInEditMode="true"
+            app:srlPrimaryColor="@android:color/transparent">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.bigkoo.convenientbanner.ConvenientBanner
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_200_dp"
+                        app:canLoop="true" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srlAccentColor="@color/colorPrimary" />
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

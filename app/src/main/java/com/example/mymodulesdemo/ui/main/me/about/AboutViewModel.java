@@ -39,8 +39,6 @@ public class AboutViewModel extends ToolbarViewModel {
         this.urlIcon.set(drawable);
     }
 
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();

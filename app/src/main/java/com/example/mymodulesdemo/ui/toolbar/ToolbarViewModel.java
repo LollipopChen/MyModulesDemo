@@ -3,11 +3,14 @@ package com.example.mymodulesdemo.ui.toolbar;
 import android.app.Application;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.example.libbase.base.BaseViewModel;
 import com.example.libbase.binding.command.BindingCommand;
+import com.example.mymodulesdemo.R;
 
 /**
  * 返回 + 标题类型的Toolbar
@@ -20,10 +23,12 @@ public class ToolbarViewModel extends BaseViewModel {
 
     /** 标题文字 */
     public ObservableField<String> titleText = new ObservableField<>("");
-    /**左边返回图标的观察者*/
+    /** 左边返回图标的观察者 */
     public ObservableInt leftIconVisibleObservable = new ObservableInt(View.GONE);
-    /**右边图标的观察者*/
+    /** 右边图标的观察者 */
     public ObservableInt rightIconVisibleObservable = new ObservableInt(View.GONE);
+    /** 右边图标Icon的观察者 */
+    public ObservableField<Drawable> rightIcon = new ObservableField<>();
 
     public ToolbarViewModel(@NonNull Application application) {
         super(application);
@@ -51,6 +56,14 @@ public class ToolbarViewModel extends BaseViewModel {
      */
     public void setRightIconVisibleVisible(int visibility){
         rightIconVisibleObservable.set(visibility);
+    }
+
+    /**
+     * 设置右边按钮图标
+     * @param icon  图标资源
+     */
+    public void setRightMoreIcon(Drawable icon){
+        rightIcon.set(icon);
     }
 
     /**

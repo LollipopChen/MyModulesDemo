@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/app_name"
-            android:src="@mipmap/ic_more"
+            android:src="@{toolbarViewModel.rightIcon}"
             android:visibility="@{toolbarViewModel.rightIconVisibleObservable}"
             binding:onClickCommand="@{toolbarViewModel.moreOnClick}"/>
 
