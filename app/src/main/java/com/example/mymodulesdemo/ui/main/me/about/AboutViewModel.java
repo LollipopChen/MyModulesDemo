@@ -2,12 +2,11 @@ package com.example.mymodulesdemo.ui.main.me.about;
 
 import android.app.Application;
 import android.databinding.ObservableField;
-import android.databinding.ObservableInt;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.example.mymodulesdemo.ui.toolbar.ToolbarViewModel;
+import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 
 /**
  * 关于

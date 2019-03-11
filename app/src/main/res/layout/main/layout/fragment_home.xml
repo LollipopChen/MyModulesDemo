@@ -6,10 +6,12 @@
     <data>
 
         <import type="com.example.mymodulesdemo.ui.main.home.HomeViewModel" />
+        <import type="com.example.libbase.binding.adapter.recyclerview.LineManagers"/>
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers"/>
 
         <variable
             name="viewModel"
-            type="HomeViewModel" />
+            type="com.example.mymodulesdemo.ui.main.home.HomeViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -53,12 +55,36 @@
                         android:id="@+id/banner"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_200_dp"
-                        app:canLoop="true" />
+                        app:canLoop="true"
+                        app:autoTurningTime="3000"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        app:layout_constraintTop_toBottomOf="@+id/banner"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        binding:adapter="@{viewModel.adapter}"
+                        binding:itemBinding="@{viewModel.itemBinding}"
+                        binding:items="@{viewModel.observableList}"
+                        binding:layoutManager="@{LayoutManagers.linear()}"
+                        binding:lineManager="@{LineManagers.horizontal()}"/>
+
+                    <include
+                        layout="@layout/layout_no_data"
+                        binding:loadingViewModel="@{viewModel}"
+                        android:layout_width="@dimen/dimen_0_dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/banner"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
                 </LinearLayout>
 
             </android.support.v4.widget.NestedScrollView>

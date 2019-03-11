@@ -21,6 +21,20 @@
         <attr name="onSuccessCommand" format="reference" />
         <!--require BindingCommand<CloseableReference<CloseableImage>> See {@link com.kelin.mvvmlight.command.BindingCommand} -->
         <attr name="onFailureCommand" format="reference" />
-
     </declare-styleable>
+
+    <declare-styleable name="RecyclerView" parent="AdapterView">
+        <attr name="lineManager" format="reference" />
+        <attr name="itemBinding" format="reference" />
+        <attr name="layoutManager" format="reference" />
+        <attr name="itemAnimator" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SmartRefreshLayout">
+        <!-- require RelayCommand -->
+        <attr name="onRefreshCommand" format="reference" />
+        <attr name="onLoadMoreCommand" format="reference" />
+    </declare-styleable>
+
+
 </resources>

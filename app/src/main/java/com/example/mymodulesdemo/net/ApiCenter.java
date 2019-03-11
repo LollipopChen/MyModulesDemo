@@ -1,10 +1,6 @@
 package com.example.mymodulesdemo.net;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
-
 import com.example.libbase.net.http.retrofit.RetrofitClient;
-import com.example.mymodulesdemo.base.AppApplication;
 
 /**
  * @author ChenQiuE

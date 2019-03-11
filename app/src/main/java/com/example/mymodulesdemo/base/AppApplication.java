@@ -16,7 +16,7 @@ public class AppApplication extends SnBaseApplication {
     public void onCreate() {
         super.onCreate();
 
-        SNNetworkCenter.getInstance().setServerUrl(ApiCenter.getServerUrl(this));
+        SNNetworkCenter.getInstance().setServerUrl(ApiCenter.getServerUrl());
 
         initLeaks();
     }

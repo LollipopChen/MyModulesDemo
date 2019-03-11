@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;
+import android.databinding.ObservableBoolean;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
@@ -181,5 +182,15 @@ public class BaseViewModel extends AndroidViewModel implements IBaseViewModel{
         static String CLASS = "CLASS";
         public static String CANONICAL_NAME = "CANONICAL_NAME";
         static String BUNDLE = "BUNDLE";
+    }
+
+    /**
+     * 界面变化观察者
+     */
+    public class UiChangeObservable {
+        /**下拉刷新完成*/
+        public ObservableBoolean finishRefreshing = new ObservableBoolean(false);
+        /**上拉加载完成*/
+        public ObservableBoolean finishLoadMore = new ObservableBoolean(false);
     }
 }

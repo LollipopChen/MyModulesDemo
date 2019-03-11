@@ -7,9 +7,9 @@
 
 package com.example.libbase.net.http.observer;
 
+import com.example.libbase.console.SNHttpConstants;
+import com.example.libbase.net.http.exception.ApiException;
 import com.orhanobut.logger.Logger;
-import com.supernova.snlibrary.console.SNHttpConstants;
-import com.supernova.snlibrary.net.http.exception.ApiException;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

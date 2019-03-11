@@ -7,8 +7,8 @@
 
 package com.example.libbase.net.http.observer;
 
-import com.supernova.snlibrary.net.http.rxfunction.HttpResultFunction;
-import com.supernova.snlibrary.net.http.rxfunction.ServerResultFunction;
+import com.example.libbase.net.http.rxfunction.HttpResultFunction;
+import com.example.libbase.net.http.rxfunction.ServerResultFunction;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;

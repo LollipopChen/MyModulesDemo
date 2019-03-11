@@ -28,6 +28,6 @@ public interface SNHttpConstants {
     /**
      * 1000	成功
      */
-    int RESPONSE_CODE_SUCCESS = 1;
+    int RESPONSE_CODE_SUCCESS = 1000;
 
 }

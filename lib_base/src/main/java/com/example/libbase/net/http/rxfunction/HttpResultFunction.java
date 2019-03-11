@@ -7,9 +7,9 @@
 
 package com.example.libbase.net.http.rxfunction;
 
+import com.example.libbase.json.SNGsonHelper;
+import com.example.libbase.net.http.exception.ExceptionEngine;
 import com.orhanobut.logger.Logger;
-import com.supernova.snlibrary.json.SNGsonHelper;
-import com.supernova.snlibrary.net.http.exception.ExceptionEngine;
 
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;

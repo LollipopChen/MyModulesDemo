@@ -1,16 +1,14 @@
-package com.example.mymodulesdemo.ui.toolbar;
+package com.example.mymodulesdemo.ui.otherview;
 
 import android.app.Application;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.example.libbase.base.BaseViewModel;
 import com.example.libbase.binding.command.BindingCommand;
-import com.example.mymodulesdemo.R;
 
 /**
  * 返回 + 标题类型的Toolbar

@@ -7,9 +7,8 @@
 
 package com.example.libbase.net.http;
 
-
-import com.supernova.snlibrary.console.SNPreferenceConstants;
-import com.supernova.snlibrary.preferences.SNPreferenceManager;
+import com.example.libbase.console.SNPreferenceConstants;
+import com.example.libbase.preferences.SNPreferenceManager;
 
 /**
  * SNNetworkCenter

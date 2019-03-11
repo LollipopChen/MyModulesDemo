@@ -7,10 +7,10 @@
 
 package com.example.libbase.net.http.rxfunction;
 
+import com.example.libbase.console.SNResponseEntity;
+import com.example.libbase.json.SNGsonHelper;
+import com.example.libbase.net.http.exception.ServerException;
 import com.orhanobut.logger.Logger;
-import com.supernova.snlibrary.console.SNResponseEntity;
-import com.supernova.snlibrary.json.SNGsonHelper;
-import com.supernova.snlibrary.net.http.exception.ServerException;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
