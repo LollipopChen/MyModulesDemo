@@ -185,7 +185,7 @@ public class BaseViewModel extends AndroidViewModel implements IBaseViewModel{
     }
 
     /**
-     * 界面变化观察者
+     * 列表界面变化观察者
      */
     public class UiChangeObservable {
         /**下拉刷新完成*/

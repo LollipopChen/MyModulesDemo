@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -8,16 +9,103 @@
             type="com.example.mymodulesdemo.ui.login.LoginViewModel"/>
     </data>
 
-    <LinearLayout
-        android:id="@+id/layout"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="afadfadsfafdad"/>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/dimen_30_dp">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="@dimen/dimen_100_dp"
+                android:layout_height="@dimen/dimen_100_dp"
+                android:src="@mipmap/ic_icon"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.example.libbase.widget.ClearEditText
+                android:id="@+id/et_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50_dp"
+                android:layout_marginTop="@dimen/dimen_30_dp"
+                android:drawableLeft="@mipmap/ic_user"
+                android:drawablePadding="@dimen/dimen_10_dp"
+                android:hint="请输入用户名"
+                android:paddingStart="@dimen/dimen_5_dp"
+                android:paddingEnd="@dimen/dimen_5_dp"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14_sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logo"
+                android:text="@={viewModel.userName}"/>
+
+            <com.example.libbase.widget.ClearEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50_dp"
+                android:layout_marginTop="@dimen/dimen_10_dp"
+                android:drawableLeft="@mipmap/ic_lock"
+                android:drawablePadding="@dimen/dimen_10_dp"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:paddingStart="@dimen/dimen_5_dp"
+                android:paddingEnd="@dimen/dimen_33_dp"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14_sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_user_name"
+                android:text="@={viewModel.password}"/>
+
+            <CheckBox
+                android:id="@+id/cb_eyes"
+                android:layout_width="@dimen/dimen_30_dp"
+                android:layout_height="@dimen/dimen_30_dp"
+                android:button="@drawable/button_checkbox_eye_selector"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/et_password"
+                app:layout_constraintRight_toRightOf="@+id/et_password"
+                app:layout_constraintTop_toTopOf="@+id/et_password"
+                binding:onCheckedChanged="@{viewModel.passwordShowAndHideOnClick}"/>
+
+            <TextView
+                android:id="@+id/tv_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_40_dp"
+                android:text="忘记密码"
+                android:textColor="@color/deepSkyBlue"
+                android:textSize="@dimen/text_size_16_sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password"
+                android:gravity="center_vertical"
+                binding:onClickCommand="@{viewModel.forgetPasswordClick}"/>
+
+            <Button
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:text="登录"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16_sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_forget"
+                android:gravity="center"
+                android:background="@drawable/bg_button_blue"
+                binding:onClickCommand="@{viewModel.loginClickCommand}"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
 </layout>
