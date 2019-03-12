@@ -19,13 +19,11 @@ import com.example.mymodulesdemo.entity.ArticleListEntity;
 import com.example.mymodulesdemo.entity.BannerEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
-import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.List;
 
-import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter;
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
 /**
@@ -46,13 +44,15 @@ public class HomeViewModel extends LoadingViewModel {
     public HomeItemAdapter<HomeItemViewModel> adapter = new HomeItemAdapter<>();
 
     /**页数从0开始*/
-    private int page = 1;
+    private int page = 0;
+    private boolean isLoadMore = false;
 
     /**下拉刷新*/
     public BindingCommand onRefreshCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            page = 1;
+            isLoadMore = false;
+            page = 0;
             requestListData();
         }
     });
@@ -61,6 +61,7 @@ public class HomeViewModel extends LoadingViewModel {
     public BindingCommand onLoadMoreCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
+            isLoadMore = true;
             page++;
             requestListData();
         }
@@ -119,12 +120,24 @@ public class HomeViewModel extends LoadingViewModel {
      */
     public void requestListData() {
         HttpObserver observer = new HttpObserver() {
+
+            @Override
+            public void onComplete() {
+                //刷新完成收回
+               if (isLoadMore){
+                   uc.finishLoadMore.set(!uc.finishLoadMore.get());
+               }else {
+                   uc.finishRefreshing.set(!uc.finishRefreshing.get());
+               }
+            }
+
             @Override
             protected void onSuccess(Object response) {
                 setStatus(LoadingViewModel.STOP_LOADING);
                 //清除列表
-                observableList.clear();
-
+                if (!isLoadMore){
+                    observableList.clear();
+                }
                 Logger.e("列表数据：" +  response.toString());
                 //数据转换
                 ArticleListEntity articleListEntity = SNGsonHelper.toType(response.toString(),ArticleListEntity.class);
@@ -145,7 +158,7 @@ public class HomeViewModel extends LoadingViewModel {
 
             @Override
             protected void onFailure(ApiException exception) {
-
+                ToastAlert.show(exception.getMsg());
             }
         };
         HttpObservable.getObservable(ApiCenter.getApi().getHomeList(String.valueOf(page)),getLifecycleProvider(), FragmentEvent.DESTROY)

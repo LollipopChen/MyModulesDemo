@@ -36,5 +36,9 @@
         <attr name="onLoadMoreCommand" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="WebView">
+        <!-- require String link to html show in webView-->
+        <attr name="link" format="string" />
+    </declare-styleable>
 
 </resources>

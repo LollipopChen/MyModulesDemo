@@ -35,7 +35,9 @@
             app:srlAccentColor="@color/colorPrimary"
             app:srlEnableLoadMoreWhenContentNotFull="false"
             app:srlEnablePreviewInEditMode="true"
-            app:srlPrimaryColor="@android:color/transparent">
+            app:srlPrimaryColor="@android:color/transparent"
+            binding:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}">
 
             <com.scwang.smartrefresh.layout.header.ClassicsHeader
                 android:layout_width="match_parent"

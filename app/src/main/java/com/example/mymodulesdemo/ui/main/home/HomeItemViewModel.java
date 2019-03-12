@@ -1,14 +1,18 @@
 package com.example.mymodulesdemo.ui.main.home;
 
 import android.databinding.ObservableField;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.example.libbase.base.ItemViewModel;
 import com.example.libbase.binding.command.BindingAction;
 import com.example.libbase.binding.command.BindingCommand;
+import com.example.libbase.widget.ProgressWebView;
+import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.entity.ArticleListEntity;
+import com.example.mymodulesdemo.ui.web.WebViewActivity;
 
-import java.util.ListIterator;
+import java.util.Objects;
 
 /**
  * @author ChenQiuE
@@ -27,7 +31,10 @@ public class HomeItemViewModel extends ItemViewModel<HomeViewModel> {
     public BindingCommand itemClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-
+            //跳转到指定界面,传入条目的参数
+            Bundle mBundle = new Bundle();
+            mBundle.putString(AppConst.IntentParams.URL, Objects.requireNonNull(entity.get()).getLink());
+            viewModel.startActivity(WebViewActivity.class,mBundle);
         }
     });
 }

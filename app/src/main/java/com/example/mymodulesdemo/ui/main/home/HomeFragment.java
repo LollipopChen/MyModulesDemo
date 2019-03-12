@@ -46,7 +46,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding,HomeViewModel
     @Override
     public void initData() {
         binding.recyclerView.setNestedScrollingEnabled(false);
-        // 初始化标题(需要使用标题栏的UI，viewModel需要继承ToolbarViewModel)
+        // 初始化标题(需要使用标题栏+LoadingView的UI，viewModel需要继承最底层LoadingViewModel)
         viewModel.initView(getString(R.string.action_home));
         // 请求广告数据
         viewModel.requestBannerData();
