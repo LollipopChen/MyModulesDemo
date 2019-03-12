@@ -5,18 +5,21 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.example.libbase.widget.dialog.SNLoadingDialog;
 
 /**
  * 带进度条的WebView
+ *
  * @author ChenQiuE
  * Date：2019/3/12 10:23
  * Email：1077503420@qq.com
@@ -42,9 +45,28 @@ public class ProgressWebView extends WebView {
         loadingDialog = new SNLoadingDialog(context);
         loadingDialog.setCancelable(true);
 
+        //关闭webView中缓存
+        getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+        //设置不可以访问文件
+        getSettings().setAllowFileAccess(true);
+        //支持通过JS打开新窗口
+        getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        //支持自动加载图片
+        getSettings().setLoadsImagesAutomatically(true);
+        //设置编码格式
+        getSettings().setDefaultTextEncodingName("utf-8");
+        //设置不用系统浏览器打开,直接显示在当前WebView
+        setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                view.loadUrl(request.getUrl().toString());
+                return true;
+            }
+        });
+
         setWebChromeClient(new MyWebChromeClient());
 
-        /**
+        /*
          *  Webview在安卓5.0之前默认允许其加载混合网络协议内容
          *  在安卓5.0之后，默认不允许加载http与https混合内容，需要设置webview允许其加载混合网络协议内容
          */
@@ -52,7 +74,7 @@ public class ProgressWebView extends WebView {
             getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
 
-        /** 设置webView不显示图片问题 */
+        /* 设置webView不显示图片问题 */
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
             getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }

@@ -12,8 +12,10 @@ import com.example.libbase.utils.ImageUtils;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.databinding.FragmentHomeBinding;
 import com.example.mymodulesdemo.entity.BannerEntity;
+import com.example.mymodulesdemo.ui.web.WebViewActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -100,7 +102,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding,HomeViewModel
         }
         ImageUtils.loadBanner(binding.banner, strings, position -> {
             //TODO 广告点击
-            ToastAlert.show(bannerList.get(position).getTitle());
+            Bundle bundle = new Bundle();
+            bundle.putString(AppConst.IntentParams.URL,bannerList.get(position).getUrl());
+            startActivity(WebViewActivity.class,bundle);
         });
     }
 }
