@@ -3,13 +3,11 @@ package com.example.mymodulesdemo.ui.main.list;
 import android.app.Application;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
-import android.databinding.ObservableField;
 import android.databinding.ObservableList;
 import android.support.annotation.NonNull;
 
 import com.example.libbase.binding.command.BindingAction;
 import com.example.libbase.binding.command.BindingCommand;
-import com.example.libbase.bus.RxSubscriptions;
 import com.example.libbase.json.SNGsonHelper;
 import com.example.libbase.net.http.exception.ApiException;
 import com.example.libbase.net.http.observer.HttpObservable;
@@ -20,7 +18,6 @@ import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.entity.ListDataEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
-import com.example.mymodulesdemo.ui.main.home.HomeItemViewModel;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.FragmentEvent;
@@ -28,7 +25,6 @@ import com.trello.rxlifecycle2.android.FragmentEvent;
 import java.util.List;
 
 import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter;
-import me.tatarka.bindingcollectionadapter2.ItemBinding;
 import me.tatarka.bindingcollectionadapter2.OnItemBind;
 
 /**
@@ -56,9 +52,6 @@ public class ListChildrenViewModel extends LoadingViewModel {
         super(application);
     }
 
-    public void initToolBar() {
-        setTitleText("公众号");
-    }
 
     /**下拉刷新*/
     public BindingCommand onRefreshCommand = new BindingCommand(new BindingAction() {

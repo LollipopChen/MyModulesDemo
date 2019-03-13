@@ -44,6 +44,7 @@ public class ListFragment extends BaseFragment<FragmentListBinding,ListViewModel
 
     @Override
     public void initData() {
+        viewModel.initToolBar();
         viewModel.getTabLayoutTitle();
     }
 

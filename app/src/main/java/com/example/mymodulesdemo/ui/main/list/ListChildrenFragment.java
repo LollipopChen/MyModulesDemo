@@ -44,7 +44,6 @@ public class ListChildrenFragment extends BaseFragment<FragmentListChildrenBindi
 
     @Override
     public void initData() {
-        viewModel.initToolBar();
         if (!SNStringUtils.isEmpty(id)){
             viewModel.getDataList(id);
         }

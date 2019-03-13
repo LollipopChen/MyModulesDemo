@@ -30,6 +30,10 @@ public class ListViewModel extends ToolbarViewModel {
         super(application);
     }
 
+    public void initToolBar() {
+        setTitleText("公众号");
+    }
+
     /**
      * 获取标题数据
      */
