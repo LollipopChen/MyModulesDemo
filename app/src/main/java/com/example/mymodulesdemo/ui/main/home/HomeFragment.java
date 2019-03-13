@@ -6,10 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.libbase.base.BaseDataInterface;
 import com.example.libbase.base.BaseFragment;
 import com.example.libbase.utils.ImageUtils;
-import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.console.AppConst;
@@ -27,7 +25,7 @@ import java.util.List;
  * Date：2019/3/6 16:24
  * Email：1077503420@qq.com
  */
-public class HomeFragment extends BaseFragment<FragmentHomeBinding,HomeViewModel> implements BaseDataInterface<List<BannerEntity.BannerItemEntity>> {
+public class HomeFragment extends BaseFragment<FragmentHomeBinding,HomeViewModel>{
 
     private List<BannerEntity.BannerItemEntity> bannerList = new ArrayList<>();
 
@@ -56,10 +54,11 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding,HomeViewModel
         viewModel.requestListData();
     }
 
+    /**
+     * 页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
+     */
     @Override
     public void initViewObservable() {
-        viewModel.setBannerEntityListener(this);
-
         //监听下拉刷新完成
         viewModel.uc.finishRefreshing.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
@@ -76,6 +75,22 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding,HomeViewModel
                 binding.swipeFreshLayout.finishLoadMore();
             }
         });
+        //数据回调
+        viewModel.uc.dataList.observe(this, this::setListData);
+    }
+
+    private void setListData(List<BannerEntity.BannerItemEntity> data) {
+        this.bannerList.addAll(data);
+        List<String> strings = new ArrayList<>();
+        for (BannerEntity.BannerItemEntity bannerInfo : data) {
+            strings.add(bannerInfo.getImagePath());
+        }
+        ImageUtils.loadBanner(binding.banner, strings, position -> {
+            //TODO 广告点击
+            Bundle bundle = new Bundle();
+            bundle.putString(AppConst.IntentParams.URL,bannerList.get(position).getUrl());
+            startActivity(WebViewActivity.class,bundle);
+        });
     }
 
     @Override
@@ -90,21 +105,5 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding,HomeViewModel
         super.onPause();
         //停止自动翻页
         binding.banner.stopTurning();
-    }
-
-    @Override
-    public void setData(List<BannerEntity.BannerItemEntity> data) {
-        //广告
-        this.bannerList.addAll(data);
-        List<String> strings = new ArrayList<>();
-        for (BannerEntity.BannerItemEntity bannerInfo : data) {
-            strings.add(bannerInfo.getImagePath());
-        }
-        ImageUtils.loadBanner(binding.banner, strings, position -> {
-            //TODO 广告点击
-            Bundle bundle = new Bundle();
-            bundle.putString(AppConst.IntentParams.URL,bannerList.get(position).getUrl());
-            startActivity(WebViewActivity.class,bundle);
-        });
     }
 }

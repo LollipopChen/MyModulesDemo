@@ -184,13 +184,4 @@ public class BaseViewModel extends AndroidViewModel implements IBaseViewModel{
         static String BUNDLE = "BUNDLE";
     }
 
-    /**
-     * 列表界面变化观察者
-     */
-    public class UiChangeObservable {
-        /**下拉刷新完成*/
-        public ObservableBoolean finishRefreshing = new ObservableBoolean(false);
-        /**上拉加载完成*/
-        public ObservableBoolean finishLoadMore = new ObservableBoolean(false);
-    }
 }

@@ -70,11 +70,11 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
     /* Gson */
     api 'com.google.code.gson:gson:2.8.2'
-    /** recyclerview的databinding 套装*/
-    api ('me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0'){
+    /** recyclerview的databinding 套装 https://github.com/evant/binding-collection-adapter*/
+    api ('me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.3.0-beta3'){
         exclude group: 'com.android.support'
     }
-    api ('me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0'){
+    api ('me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.3.0-beta3'){
         exclude group: 'com.android.support'
     }
     /*Google AAC*/

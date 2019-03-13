@@ -16,7 +16,18 @@ public interface ApiConst {
      */
     String GET_ARTICLE_LIST = "/article/list/{page}/json";
 
+    /**
+     * 获取公众号列表
+     */
+    String CHAPTERS = "/wxarticle/chapters/json";
+
+    /**
+     * 查看某个公众号历史数据
+     */
+    String CHAPTERS_LIST = "wxarticle/list/{id}/{page}/json";
+
     interface Params{
         String PAGE = "page";
+        String ID = "id";
     }
 }

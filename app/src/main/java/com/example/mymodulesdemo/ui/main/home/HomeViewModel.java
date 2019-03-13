@@ -2,12 +2,14 @@ package com.example.mymodulesdemo.ui.main.home;
 
 import android.app.Application;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableBoolean;
 import android.databinding.ObservableList;
 import android.support.annotation.NonNull;
 
 import com.example.libbase.base.BaseDataInterface;
 import com.example.libbase.binding.command.BindingAction;
 import com.example.libbase.binding.command.BindingCommand;
+import com.example.libbase.bus.event.SingleLiveEvent;
 import com.example.libbase.json.SNGsonHelper;
 import com.example.libbase.net.http.exception.ApiException;
 import com.example.libbase.net.http.observer.HttpObservable;
@@ -24,6 +26,7 @@ import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.List;
 
+import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter;
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
 /**
@@ -32,16 +35,14 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
  * Email：1077503420@qq.com
  */
 public class HomeViewModel extends LoadingViewModel {
-    /**界面变化监听*/
+    /**界面变化监听，用于viewModel和UI交互*/
     public UiChangeObservable uc = new UiChangeObservable();
-    /**广告*/
-    private BaseDataInterface<List<BannerEntity.BannerItemEntity>> baseDataInterface;
     /**RecyclerView添加ObservableList*/
     public ObservableList<HomeItemViewModel> observableList = new ObservableArrayList<>();
     /**RecyclerView添加ItemBinding*/
     public ItemBinding<HomeItemViewModel> itemBinding = ItemBinding.of(BR.viewModel, R.layout.item_home_recycler_view);
     /**RecyclerView添加Adpter，请使用自定义的Adapter继承BindingRecyclerViewAdapter，重写onBindBinding方法，里面有你要的Item对应的binding对象*/
-    public HomeItemAdapter<HomeItemViewModel> adapter = new HomeItemAdapter<>();
+    public BindingRecyclerViewAdapter<HomeItemViewModel> adapter = new BindingRecyclerViewAdapter<>();
 
     /**页数从0开始*/
     private int page = 0;
@@ -71,10 +72,6 @@ public class HomeViewModel extends LoadingViewModel {
         super(application);
     }
 
-    public void setBannerEntityListener(BaseDataInterface<List<BannerEntity.BannerItemEntity>> baseDataInterface){
-        this.baseDataInterface = baseDataInterface;
-    }
-
     /**
      * 初始化标题
      */
@@ -93,9 +90,8 @@ public class HomeViewModel extends LoadingViewModel {
                 Logger.e("广告：" + response.toString());
                 BannerEntity bannerEntity = SNGsonHelper.toType(response.toString(),BannerEntity.class);
                 if (bannerEntity != null){
-                   if(baseDataInterface != null){
-                       baseDataInterface.setData(bannerEntity.getData());
-                   }
+                    // 设置列表数据
+                    uc.dataList.setValue(bannerEntity.getData());
                 }else{
                     showDialog("暂无数据");
                 }
@@ -112,7 +108,7 @@ public class HomeViewModel extends LoadingViewModel {
 
     @Override
     protected void onRefreshData() {
-        ToastAlert.show("重新加载按钮");
+        requestListData();
     }
 
     /**
@@ -163,5 +159,17 @@ public class HomeViewModel extends LoadingViewModel {
         };
         HttpObservable.getObservable(ApiCenter.getApi().getHomeList(String.valueOf(page)),getLifecycleProvider(), FragmentEvent.DESTROY)
                 .subscribe(observer);
+    }
+
+    /**
+     * 列表界面变化观察者
+     */
+    public class UiChangeObservable{
+        /**下拉刷新完成*/
+        public ObservableBoolean finishRefreshing = new ObservableBoolean(false);
+        /**上拉加载完成*/
+        public ObservableBoolean finishLoadMore = new ObservableBoolean(false);
+        /**列表数据*/
+        public SingleLiveEvent<List<BannerEntity.BannerItemEntity>> dataList = new SingleLiveEvent<>();
     }
 }

@@ -38,5 +38,4 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding,WebView
         viewModel.initToolbar();
         viewModel.setLink(link);
     }
-
 }

@@ -117,7 +117,6 @@ public abstract class BaseFragment<V extends ViewDataBinding,VM extends BaseView
                 startActivity(clz, bundle);
             }
         });
-
         //关闭界面
         viewModel.getUC().getFinishEvent().observe(this, aVoid -> Objects.requireNonNull(getActivity()).finish());
         //关闭上一层
