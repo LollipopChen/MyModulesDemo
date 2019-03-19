@@ -35,6 +35,7 @@ android {
                     'src/main/res/layout/me',
                     'src/main/res/layout/login',
                     'src/main/res/layout/main',
+                    'src/main/res/layout/search',
                     'src/main/res/layout/other',
                     'src/main/res/layout',
                     'src/main/res'

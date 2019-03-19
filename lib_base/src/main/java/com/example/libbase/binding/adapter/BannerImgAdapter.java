@@ -37,7 +37,7 @@ public class BannerImgAdapter implements CBViewHolderCreator {
 
             @Override
             public void updateUI(String data) {
-                ImageUtils.loadImage(imageView, data);
+                ImageUtils.loadImage(imageView, data,R.drawable.ic_placeholder);
             }
         };
     }

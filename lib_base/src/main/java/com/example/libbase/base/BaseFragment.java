@@ -92,7 +92,7 @@ public abstract class BaseFragment<V extends ViewDataBinding,VM extends BaseView
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //私有的ViewModel与View的契约事件回调逻辑
-        registorUIChangeLiveDataCallBack();
+        registerUIChangeLiveDataCallBack();
         //页面数据初始化方法
         initData();
         //页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
@@ -104,7 +104,7 @@ public abstract class BaseFragment<V extends ViewDataBinding,VM extends BaseView
     /**
      * 注册ViewModel与View的契约UI回调事件
      */
-    private void registorUIChangeLiveDataCallBack() {
+    private void registerUIChangeLiveDataCallBack() {
         //加载对话框显示
         viewModel.getUC().getShowDialogEvent().observe(this, this::showDialog);
         //加载对话框消失

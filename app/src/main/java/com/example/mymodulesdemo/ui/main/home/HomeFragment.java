@@ -3,6 +3,7 @@ package com.example.mymodulesdemo.ui.main.home;
 import android.databinding.Observable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -19,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author ChenQiuE
@@ -47,7 +49,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding,HomeViewModel
     public void initData() {
         binding.recyclerView.setNestedScrollingEnabled(false);
         // 初始化标题(需要使用标题栏+LoadingView的UI，viewModel需要继承最底层LoadingViewModel)
-        viewModel.initView(getString(R.string.action_home));
+        viewModel.initView(getString(R.string.action_home), ContextCompat.getDrawable(Objects.requireNonNull(getActivity()),R.drawable.ic_search));
         // 请求广告数据
         viewModel.requestBannerData();
         //请求列表数据

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
 import android.media.ExifInterface;
+import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
@@ -32,14 +33,14 @@ public class ImageUtils {
      * @param imageView imageView
      * @param imageView transformation 转换器
      */
-    public static void loadImage(ImageView imageView, String url) {
+    public static void loadImage(ImageView imageView, String url, @DrawableRes int placeholderRes) {
         if (TextUtils.isEmpty(url)) {
             return;
         }
         Glide.with(imageView.getContext())
                 .load(url)
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.ic_loading_green)
+                        .placeholder(placeholderRes)
                         .error(new ColorDrawable(Color.WHITE))
                         .fallback(new ColorDrawable(Color.RED)))
                 .into(imageView);
@@ -51,14 +52,14 @@ public class ImageUtils {
      * @param url       url
      * @param imageView imageView
      */
-    public static void loadImageCircle(ImageView imageView, String url) {
+    public static void loadImageCircle(ImageView imageView, String url, @DrawableRes int placeholderRes) {
         if (TextUtils.isEmpty(url)) {
             return;
         }
         Glide.with(imageView.getContext())
                 .load(url)
                 .apply(RequestOptions.circleCropTransform()
-                        .placeholder(R.drawable.ic_loading_green)
+                        .placeholder(placeholderRes)
                         .error(new ColorDrawable(Color.WHITE))
                         .fallback(new ColorDrawable(Color.RED)))
                 .into(imageView);

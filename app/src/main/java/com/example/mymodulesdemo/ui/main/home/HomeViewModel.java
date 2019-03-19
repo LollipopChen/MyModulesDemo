@@ -4,7 +4,9 @@ import android.app.Application;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableList;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.example.libbase.base.BaseDataInterface;
 import com.example.libbase.binding.command.BindingAction;
@@ -21,6 +23,7 @@ import com.example.mymodulesdemo.entity.ArticleListEntity;
 import com.example.mymodulesdemo.entity.BannerEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.search.SearchActivity;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
@@ -75,8 +78,10 @@ public class HomeViewModel extends LoadingViewModel {
     /**
      * 初始化标题
      */
-    public void initView(String title){
+    public void initView(String title, Drawable icon){
         setTitleText(title);
+        setRightIconVisibleVisible(View.VISIBLE);
+        setRightMoreIcon(icon);
         setStatus(LoadingViewModel.LOADING);
     }
 
@@ -159,6 +164,12 @@ public class HomeViewModel extends LoadingViewModel {
         };
         HttpObservable.getObservable(ApiCenter.getApi().getHomeList(String.valueOf(page)),getLifecycleProvider(), FragmentEvent.DESTROY)
                 .subscribe(observer);
+    }
+
+    @Override
+    protected void moreOnClick() {
+        //搜索点击
+        startActivity(SearchActivity.class);
     }
 
     /**

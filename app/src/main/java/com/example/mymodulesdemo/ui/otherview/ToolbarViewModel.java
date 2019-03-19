@@ -22,9 +22,9 @@ public class ToolbarViewModel extends BaseViewModel {
     /** 标题文字 */
     public ObservableField<String> titleText = new ObservableField<>("");
     /** 左边返回图标的观察者 */
-    public ObservableInt leftIconVisibleObservable = new ObservableInt(View.GONE);
+    public ObservableInt leftIconVisibleObservable = new ObservableInt(View.INVISIBLE);
     /** 右边图标的观察者 */
-    public ObservableInt rightIconVisibleObservable = new ObservableInt(View.GONE);
+    public ObservableInt rightIconVisibleObservable = new ObservableInt(View.INVISIBLE);
     /** 右边图标Icon的观察者 */
     public ObservableField<Drawable> rightIcon = new ObservableField<>();
 

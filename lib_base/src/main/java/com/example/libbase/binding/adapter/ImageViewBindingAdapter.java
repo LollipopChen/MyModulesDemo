@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.libbase.utils.ImageUtils;
 import com.example.libbase.utils.SNStringUtils;
 
 /**
@@ -26,17 +27,10 @@ public class ImageViewBindingAdapter {
     @BindingAdapter(value = {"url","placeholderRes","isCircle"},requireAll = false)
     public static void setImage(ImageView imageView, String url, @DrawableRes int placeholderRes,boolean isCircle){
         if(!SNStringUtils.isEmpty(url)){
-            RequestOptions requestOptions = new RequestOptions().error(placeholderRes).placeholder(placeholderRes);
             if (isCircle){
-                Glide.with(imageView.getContext())
-                        .load(url)
-                        .apply(requestOptions.circleCrop())
-                        .into(imageView);
+                ImageUtils.loadImageCircle(imageView,url,placeholderRes);
             }else {
-                Glide.with(imageView.getContext())
-                        .load(url)
-                        .apply(requestOptions)
-                        .into(imageView);
+                ImageUtils.loadImage(imageView,url,placeholderRes);
             }
         }
     }

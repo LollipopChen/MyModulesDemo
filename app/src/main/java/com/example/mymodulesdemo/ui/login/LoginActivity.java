@@ -39,16 +39,13 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding,LoginViewMo
     @Override
     public void initViewObservable() {
         //监听ViewModel中cbSwitch的变化, 当ViewModel中执行【uc.cbSwitch.setValue(!uc.cbSwitch.get());】时会回调该方法
-        viewModel.uc.cbSwitch.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(@Nullable Boolean isChecked) {
-                if (isChecked != null && isChecked){
-                    binding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }else {
-                    binding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
-                binding.etPassword.setSelection(Objects.requireNonNull(binding.etPassword.getText()).toString().length());
+        viewModel.uc.cbSwitch.observe(this, isChecked -> {
+            if (isChecked != null && isChecked){
+                binding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }else {
+                binding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
+            binding.etPassword.setSelection(Objects.requireNonNull(binding.etPassword.getText()).toString().length());
         });
     }
 }
