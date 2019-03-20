@@ -9,7 +9,7 @@ import com.example.libbase.net.http.retrofit.RetrofitClient;
  */
 public class ApiCenter {
 
-    private static final String BASE_URL = "http://www.wanandroid.com/";
+    private static final String BASE_URL = "https://www.wanandroid.com/";
 
     public static String getServerUrl() {
         return BASE_URL;

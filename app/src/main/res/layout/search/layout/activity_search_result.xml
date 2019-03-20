@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers"/>
+        <import type="com.example.libbase.binding.adapter.recyclerview.LineManagers"/>
+        <import type="com.example.mymodulesdemo.ui.search.viewmodel.SearchResultViewModel"/>
+        <variable
+            name="viewModel"
+            type="SearchResultViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layout_back_title_bar"
+            layout="@layout/layout_back_title_bar"
+            app:toolbarViewModel="@{viewModel}" />
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/swipe_fresh_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_back_title_bar"
+            app:srlAccentColor="@color/colorPrimary"
+            app:srlEnableLoadMoreWhenContentNotFull="false"
+            app:srlEnablePreviewInEditMode="true"
+            app:srlPrimaryColor="@android:color/transparent"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            app:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.bigkoo.convenientbanner.ConvenientBanner
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_200_dp"
+                        app:canLoop="true"
+                        app:autoTurningTime="3000"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintTop_toBottomOf="@+id/banner"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:adapter="@{viewModel.adapter}"
+                        app:itemBinding="@{viewModel.itemBinding}"
+                        app:items="@{viewModel.observableList}"
+                        app:layoutManager="@{LayoutManagers.linear()}"
+                        app:lineManager="@{LineManagers.horizontal()}"/>
+
+                    <include
+                        layout="@layout/layout_no_data"
+                        app:loadingViewModel="@{viewModel}"
+                        android:layout_width="@dimen/dimen_0_dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/banner"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srlAccentColor="@color/colorPrimary" />
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

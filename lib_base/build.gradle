@@ -95,4 +95,6 @@ dependencies {
     /* 下拉刷新 */
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-20'
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-20'
+    /*标签的流式布局*/
+    api 'com.google.android:flexbox:1.0.0'
 }

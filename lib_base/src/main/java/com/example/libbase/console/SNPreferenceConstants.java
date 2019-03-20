@@ -14,5 +14,5 @@ package com.example.libbase.console;
  * @date 2018/4/10
  */
 public class SNPreferenceConstants {
-    public static final String TOKEN = "com.supernova.collectioncode.TOKEN";
+    public static final String TOKEN = "MVVM.TOKEN";
 }

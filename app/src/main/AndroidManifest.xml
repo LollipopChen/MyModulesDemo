@@ -32,11 +32,13 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.main.me.about.AboutActivity" />
         <activity android:name=".ui.web.WebViewActivity" />
-        <activity android:name=".ui.search.SearchActivity" />
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".ui.search.SearchResultActivity" />
     </application>
 
 </manifest>

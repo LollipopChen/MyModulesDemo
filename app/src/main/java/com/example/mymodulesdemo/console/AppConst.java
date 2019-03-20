@@ -11,5 +11,6 @@ public interface AppConst {
     interface IntentParams{
         String URL = "url";
         String ID = "id";
+        String KEY_WORD = "key_word";
     }
 }

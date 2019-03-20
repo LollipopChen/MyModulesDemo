@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.mymodulesdemo.ui.search.viewmodel.SearchResultItemViewModel"/>
+        <variable
+            name="viewModel"
+            type="SearchResultItemViewModel"/>
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_10_dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="@dimen/text_size_14_sp"
+            android:textColor="@color/text_color"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="afadfasdfas"/>
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintRight_toLeftOf="@+id/tv_date"
+            android:textSize="@dimen/text_size_12_sp"
+            android:textColor="@color/seagreen"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintHorizontal_weight="1"
+            android:gravity="center_vertical"
+            tools:text="afadfasdfas"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/tv_author"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="@dimen/text_size_12_sp"
+            android:textColor="@color/gray"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintHorizontal_weight="1"
+            android:gravity="end|center_vertical"
+            tools:text="afadfasdfas"/>
+
+        <TextView
+            android:id="@+id/tv_super_chapter_name"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_author"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="@dimen/text_size_12_sp"
+            android:textColor="@color/maroon"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintHorizontal_weight="1"
+            android:gravity="center_vertical"
+            tools:text="公众号"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

@@ -2,12 +2,20 @@ package com.example.mymodulesdemo.net;
 
 import com.example.mymodulesdemo.entity.ArticleListEntity;
 import com.example.mymodulesdemo.entity.BannerEntity;
+import com.example.mymodulesdemo.entity.HotSearchEntity;
 import com.example.mymodulesdemo.entity.ListDataEntity;
 import com.example.mymodulesdemo.entity.ListTabLayoutEntity;
+import com.example.mymodulesdemo.entity.SearchResultEntity;
+
+import java.util.Map;
 
 import io.reactivex.Observable;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
 /**
  * @author ChenQiuE
@@ -46,4 +54,20 @@ public interface Api {
      */
     @GET(ApiConst.CHAPTERS_LIST)
     Observable<ListDataEntity> getChaptersList(@Path(ApiConst.Params.ID) String id,@Path(ApiConst.Params.PAGE) String page);
+
+    /**
+     * 热门搜索词
+     * @return  搜索词数据
+     */
+    @GET(ApiConst.HOT_FLAG)
+    Observable<HotSearchEntity> getHotFlag();
+
+    /**
+     * 搜索
+     * @param page 页码
+     * @param params 参数
+     * @return 搜索结果数据
+     */
+    @POST(ApiConst.SEARCH)
+    Observable<SearchResultEntity> getSearchList(@Path(ApiConst.Params.PAGE) String page, @QueryMap Map<String, Object> params);
 }

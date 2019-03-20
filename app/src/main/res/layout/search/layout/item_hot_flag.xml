@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.example.mymodulesdemo.ui.search.viewmodel.HotItemViewModel"/>
+        <variable
+            name="viewModel"
+            type="com.example.mymodulesdemo.ui.search.viewmodel.HotItemViewModel"/>
+    </data>
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_ellipse_gray"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dimen_10_dp"
+        android:paddingEnd="@dimen/dimen_10_dp"
+        android:paddingTop="@dimen/dimen_5_dp"
+        android:paddingBottom="@dimen/dimen_5_dp"
+        android:text="@{viewModel.observableField.name}"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_size_12_sp"
+        app:onClickCommand="@{viewModel.onItemClick}"
+        tools:text="4154645646545"
+        android:layout_marginTop="@dimen/dimen_8_dp"
+        android:layout_marginEnd="@dimen/dimen_8_dp"/>
+</layout>
