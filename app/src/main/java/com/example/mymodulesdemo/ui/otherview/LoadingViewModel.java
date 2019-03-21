@@ -131,6 +131,7 @@ public class LoadingViewModel extends ToolbarViewModel {
             if (status == USER_NOT_LOGIN){
                 onLogin();
             }else {
+                setStatus(LOADING);
                 onRefreshData();
             }
         }

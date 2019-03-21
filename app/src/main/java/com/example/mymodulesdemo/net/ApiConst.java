@@ -36,6 +36,11 @@ public interface ApiConst {
      */
     String SEARCH = "article/query/{page}/json";
 
+    /**
+     * 导航数据
+     */
+    String NAVIGATION = "navi/json";
+
     interface Params{
         String PAGE = "page";
         String ID = "id";

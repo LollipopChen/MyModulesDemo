@@ -45,26 +45,16 @@
                 android:layout_height="match_parent"
                 android:fillViewport="true">
 
-                <LinearLayout
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
-                    <com.bigkoo.convenientbanner.ConvenientBanner
-                        android:id="@+id/banner"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_200_dp"
-                        app:canLoop="true"
-                        app:autoTurningTime="3000"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"/>
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:layout_constraintTop_toBottomOf="@+id/banner"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,12 +69,12 @@
                         app:loadingViewModel="@{viewModel}"
                         android:layout_width="@dimen/dimen_0_dp"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@+id/banner"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>
 
-                </LinearLayout>
+                </android.support.constraint.ConstraintLayout>
 
             </android.support.v4.widget.NestedScrollView>
 

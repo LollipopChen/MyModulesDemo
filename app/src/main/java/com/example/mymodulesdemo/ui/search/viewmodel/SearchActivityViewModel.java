@@ -3,6 +3,7 @@ package com.example.mymodulesdemo.ui.search.viewmodel;
 import android.app.Application;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.example.libbase.json.SNGsonHelper;
@@ -12,14 +13,17 @@ import com.example.libbase.net.http.observer.HttpObserver;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.entity.HotSearchEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.otherview.SearchBarViewModel;
 import com.example.mymodulesdemo.ui.search.HotFlagAdapter;
+import com.example.mymodulesdemo.ui.search.SearchResultActivity;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.List;
+import java.util.Objects;
 
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
@@ -42,7 +46,10 @@ public class SearchActivityViewModel extends SearchBarViewModel {
 
     @Override
     protected void onSearch() {
-        ToastAlert.show(searchKeyWord.get());
+        Bundle bundle = new Bundle();
+        bundle.putString(AppConst.IntentParams.KEY_WORD, Objects.requireNonNull(searchKeyWord.get()));
+        startActivity(SearchResultActivity.class,bundle);
+        adapter.setSelectId("");
     }
 
     /**

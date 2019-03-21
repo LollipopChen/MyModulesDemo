@@ -1,37 +1,43 @@
 package com.example.mymodulesdemo.entity;
 
 import com.example.libbase.console.SNResponseEntity;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 /**
+ * 体系
  * @author ChenQiuE
- * Date：2019/3/20 17:28
+ * Date：2019/3/21 14:13
  * Email：1077503420@qq.com
  */
-public class SearchResultEntity extends SNResponseEntity {
-    private DataEntity data;
+public class SystemEntity extends SNResponseEntity {
 
-    public DataEntity getData() {
+    private List<DataEntity> data;
+
+    public List<DataEntity> getData() {
         return data;
     }
 
     public class DataEntity{
-        private String curPage;
-        @SerializedName("datas")
-        private List<ItemEntity> dataList;
+        private List<DataItemEntity> articles;
+        private String cid;
+        private String name;
 
-        public String getCurPage() {
-            return curPage;
+        public List<DataItemEntity> getArticles() {
+            return articles;
         }
 
-        public List<ItemEntity> getDataList() {
-            return dataList;
+        public String getCid() {
+            return cid;
         }
+
+        public String getName() {
+            return name;
+        }
+
     }
 
-    public class ItemEntity{
+    public class DataItemEntity {
         private String apkLink;
         private String author;
         private String chapterId;
@@ -149,16 +155,7 @@ public class SearchResultEntity extends SNResponseEntity {
         }
     }
 
-    public class TagsEntity{
-        private String name;
-        private String url;
+    public class TagsEntity {
 
-        public String getName() {
-            return name;
-        }
-
-        public String getUrl() {
-            return url;
-        }
     }
 }

@@ -32,6 +32,7 @@ public class HotItemViewModel extends ItemViewModel<SearchActivityViewModel> {
      */
     public BindingCommand onItemClick = new BindingCommand(() -> {
         viewModel.adapter.setSelectId(Objects.requireNonNull(observableField.get()).getId());
+        viewModel.searchKeyWord.set(Objects.requireNonNull(observableField.get()).getName());
 
         Bundle bundle = new Bundle();
         bundle.putString(AppConst.IntentParams.KEY_WORD, Objects.requireNonNull(observableField.get()).getName());

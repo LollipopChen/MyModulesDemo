@@ -24,7 +24,6 @@ public class HotFlagAdapter extends BindingRecyclerViewAdapter<HotItemViewModel>
     @Override
     public void onBindBinding(ViewDataBinding binding, int variableId, int layoutRes, int position, HotItemViewModel item) {
         super.onBindBinding(binding, variableId, layoutRes, position, item);
-        Logger.e("item:" + Objects.requireNonNull(item.observableField.get()).getName());
         /*
          * TODO 添加自己需要的逻辑
          */

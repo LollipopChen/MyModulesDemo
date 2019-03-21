@@ -6,6 +6,7 @@ import com.example.mymodulesdemo.entity.HotSearchEntity;
 import com.example.mymodulesdemo.entity.ListDataEntity;
 import com.example.mymodulesdemo.entity.ListTabLayoutEntity;
 import com.example.mymodulesdemo.entity.SearchResultEntity;
+import com.example.mymodulesdemo.entity.SystemEntity;
 
 import java.util.Map;
 
@@ -70,4 +71,11 @@ public interface Api {
      */
     @POST(ApiConst.SEARCH)
     Observable<SearchResultEntity> getSearchList(@Path(ApiConst.Params.PAGE) String page, @QueryMap Map<String, Object> params);
+
+    /**
+     * 获取导航数据
+     * @return 导航数据
+     */
+    @GET(ApiConst.NAVIGATION)
+    Observable<SystemEntity> getNavigationData();
 }

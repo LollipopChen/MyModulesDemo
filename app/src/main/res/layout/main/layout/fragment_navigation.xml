@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:binding="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
-        <import type="com.example.mymodulesdemo.ui.main.home.HomeViewModel" />
+        <import type="com.example.mymodulesdemo.ui.main.navigation.NavigationViewModel"/>
         <import type="com.example.libbase.binding.adapter.recyclerview.LineManagers"/>
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers"/>
-
         <variable
             name="viewModel"
-            type="HomeViewModel" />
+            type="NavigationViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/layout_back_title_bar"
-            layout="@layout/layout_back_title_bar"
-            binding:toolbarViewModel="@{viewModel}" />
+    <include
+        android:id="@+id/layout_back_title_bar"
+        layout="@layout/layout_back_title_bar"
+        app:toolbarViewModel="@{viewModel}" />
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/swipe_fresh_layout"
@@ -35,9 +32,10 @@
             app:srlAccentColor="@color/colorPrimary"
             app:srlEnableLoadMoreWhenContentNotFull="false"
             app:srlEnablePreviewInEditMode="true"
-            app:srlPrimaryColor="@android:color/transparent"
-            binding:onRefreshCommand="@{viewModel.onRefreshCommand}"
-            binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}">
+            app:srlPrimaryColor="@android:color/transparent">
+
+            <!--binding:onRefreshCommand="@{viewModel.onRefreshCommand}"-->
+            <!--binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"-->
 
             <com.scwang.smartrefresh.layout.header.ClassicsHeader
                 android:layout_width="match_parent"
@@ -53,33 +51,24 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.bigkoo.convenientbanner.ConvenientBanner
-                        android:id="@+id/banner"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_200_dp"
-                        app:canLoop="true"
-                        app:autoTurningTime="3000"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"/>
-
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:layout_constraintTop_toBottomOf="@+id/banner"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        binding:adapter="@{viewModel.adapter}"
-                        binding:itemBinding="@{viewModel.itemBinding}"
-                        binding:items="@{viewModel.observableList}"
-                        binding:layoutManager="@{LayoutManagers.linear()}"
-                        binding:lineManager="@{LineManagers.horizontal()}"/>
+                        app:layoutManager="@{LayoutManagers.linear()}"
+                        app:lineManager="@{LineManagers.horizontal()}"/>
+
+                    <!--binding:adapter="@{viewModel.adapter}"-->
+                    <!--binding:itemBinding="@{viewModel.itemBinding}"-->
+                    <!--binding:items="@{viewModel.observableList}"-->
 
                     <include
                         layout="@layout/layout_no_data"
-                        binding:loadingViewModel="@{viewModel}"
+                        app:loadingViewModel="@{viewModel}"
                         android:layout_width="@dimen/dimen_0_dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -90,11 +79,6 @@
                 </android.support.constraint.ConstraintLayout>
 
             </android.support.v4.widget.NestedScrollView>
-
-            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srlAccentColor="@color/colorPrimary" />
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

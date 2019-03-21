@@ -21,6 +21,8 @@ import com.example.mymodulesdemo.databinding.ActivityMainBinding;
 import com.example.mymodulesdemo.ui.main.home.HomeFragment;
 import com.example.mymodulesdemo.ui.main.list.ListFragment;
 import com.example.mymodulesdemo.ui.main.me.MeFragment;
+import com.example.mymodulesdemo.ui.main.navigation.NavigationFragment;
+import com.example.mymodulesdemo.ui.main.system.SystemFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +65,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
 
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(HomeFragment.getInstance());
+        fragmentList.add(SystemFragment.getInstance());
         fragmentList.add(ListFragment.getInstance());
+        fragmentList.add(NavigationFragment.getInstance());
         fragmentList.add(MeFragment.getInstance());
 
         viewPagerAdapter.setList(fragmentList);
@@ -82,12 +86,20 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
                     binding.viewPager.setCurrentItem(0);
                     return true;
 
-                case R.id.action_view:
+                case R.id.action_system:
                     binding.viewPager.setCurrentItem(1);
                     return true;
 
-                case R.id.action_me:
+                case R.id.action_view:
                     binding.viewPager.setCurrentItem(2);
+                    return true;
+
+                case R.id.action_navigation:
+                    binding.viewPager.setCurrentItem(3);
+                    return true;
+
+                case R.id.action_me:
+                    binding.viewPager.setCurrentItem(4);
                     return true;
 
                 default:

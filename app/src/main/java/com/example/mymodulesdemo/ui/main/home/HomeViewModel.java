@@ -97,14 +97,14 @@ public class HomeViewModel extends LoadingViewModel {
                 if (bannerEntity != null){
                     // 设置列表数据
                     uc.dataList.setValue(bannerEntity.getData());
-                }else{
-                    showDialog("暂无数据");
+                }else {
+                    setStatus(LoadingViewModel.NO_DATA);
                 }
             }
 
             @Override
             protected void onFailure(ApiException exception) {
-                showDialog(exception.getMsg());
+                    setErrorMessage(exception.getMessage());
             }
         };
         HttpObservable.getObservable(ApiCenter.getApi().getBanner(),getLifecycleProvider(), FragmentEvent.DESTROY)
@@ -113,6 +113,7 @@ public class HomeViewModel extends LoadingViewModel {
 
     @Override
     protected void onRefreshData() {
+        requestBannerData();
         requestListData();
     }
 
@@ -144,9 +145,11 @@ public class HomeViewModel extends LoadingViewModel {
                 ArticleListEntity articleListEntity = SNGsonHelper.toType(response.toString(),ArticleListEntity.class);
 
                 if (articleListEntity == null){
+                    setStatus(LoadingViewModel.NO_DATA);
                    return;
                 }
                 if (articleListEntity.getData() == null){
+                    setStatus(LoadingViewModel.NO_DATA);
                     return;
                 }
                 //将实体赋给LiveData
@@ -159,7 +162,7 @@ public class HomeViewModel extends LoadingViewModel {
 
             @Override
             protected void onFailure(ApiException exception) {
-                ToastAlert.show(exception.getMsg());
+               setErrorMessage(exception.getMessage());
             }
         };
         HttpObservable.getObservable(ApiCenter.getApi().getHomeList(String.valueOf(page)),getLifecycleProvider(), FragmentEvent.DESTROY)

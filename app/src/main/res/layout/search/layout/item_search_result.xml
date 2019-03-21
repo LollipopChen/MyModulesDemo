@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.text.Html"/>
         <import type="com.example.mymodulesdemo.ui.search.viewmodel.SearchResultItemViewModel"/>
         <variable
             name="viewModel"
@@ -14,7 +15,8 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dimen_10_dp">
+        android:padding="@dimen/dimen_10_dp"
+        app:onClickCommand="@{viewModel.itemClick}">
 
         <TextView
             android:id="@+id/tv_title"
@@ -27,6 +29,7 @@
             android:textColor="@color/text_color"
             android:maxLines="2"
             android:ellipsize="end"
+            android:text="@{ Html.fromHtml(viewModel.observableField.title)}"
             tools:text="afadfasdfas"/>
 
         <TextView
@@ -42,6 +45,7 @@
             android:ellipsize="end"
             app:layout_constraintHorizontal_weight="1"
             android:gravity="center_vertical"
+            android:text="@{viewModel.observableField.chapterName}"
             tools:text="afadfasdfas"/>
 
         <TextView
@@ -57,6 +61,7 @@
             android:ellipsize="end"
             app:layout_constraintHorizontal_weight="1"
             android:gravity="end|center_vertical"
+            android:text="@{viewModel.observableField.niceDate}"
             tools:text="afadfasdfas"/>
 
         <TextView
@@ -72,6 +77,7 @@
             android:ellipsize="end"
             app:layout_constraintHorizontal_weight="1"
             android:gravity="center_vertical"
+            android:text="@{viewModel.observableField.superChapterName}"
             tools:text="公众号"/>
 
     </android.support.constraint.ConstraintLayout>

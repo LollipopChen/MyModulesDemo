@@ -21,7 +21,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".ui.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.main.me.about.AboutActivity" />
         <activity android:name=".ui.web.WebViewActivity" />
         <activity
