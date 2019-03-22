@@ -22,7 +22,7 @@ import java.util.List;
  * Date：2019/3/6 16:29
  * Email：1077503420@qq.com
  */
-public class ListViewModel extends ToolbarViewModel {
+public class ListViewModel extends LoadingViewModel {
 
     public UiChangeObservable uc = new UiChangeObservable();
 
@@ -39,15 +39,23 @@ public class ListViewModel extends ToolbarViewModel {
      */
     public void getTabLayoutTitle() {
         HttpObserver observer = new HttpObserver() {
+
+            @Override
+            public void onComplete() {
+                setStatus(STOP_LOADING);
+            }
+
             @Override
             protected void onSuccess(Object response) {
                 Logger.e("公众号数据：" + response.toString());
                 ListTabLayoutEntity listTabLayoutEntity = SNGsonHelper.toType(response.toString(),ListTabLayoutEntity.class);
                 if (listTabLayoutEntity == null){
+                    setStatus(NO_DATA);
                     return;
                 }
                 List<ListTabLayoutEntity.ItemsEntity> data = listTabLayoutEntity.getData();
                 if (data == null || data.isEmpty()){
+                    setStatus(NO_DATA);
                     return;
                 }
                 uc.titles.setValue(data);
@@ -55,12 +63,17 @@ public class ListViewModel extends ToolbarViewModel {
 
             @Override
             protected void onFailure(ApiException exception) {
-
+                setErrorMessage(exception.getMessage());
             }
         };
 
         HttpObservable.getObservable(ApiCenter.getApi().getChapters(),getLifecycleProvider(), FragmentEvent.DESTROY)
                 .subscribe(observer);
+    }
+
+    @Override
+    protected void onRefreshData() {
+        getTabLayoutTitle();
     }
 
     public class UiChangeObservable{

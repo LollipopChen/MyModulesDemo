@@ -87,6 +87,7 @@ public class ListChildrenViewModel extends LoadingViewModel {
 
             @Override
             public void onComplete() {
+                setStatus(STOP_LOADING);
                 //刷新完成收回
                 if (isLoadMore){
                     uc.finishLoadMore.set(!uc.finishLoadMore.get());
@@ -105,14 +106,17 @@ public class ListChildrenViewModel extends LoadingViewModel {
                 Logger.e("公众号历史数据：" + response.toString());
                 ListDataEntity listDataEntity = SNGsonHelper.toType(response.toString(),ListDataEntity.class);
                 if (listDataEntity == null){
+                    setStatus(NO_DATA);
                     return;
                 }
                 ListDataEntity.DataEntity data = listDataEntity.getData();
                 if (data == null){
+                    setStatus(NO_DATA);
                     return;
                 }
                 List<ListDataEntity.ItemsEntity> dataList = data.getDataList();
                 if (dataList == null || dataList.isEmpty()){
+                    setStatus(NO_DATA);
                     return;
                 }
                 //将实体赋给LiveData
@@ -125,11 +129,16 @@ public class ListChildrenViewModel extends LoadingViewModel {
 
             @Override
             protected void onFailure(ApiException exception) {
-
+                setErrorMessage(exception.getMessage());
             }
         };
         HttpObservable.getObservable(ApiCenter.getApi().getChaptersList(id,String.valueOf(page)),getLifecycleProvider(), FragmentEvent.DESTROY)
                 .subscribe(observer);
+    }
+
+    @Override
+    protected void onRefreshData() {
+        getDataList(id);
     }
 
     /**

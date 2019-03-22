@@ -49,6 +49,11 @@ public class SystemViewModel extends LoadingViewModel {
         setTitleText(title);
     }
 
+    @Override
+    protected void onRefreshData() {
+        requestData();
+    }
+
     /**
      * 获取导航数据
      */
@@ -60,6 +65,7 @@ public class SystemViewModel extends LoadingViewModel {
 
             @Override
             public void onComplete() {
+                setStatus(STOP_LOADING);
                 uc.finishRefreshing.set(!uc.finishRefreshing.get());
             }
 
