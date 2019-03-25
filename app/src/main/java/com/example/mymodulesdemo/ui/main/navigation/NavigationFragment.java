@@ -33,4 +33,12 @@ public class NavigationFragment extends BaseFragment<FragmentNavigationBinding,N
     public int initVariableId() {
         return BR.viewModel;
     }
+
+    @Override
+    public void initData() {
+        binding.swipeFreshLayout.setEnableLoadMore(false);
+
+        viewModel.initToolBar(getString(R.string.action_system));
+        viewModel.getNavigationData();
+    }
 }
