@@ -41,6 +41,11 @@ public interface ApiConst {
      */
     String NAVIGATION = "navi/json";
 
+    /**
+     * 体系数据
+     */
+    String SYSTEM = "tree/json";
+
     interface Params{
         String PAGE = "page";
         String ID = "id";

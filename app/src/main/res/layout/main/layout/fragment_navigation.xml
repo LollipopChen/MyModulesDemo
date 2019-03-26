@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.example.mymodulesdemo.ui.main.navigation.NavigationViewModel"/>
+        <import type="com.example.mymodulesdemo.ui.main.navigation.viewmodel.NavigationViewModel"/>
         <import type="com.example.libbase.binding.adapter.recyclerview.LineManagers"/>
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers"/>
         <variable
             name="viewModel"
-            type="NavigationViewModel"/>
+            type="com.example.mymodulesdemo.ui.main.navigation.viewmodel.NavigationViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -32,10 +32,8 @@
             app:srlAccentColor="@color/colorPrimary"
             app:srlEnableLoadMoreWhenContentNotFull="false"
             app:srlEnablePreviewInEditMode="true"
-            app:srlPrimaryColor="@android:color/transparent">
-
-            <!--binding:onRefreshCommand="@{viewModel.onRefreshCommand}"-->
-            <!--binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"-->
+            app:srlPrimaryColor="@android:color/transparent"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}">
 
             <com.scwang.smartrefresh.layout.header.ClassicsHeader
                 android:layout_width="match_parent"
@@ -60,11 +58,10 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layoutManager="@{LayoutManagers.linear()}"
-                        app:lineManager="@{LineManagers.horizontal()}"/>
-
-                    <!--binding:adapter="@{viewModel.adapter}"-->
-                    <!--binding:itemBinding="@{viewModel.itemBinding}"-->
-                    <!--binding:items="@{viewModel.observableList}"-->
+                        app:lineManager="@{LineManagers.horizontal()}"
+                        app:adapter="@{viewModel.adapter}"
+                        app:itemBinding="@{viewModel.itemBinding}"
+                        app:items="@{viewModel.observableList}"/>
 
                     <include
                         layout="@layout/layout_no_data"

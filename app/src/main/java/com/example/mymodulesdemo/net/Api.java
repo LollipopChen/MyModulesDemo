@@ -5,6 +5,7 @@ import com.example.mymodulesdemo.entity.BannerEntity;
 import com.example.mymodulesdemo.entity.HotSearchEntity;
 import com.example.mymodulesdemo.entity.ListDataEntity;
 import com.example.mymodulesdemo.entity.ListTabLayoutEntity;
+import com.example.mymodulesdemo.entity.NavigationEntity;
 import com.example.mymodulesdemo.entity.SearchResultEntity;
 import com.example.mymodulesdemo.entity.SystemEntity;
 
@@ -78,4 +79,11 @@ public interface Api {
      */
     @GET(ApiConst.NAVIGATION)
     Observable<SystemEntity> getNavigationData();
+
+    /**
+     * 获取体系数据
+     * @return 体系数据
+     */
+    @GET(ApiConst.SYSTEM)
+    Observable<NavigationEntity> getSystemData();
 }

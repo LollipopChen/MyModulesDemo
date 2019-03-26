@@ -1,5 +1,7 @@
 package com.example.mymodulesdemo.ui.main.navigation;
 
+import android.arch.lifecycle.Observer;
+import android.databinding.Observable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import com.example.libbase.base.BaseFragment;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.databinding.FragmentNavigationBinding;
+import com.example.mymodulesdemo.ui.main.navigation.viewmodel.NavigationViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
  * Date：2019/3/21 11:39
  * Email：1077503420@qq.com
  */
-public class NavigationFragment extends BaseFragment<FragmentNavigationBinding,NavigationViewModel> {
+public class NavigationFragment extends BaseFragment<FragmentNavigationBinding, NavigationViewModel> {
 
     public static NavigationFragment getInstance(){
         return new NavigationFragment();
@@ -39,6 +42,16 @@ public class NavigationFragment extends BaseFragment<FragmentNavigationBinding,N
         binding.swipeFreshLayout.setEnableLoadMore(false);
 
         viewModel.initToolBar(getString(R.string.action_system));
-        viewModel.getNavigationData();
+        viewModel.requestData();
+    }
+
+    @Override
+    public void initViewObservable() {
+        viewModel.uc.finishRefreshing.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                binding.swipeFreshLayout.finishRefresh();
+            }
+        });
     }
 }

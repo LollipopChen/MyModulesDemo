@@ -39,14 +39,11 @@ public class SystemFlagAdapter extends BaseBindingAdapter<SystemEntity.DataItemE
     protected void onBindItem(ItemSystemFlagBinding binding, SystemEntity.DataItemEntity item) {
         binding.setEntity(item);
 
-        binding.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //跳转到指定界面,传入条目的参数
-                Intent intent = new Intent(binding.textView.getContext(),WebViewActivity.class);
-                intent.putExtra(AppConst.IntentParams.URL, item.getLink());
-                binding.textView.getContext().startActivity(intent);
-            }
+        binding.textView.setOnClickListener(v -> {
+            //跳转到指定界面,传入条目的参数
+            Intent intent = new Intent(binding.textView.getContext(),WebViewActivity.class);
+            intent.putExtra(AppConst.IntentParams.URL, item.getLink());
+            binding.textView.getContext().startActivity(intent);
         });
     }
 }
