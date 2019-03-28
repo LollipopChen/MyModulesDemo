@@ -21,6 +21,11 @@ public class ListDataEntity extends SNResponseEntity {
         private String curPage;
         @SerializedName("datas")
         private List<ItemsEntity> dataList;
+        private String offset;
+        private String over;
+        private String pageCount;
+        private String size;
+        private String total;
 
         public String getCurPage() {
             return curPage;
@@ -28,6 +33,26 @@ public class ListDataEntity extends SNResponseEntity {
 
         public List<ItemsEntity> getDataList() {
             return dataList;
+        }
+
+        public String getOffset() {
+            return offset;
+        }
+
+        public String getOver() {
+            return over;
+        }
+
+        public String getPageCount() {
+            return pageCount;
+        }
+
+        public String getSize() {
+            return size;
+        }
+
+        public String getTotal() {
+            return total;
         }
     }
 

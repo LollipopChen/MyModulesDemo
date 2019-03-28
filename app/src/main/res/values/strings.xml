@@ -11,4 +11,6 @@
 
     <string name="no_data">暂无数据</string>
     <string name="loading_again">重新加载</string>
+
+    <string name="cut_line">/</string>
 </resources>

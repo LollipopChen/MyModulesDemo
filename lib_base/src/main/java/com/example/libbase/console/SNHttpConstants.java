@@ -26,8 +26,8 @@ public interface SNHttpConstants {
     int HTTP_CONNECT_ERROR = 2002;
     int HTTP_TIME_OUT_ERROR = 2003;
     /**
-     * 1000	成功
+     * 0	成功
      */
-    int RESPONSE_CODE_SUCCESS = 1000;
+    int RESPONSE_CODE_SUCCESS =  0;
 
 }

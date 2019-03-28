@@ -62,7 +62,7 @@ public class ListFragment extends BaseFragment<FragmentListBinding,ListViewModel
                     titles.add(item.getName());
 
                     Bundle bundle = new Bundle();
-                    bundle.putString(AppConst.IntentParams.ID,itemsEntities.get(i).getId());
+                    bundle.putString(AppConst.IntentParams.ID,item.getId());
                     ListChildrenFragment listFragment = new ListChildrenFragment();
                     listFragment.setArguments(bundle);
                     fragmentList.add(listFragment);
@@ -72,6 +72,7 @@ public class ListFragment extends BaseFragment<FragmentListBinding,ListViewModel
             binding.viewPager.setAdapter(viewPagerAdapter);
             binding.tableLayout.setupWithViewPager(binding.viewPager);
             binding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tableLayout));
+            binding.viewPager.setOffscreenPageLimit(fragmentList.size());
         });
     }
 }

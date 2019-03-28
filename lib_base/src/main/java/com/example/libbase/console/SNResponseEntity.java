@@ -21,8 +21,8 @@ import com.google.gson.annotations.SerializedName;
 public class SNResponseEntity {
     @SerializedName("status_code") private String statusCode;
     //TODO 这个需要修改，删掉默认值
-    @SerializedName("ms_code") protected String code = "1000";
-    @SerializedName("message") private String message;
+    @SerializedName("errorCode") protected String code;
+    @SerializedName("errorMsg") private String message;
 
     public String getStatusCode() {
         return statusCode;

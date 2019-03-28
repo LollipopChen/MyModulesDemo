@@ -16,6 +16,7 @@ import com.example.libbase.utils.SNStringUtils;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.entity.ListDataEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
@@ -38,6 +39,11 @@ public class ListChildrenViewModel extends LoadingViewModel {
     private int page = 1;
     private boolean isLoadMore = false;
     private String id;
+
+    /**
+     * 能否加载更多
+     */
+    public ObservableBoolean canLoadMode = new ObservableBoolean(false);
 
     /**RecyclerView添加ObservableList*/
     public ObservableList<ListChildrenItemViewModel> observableList = new ObservableArrayList<>();
@@ -114,6 +120,9 @@ public class ListChildrenViewModel extends LoadingViewModel {
                     setStatus(NO_DATA);
                     return;
                 }
+
+                canLoadMode.set(data.getOver().equals(AppConst.StatusParams.LOAD_OVER));
+
                 List<ListDataEntity.ItemsEntity> dataList = data.getDataList();
                 if (dataList == null || dataList.isEmpty()){
                     setStatus(NO_DATA);
@@ -138,6 +147,7 @@ public class ListChildrenViewModel extends LoadingViewModel {
 
     @Override
     protected void onRefreshData() {
+        setStatus(LOADING);
         getDataList(id);
     }
 

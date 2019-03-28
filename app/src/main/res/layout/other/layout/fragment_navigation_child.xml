@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.example.libbase.binding.adapter.recyclerview.LineManagers"/>
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers"/>
+        <import type="com.example.mymodulesdemo.ui.main.navigation.viewmodel.SingleNavigationChildViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="SingleNavigationChildViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/swipe_fresh_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srlAccentColor="@color/colorPrimary"
+            app:srlEnableLoadMoreWhenContentNotFull="false"
+            app:srlEnablePreviewInEditMode="true"
+            app:srlPrimaryColor="@android:color/transparent"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            app:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            app:canLoadMore="@{viewModel.canLoadMode}">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:adapter="@{viewModel.adapter}"
+                    app:itemBinding="@{viewModel.itemBinding}"
+                    app:items="@{viewModel.observableList}"
+                    app:layoutManager="@{LayoutManagers.linear()}"
+                    app:lineManager="@{LineManagers.horizontal()}"/>
+
+                <include
+                    layout="@layout/layout_no_data"
+                    app:loadingViewModel="@{viewModel}"
+                    android:layout_width="@dimen/dimen_0_dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srlAccentColor="@color/colorPrimary" />
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.bigkoo:ConvenientBanner:2.1.4@aar">
+    <CLASSES>
+      <root url="file://F:/Android/.gradle/caches/transforms-1/files-1.1/ConvenientBanner-2.1.4.aar/683b3abbed771b08e603ce5e094f78e0/res" />
+      <root url="jar://F:/Android/.gradle/caches/transforms-1/files-1.1/ConvenientBanner-2.1.4.aar/683b3abbed771b08e603ce5e094f78e0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://F:/Android/.gradle/caches/modules-2/files-2.1/com.bigkoo/ConvenientBanner/2.1.4/91782f0e9a248f6712dee6cd1554c8d8a063ca87/ConvenientBanner-2.1.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

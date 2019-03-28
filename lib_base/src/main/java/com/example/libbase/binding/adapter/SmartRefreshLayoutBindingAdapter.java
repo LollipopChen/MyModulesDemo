@@ -30,4 +30,9 @@ public class SmartRefreshLayoutBindingAdapter {
             }
         });
     }
+
+    @BindingAdapter(value = {"canLoadMore"},requireAll = false)
+    public static void setOnLoadMore(SmartRefreshLayout smartRefreshLayout,boolean canLoadMore){
+        smartRefreshLayout.setEnableLoadMore(canLoadMore);
+    }
 }

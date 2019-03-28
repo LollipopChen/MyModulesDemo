@@ -46,6 +46,11 @@ public interface ApiConst {
      */
     String SYSTEM = "tree/json";
 
+    /**
+     * 体系下的文章数据
+     */
+    String SYSTEM_CHILD = "article/list/{page}/json";
+
     interface Params{
         String PAGE = "page";
         String ID = "id";

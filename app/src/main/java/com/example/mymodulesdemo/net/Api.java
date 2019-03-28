@@ -6,6 +6,7 @@ import com.example.mymodulesdemo.entity.HotSearchEntity;
 import com.example.mymodulesdemo.entity.ListDataEntity;
 import com.example.mymodulesdemo.entity.ListTabLayoutEntity;
 import com.example.mymodulesdemo.entity.NavigationEntity;
+import com.example.mymodulesdemo.entity.NavigationItemEntity;
 import com.example.mymodulesdemo.entity.SearchResultEntity;
 import com.example.mymodulesdemo.entity.SystemEntity;
 
@@ -86,4 +87,13 @@ public interface Api {
      */
     @GET(ApiConst.SYSTEM)
     Observable<NavigationEntity> getSystemData();
+
+    /**
+     * 获取体系下的文章数据
+     * @param page 页码
+     * @param params 参数
+     * @return 体系下的文章数据
+     */
+    @GET(ApiConst.SYSTEM_CHILD)
+    Observable<NavigationItemEntity> getNavigationChildData(@Path(ApiConst.Params.PAGE) String page, @QueryMap Map<String, Object> params);
 }

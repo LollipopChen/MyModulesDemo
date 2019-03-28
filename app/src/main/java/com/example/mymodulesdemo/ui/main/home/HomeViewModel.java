@@ -19,6 +19,7 @@ import com.example.libbase.net.http.observer.HttpObserver;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.entity.ArticleListEntity;
 import com.example.mymodulesdemo.entity.BannerEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
@@ -50,6 +51,7 @@ public class HomeViewModel extends LoadingViewModel {
     /**页数从0开始*/
     private int page = 0;
     private boolean isLoadMore = false;
+    public ObservableBoolean canLoadMore = new ObservableBoolean(false);
 
     /**下拉刷新*/
     public BindingCommand onRefreshCommand = new BindingCommand(new BindingAction() {
@@ -113,6 +115,7 @@ public class HomeViewModel extends LoadingViewModel {
 
     @Override
     protected void onRefreshData() {
+        setStatus(LOADING);
         requestBannerData();
         requestListData();
     }
@@ -148,12 +151,24 @@ public class HomeViewModel extends LoadingViewModel {
                     setStatus(LoadingViewModel.NO_DATA);
                    return;
                 }
-                if (articleListEntity.getData() == null){
+
+                ArticleListEntity.DataEntity data = articleListEntity.getData();
+
+                if (data == null){
                     setStatus(LoadingViewModel.NO_DATA);
                     return;
                 }
+
+                canLoadMore.set(data.getOver().equals(AppConst.StatusParams.LOAD_OVER));
+
+                List<ArticleListEntity.ItemEntity> dataList = data.getDataList();
+                if (dataList == null || dataList.isEmpty()){
+                    setStatus(LoadingViewModel.NO_DATA);
+                    return;
+                }
+
                 //将实体赋给LiveData
-                for (ArticleListEntity.ItemEntity entity : articleListEntity.getData().getDataList()) {
+                for (ArticleListEntity.ItemEntity entity : dataList) {
                     HomeItemViewModel itemViewModel = new HomeItemViewModel(HomeViewModel.this, entity);
                     //双向绑定动态添加Item
                     observableList.add(itemViewModel);

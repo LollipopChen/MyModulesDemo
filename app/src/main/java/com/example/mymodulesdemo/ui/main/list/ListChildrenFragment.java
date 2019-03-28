@@ -12,6 +12,7 @@ import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.databinding.FragmentListChildrenBinding;
+import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,6 +46,7 @@ public class ListChildrenFragment extends BaseFragment<FragmentListChildrenBindi
     @Override
     public void initData() {
         if (!SNStringUtils.isEmpty(id)){
+            viewModel.setStatus(LoadingViewModel.LOADING);
             viewModel.getDataList(id);
         }
     }

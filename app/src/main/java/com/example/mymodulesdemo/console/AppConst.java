@@ -12,5 +12,11 @@ public interface AppConst {
         String URL = "url";
         String ID = "id";
         String KEY_WORD = "key_word";
+        String NAVIGATION = "navigation";
+        String NAVIGATION_TAB = "navigation_tab";
+    }
+
+    interface StatusParams{
+        String LOAD_OVER = "false";
     }
 }
