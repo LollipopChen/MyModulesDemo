@@ -49,13 +49,4 @@ public class SearchBarViewModel extends BaseViewModel {
     protected void onSearch(){
 
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        leftIconVisibleObservable = null;
-        searchKeyWord = null;
-        backOnClick = null;
-        searchOnClick = null;
-    }
 }
