@@ -19,11 +19,11 @@ import java.util.Objects;
  * Date：2019/3/28 11:23
  * Email：qiue.chen@supernovachina.com
  */
-public class SingleNavigationChildItemViewModel extends ItemViewModel {
+public class SingleNavigationChildItemViewModel extends ItemViewModel<SingleNavigationChildViewModel> {
 
     public ObservableField<NavigationItemEntity.ItemEntity> observableField = new ObservableField<>();
 
-    public SingleNavigationChildItemViewModel(@NonNull BaseViewModel viewModel, NavigationItemEntity.ItemEntity entity) {
+    public SingleNavigationChildItemViewModel(@NonNull SingleNavigationChildViewModel viewModel, NavigationItemEntity.ItemEntity entity) {
         super(viewModel);
         observableField.set(entity);
     }

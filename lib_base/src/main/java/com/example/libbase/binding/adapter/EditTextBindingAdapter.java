@@ -31,6 +31,11 @@ public class EditTextBindingAdapter {
         editText.setFocusableInTouchMode(needRequestFocus);
     }
 
+    /**
+     * 文字变化监听
+     * @param editText editText
+     * @param textValue textValue
+     */
     @BindingAdapter(value = {"addTextChanged"},requireAll = false)
     public static void addTextChangedListener(EditText editText, BindingCommand<String> textValue){
         editText.addTextChangedListener(new TextWatcher() {
@@ -51,5 +56,15 @@ public class EditTextBindingAdapter {
 
             }
         });
+    }
+
+    /**
+     * 光标的置后
+     * @param editText editText
+     * @param  value value
+     */
+    @BindingAdapter(value = {"setSelection"},requireAll = false)
+    public static void setTextSelection(EditText editText,final String value){
+        editText.setSelection(value.length());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.mymodulesdemo.ui.login;
+package com.example.login;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -8,9 +8,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 
 import com.example.libbase.base.BaseActivity;
-import com.example.mymodulesdemo.BR;
-import com.example.mymodulesdemo.R;
-import com.example.mymodulesdemo.databinding.ActivityLoginBinding;
+import com.example.login.databinding.ActivityLoginBinding;
 
 import java.util.Objects;
 

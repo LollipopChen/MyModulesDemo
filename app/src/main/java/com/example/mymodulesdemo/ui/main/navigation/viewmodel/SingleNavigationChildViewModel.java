@@ -146,6 +146,18 @@ public class SingleNavigationChildViewModel extends LoadingViewModel {
                 .subscribe(observer);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        canLoadMode = null;
+        observableList = null;
+        itemBinding = null;
+        adapter = null;
+        onRefreshCommand = null;
+        onLoadMoreCommand = null;
+        uc = null;
+    }
+
     /**
      * 列表界面变化观察者
      */

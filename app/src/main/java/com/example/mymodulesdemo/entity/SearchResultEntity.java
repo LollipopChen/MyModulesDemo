@@ -18,16 +18,41 @@ public class SearchResultEntity extends SNResponseEntity {
     }
 
     public class DataEntity{
-        private String curPage;
+        private int curPage;
         @SerializedName("datas")
         private List<ItemEntity> dataList;
+        private String offset;
+        private String over;
+        private String pageCount;
+        private int size;
+        private int total;
 
-        public String getCurPage() {
+        public int getCurPage() {
             return curPage;
         }
 
         public List<ItemEntity> getDataList() {
             return dataList;
+        }
+
+        public String getOffset() {
+            return offset;
+        }
+
+        public String getOver() {
+            return over;
+        }
+
+        public String getPageCount() {
+            return pageCount;
+        }
+
+        public int getSize() {
+            return size;
+        }
+
+        public int getTotal() {
+            return total;
         }
     }
 

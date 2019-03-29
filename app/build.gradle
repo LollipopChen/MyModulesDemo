@@ -11,6 +11,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+
+        //MultiDex分包方法
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -33,7 +36,6 @@ android {
                     'src/main/res/drawable',
 
                     'src/main/res/layout/me',
-                    'src/main/res/layout/login',
                     'src/main/res/layout/main',
                     'src/main/res/layout/search',
                     'src/main/res/layout/other',
@@ -57,9 +59,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //引用module
+    //公共
     implementation project(':lib_base')
-
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    if (!Boolean.valueOf(rootProject.ext.isModule)) {
+        //登录模块
+        implementation project(':login')
+    }
 
     testImplementation 'junit:junit:4.12'
     //noinspection GradleCompatible

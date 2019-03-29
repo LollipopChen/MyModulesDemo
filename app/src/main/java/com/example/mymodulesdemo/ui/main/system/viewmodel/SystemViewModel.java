@@ -51,6 +51,7 @@ public class SystemViewModel extends LoadingViewModel {
 
     @Override
     protected void onRefreshData() {
+        setStatus(LOADING);
         requestData();
     }
 
@@ -97,6 +98,15 @@ public class SystemViewModel extends LoadingViewModel {
 
         HttpObservable.getObservable(ApiCenter.getApi().getNavigationData(),getLifecycleProvider(), FragmentEvent.DESTROY)
                 .subscribe(observer);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        observableList = null;
+        itemBinding = null;
+        adapter = null;
+        uc = null;
     }
 
     /**

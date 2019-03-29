@@ -191,11 +191,35 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
+        <TextView
+            android:id="@+id/tv_video"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line4"
+            android:paddingStart="@dimen/dimen_10_dp"
+            android:paddingEnd="@dimen/dimen_10_dp"
+            android:drawableStart="@mipmap/ic_video"
+            android:drawableEnd="@mipmap/ic_right"
+            android:drawablePadding="@dimen/dimen_10_dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_14_sp"
+            android:textColor="@color/text_color"
+            android:text="我的视频"
+            app:onClickCommand="@{viewModel.onVideoClick}"/>
+
+        <View
+            android:id="@+id/line6"
+            style="@style/LineStyle"
+            app:layout_constraintTop_toBottomOf="@+id/tv_video"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
         <View
             android:id="@+id/line5"
             style="@style/LineStyle"
-            app:layout_constraintTop_toBottomOf="@+id/tv_money"
+            app:layout_constraintTop_toBottomOf="@+id/line6"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dimen_25_dp"/>

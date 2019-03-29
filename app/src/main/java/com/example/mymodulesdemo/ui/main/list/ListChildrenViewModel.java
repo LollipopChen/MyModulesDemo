@@ -151,6 +151,18 @@ public class ListChildrenViewModel extends LoadingViewModel {
         getDataList(id);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        canLoadMode = null;
+        observableList = null;
+        itemBinding = null;
+        adapter = null;
+        onRefreshCommand = null;
+        onLoadMoreCommand = null;
+        uc = null;
+    }
+
     /**
      * 列表界面变化观察者
      */

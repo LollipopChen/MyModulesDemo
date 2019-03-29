@@ -190,6 +190,16 @@ public class HomeViewModel extends LoadingViewModel {
         startActivity(SearchActivity.class);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        observableList = null;
+        itemBinding = null;
+        adapter = null;
+        canLoadMore = null;
+        uc = null;
+    }
+
     /**
      * 列表界面变化观察者
      */
@@ -201,4 +211,5 @@ public class HomeViewModel extends LoadingViewModel {
         /**列表数据*/
         public SingleLiveEvent<List<BannerEntity.BannerItemEntity>> dataList = new SingleLiveEvent<>();
     }
+
 }

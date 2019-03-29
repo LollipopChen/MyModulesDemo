@@ -19,11 +19,11 @@ import java.util.Objects;
  * Date：2019/3/13 17:25
  * Email：1077503420@qq.com
  */
-public class ListChildrenItemViewModel extends ItemViewModel {
+public class ListChildrenItemViewModel extends ItemViewModel<ListChildrenViewModel> {
 
     public ObservableField<ListDataEntity.ItemsEntity> observableField = new ObservableField<>();
 
-    public ListChildrenItemViewModel(@NonNull BaseViewModel viewModel, ListDataEntity.ItemsEntity itemsEntity) {
+    public ListChildrenItemViewModel(@NonNull ListChildrenViewModel viewModel, ListDataEntity.ItemsEntity itemsEntity) {
         super(viewModel);
         observableField.set(itemsEntity);
     }
@@ -31,13 +31,11 @@ public class ListChildrenItemViewModel extends ItemViewModel {
     /**
      * recyclerView Item点击
      */
-    public BindingCommand itemClick = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            //跳转到指定界面,传入条目的参数
-            Bundle mBundle = new Bundle();
-            mBundle.putString(AppConst.IntentParams.URL, Objects.requireNonNull(observableField.get()).getLink());
-            viewModel.startActivity(WebViewActivity.class,mBundle);
-        }
+    public BindingCommand itemClick = new BindingCommand(() -> {
+        //跳转到指定界面,传入条目的参数
+        Bundle mBundle = new Bundle();
+        mBundle.putString(AppConst.IntentParams.URL, Objects.requireNonNull(observableField.get()).getLink());
+        viewModel.startActivity(WebViewActivity.class,mBundle);
     });
+
 }

@@ -15,6 +15,7 @@ import com.example.libbase.net.http.observer.HttpObservable;
 import com.example.libbase.net.http.observer.HttpObserver;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.entity.SearchResultEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
@@ -52,6 +53,8 @@ public class SearchResultViewModel extends LoadingViewModel {
      */
     public BindingRecyclerViewAdapter<SearchResultItemViewModel> adapter = new BindingRecyclerViewAdapter<>();
 
+    public ObservableBoolean canLoadMore = new ObservableBoolean(false);
+
     /**
      * 页数从0开始
      */
@@ -72,25 +75,19 @@ public class SearchResultViewModel extends LoadingViewModel {
     /**
      * 下拉刷新
      */
-    public BindingCommand onRefreshCommand = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            isLoadMore = false;
-            page = 0;
-            requestListData();
-        }
+    public BindingCommand onRefreshCommand = new BindingCommand(() -> {
+        isLoadMore = false;
+        page = 0;
+        requestListData();
     });
 
     /**
      * 上拉加载
      */
-    public BindingCommand onLoadMoreCommand = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            isLoadMore = true;
-            page++;
-            requestListData();
-        }
+    public BindingCommand onLoadMoreCommand = new BindingCommand(() -> {
+        isLoadMore = true;
+        page++;
+        requestListData();
     });
 
     public void requestListData() {
@@ -125,6 +122,9 @@ public class SearchResultViewModel extends LoadingViewModel {
                     setStatus(LoadingViewModel.NO_DATA);
                     return;
                 }
+
+                canLoadMore.set(data.getOver().equals(AppConst.StatusParams.LOAD_OVER));
+
                 List<SearchResultEntity.ItemEntity> dataList = data.getDataList();
                 if (dataList == null || dataList.isEmpty()) {
                     setStatus(LoadingViewModel.NO_DATA);
@@ -150,6 +150,18 @@ public class SearchResultViewModel extends LoadingViewModel {
     @Override
     protected void moreOnClick() {
         requestListData();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        uc = null;
+        observableList = null;
+        itemBinding = null;
+        adapter = null;
+        onRefreshCommand = null;
+        onLoadMoreCommand = null;
+        canLoadMore = null;
     }
 
     /**

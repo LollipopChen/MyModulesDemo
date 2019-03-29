@@ -1,0 +1,73 @@
+if (Boolean.valueOf(rootProject.ext.isModule)) {
+    //作为独立App应用运行
+    apply plugin: 'com.android.application'
+}else {
+    //作为组件运行
+    apply plugin: 'com.android.library'
+}
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        //如果是独立模块，则使用当前组件的包名
+        if (Boolean.valueOf(rootProject.ext.isModule)) {
+            applicationId "com.example.login"
+        }
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+
+        //MultiDex分包方法
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            if (Boolean.valueOf(rootProject.ext.isModule)) {
+                //独立运行
+                manifest.srcFile 'src/main/login/AndroidManifest.xml'
+            } else {
+                //合并到宿主
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    //排除src/main/login/文件夹下的所有测试文件
+                    exclude 'src/main/login/*'
+                }
+            }
+        }
+    }
+
+    //数据绑定开启
+    dataBinding{
+        enabled = true
+    }
+
+    //JDK版本
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api project(':lib_base')
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

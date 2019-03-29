@@ -32,7 +32,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.main.me.about.AboutActivity" />
         <activity android:name=".ui.web.WebViewActivity" />
         <activity
@@ -40,6 +39,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".ui.search.SearchResultActivity" />
         <activity android:name=".ui.main.navigation.activity.SingleNavigationActivity" />
+        <activity android:name=".ui.main.me.video.VideoActivity" />
     </application>
 
 </manifest>

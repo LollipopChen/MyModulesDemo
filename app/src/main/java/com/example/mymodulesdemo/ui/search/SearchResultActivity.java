@@ -1,5 +1,6 @@
 package com.example.mymodulesdemo.ui.search;
 
+import android.databinding.Observable;
 import android.os.Bundle;
 
 import com.example.libbase.base.BaseActivity;
@@ -37,5 +38,23 @@ public class SearchResultActivity extends BaseActivity<ActivitySearchResultBindi
     public void initData() {
         viewModel.initTooBar(keyWord);
         viewModel.requestListData();
+    }
+
+    @Override
+    public void initViewObservable() {
+
+        viewModel.uc.finishLoadMore.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                binding.swipeFreshLayout.finishLoadMore();
+            }
+        });
+
+        viewModel.uc.finishRefreshing.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                binding.swipeFreshLayout.finishRefresh();
+            }
+        });
     }
 }

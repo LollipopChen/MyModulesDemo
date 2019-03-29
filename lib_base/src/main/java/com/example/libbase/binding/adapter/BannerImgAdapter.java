@@ -10,6 +10,7 @@ import com.example.libbase.R;
 import com.example.libbase.utils.ImageUtils;
 
 /**
+ * 广告适配器
  * @author ChenQiuE
  * Date：2019/3/11 11:37
  * Email：1077503420@qq.com

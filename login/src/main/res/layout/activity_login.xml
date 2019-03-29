@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.mymodulesdemo.ui.login.LoginViewModel"/>
+            type="com.example.login.LoginViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

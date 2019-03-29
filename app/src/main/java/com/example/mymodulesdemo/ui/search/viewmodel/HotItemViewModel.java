@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 
 import com.example.libbase.base.ItemViewModel;
 import com.example.libbase.binding.command.BindingCommand;
+import com.example.libbase.utils.SNStringUtils;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.entity.HotSearchEntity;
@@ -31,11 +32,19 @@ public class HotItemViewModel extends ItemViewModel<SearchActivityViewModel> {
      * Item点击
      */
     public BindingCommand onItemClick = new BindingCommand(() -> {
-        viewModel.adapter.setSelectId(Objects.requireNonNull(observableField.get()).getId());
-        viewModel.searchKeyWord.set(Objects.requireNonNull(observableField.get()).getName());
+        HotSearchEntity.ItemEntity entity = observableField.get();
+        if (entity == null){
+            return;
+        }
+
+        if (SNStringUtils.isEmpty(entity.getName())){
+            return;
+        }
+        viewModel.searchKeyWord.set(entity.getName());
+        viewModel.adapter.setSelectId(entity.getId());
 
         Bundle bundle = new Bundle();
-        bundle.putString(AppConst.IntentParams.KEY_WORD, Objects.requireNonNull(observableField.get()).getName());
+        bundle.putString(AppConst.IntentParams.KEY_WORD, entity.getName());
         viewModel.startActivity(SearchResultActivity.class,bundle);
     });
 }

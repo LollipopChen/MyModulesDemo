@@ -1,10 +1,8 @@
-package com.example.mymodulesdemo.ui.login;
+package com.example.login;
 
 import android.app.Application;
-import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
-import android.view.View;
 
 import com.example.libbase.base.BaseViewModel;
 import com.example.libbase.binding.command.BindingAction;
@@ -13,7 +11,6 @@ import com.example.libbase.binding.command.BindingConsumer;
 import com.example.libbase.bus.event.SingleLiveEvent;
 import com.example.libbase.utils.SNStringUtils;
 import com.example.libbase.widget.toast.ToastAlert;
-import com.example.mymodulesdemo.ui.main.MainActivity;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -38,7 +35,12 @@ public class LoginViewModel extends BaseViewModel {
     /**
      * 眼睛
      */
-    public BindingCommand<Boolean> passwordShowAndHideOnClick = new BindingCommand<>(isChecked -> uc.cbSwitch.setValue(isChecked));
+    public BindingCommand<Boolean> passwordShowAndHideOnClick = new BindingCommand<>(new BindingConsumer<Boolean>() {
+        @Override
+        public void call(Boolean isChecked) {
+            uc.cbSwitch.setValue(isChecked);
+        }
+    });
 
     /**
      * 忘记密码
@@ -67,12 +69,18 @@ public class LoginViewModel extends BaseViewModel {
                 ToastAlert.show("请输入用密码");
                 return;
             }
-
-            startActivity(MainActivity.class);
-
+            ToastAlert.show("登录成功，需要使用路由跳转Main");
             finish();
         }
     });
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        userName = null;
+        password = null;
+        uc = null;
+    }
 
     public class UiChangeObservable {
         /**密码显示隐藏*/

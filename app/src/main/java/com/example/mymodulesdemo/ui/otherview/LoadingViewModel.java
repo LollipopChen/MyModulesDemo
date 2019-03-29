@@ -144,4 +144,17 @@ public class LoadingViewModel extends ToolbarViewModel {
     protected void onLogin(){
 
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        messageText = null;
+        layoutVisibleObservable = null;
+        noDataIconVisibleObservable = null;
+        progressVisibleObservable = null;
+        buttonVisibleObservable = null;
+        buttonText = null;
+        isLoginObservable = null;
+        buttonOnClick = null;
+    }
 }

@@ -94,6 +94,16 @@ public class NavigationViewModel extends LoadingViewModel {
                 FragmentEvent.DESTROY).subscribe(observer);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        observableList =  null;
+        itemBinding =  null;
+        adapter =  null;
+        onRefreshCommand =  null;
+        uc = null;
+    }
+
     /**
      * 列表界面变化观察者
      */

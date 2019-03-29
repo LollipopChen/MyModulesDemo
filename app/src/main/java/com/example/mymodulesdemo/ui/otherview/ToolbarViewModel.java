@@ -77,4 +77,15 @@ public class ToolbarViewModel extends BaseViewModel {
     protected void moreOnClick(){
 
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        titleText = null;
+        leftIconVisibleObservable = null;
+        rightIconVisibleObservable = null;
+        rightIcon = null;
+        backOnClick = null;
+        moreOnClick = null;
+    }
 }

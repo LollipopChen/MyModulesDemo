@@ -47,6 +47,7 @@
             android:text="@={searBarViewModel.searchKeyWord}"
             android:textSize="@dimen/text_size_12_sp"
             android:singleLine="true"
+            app:setSelection="@{searBarViewModel.searchKeyWord}"
             tools:text="1111111111111"/>
 
         <Button

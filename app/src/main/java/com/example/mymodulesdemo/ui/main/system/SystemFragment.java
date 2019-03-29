@@ -11,6 +11,7 @@ import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.databinding.FragmentSystemBinding;
 import com.example.mymodulesdemo.ui.main.system.viewmodel.SystemViewModel;
+import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -41,6 +42,7 @@ public class SystemFragment extends BaseFragment<FragmentSystemBinding, SystemVi
         binding.swipeFreshLayout.setEnableLoadMore(false);
         viewModel.initToolbar(getString(R.string.action_navigation));
 
+        viewModel.setStatus(LoadingViewModel.LOADING);
         viewModel.requestData();
     }
 

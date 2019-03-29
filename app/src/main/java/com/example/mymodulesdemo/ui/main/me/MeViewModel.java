@@ -10,6 +10,7 @@ import com.example.libbase.binding.command.BindingCommand;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.entity.UserInfoEntity;
 import com.example.mymodulesdemo.ui.main.me.about.AboutActivity;
+import com.example.mymodulesdemo.ui.main.me.video.VideoActivity;
 
 /**
  * @author ChenQiuE
@@ -57,12 +58,12 @@ public class MeViewModel extends BaseViewModel {
     /**
      * 跳转关于
      */
-    public BindingCommand onAboutClick = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            startActivity(AboutActivity.class);
-        }
-    });
+    public BindingCommand onAboutClick = new BindingCommand(() -> startActivity(AboutActivity.class));
+
+    /**
+     * 视频
+     */
+    public BindingCommand onVideoClick = new BindingCommand(() -> startActivity(VideoActivity.class));
 
     @Override
     public void onDestroy() {

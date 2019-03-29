@@ -83,4 +83,12 @@ public class SearchActivityViewModel extends SearchBarViewModel {
         HttpObservable.getObservable(ApiCenter.getApi().getHotFlag(),getLifecycleProvider(), ActivityEvent.DESTROY)
                 .subscribe(observer);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        observableList = null;
+        itemBinding = null;
+        adapter = null;
+    }
 }

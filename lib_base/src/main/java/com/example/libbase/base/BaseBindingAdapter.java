@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @author ChenQiuE
  * Date：2019/3/21 16:35
@@ -40,14 +42,15 @@ public abstract class BaseBindingAdapter <M, B extends ViewDataBinding> extends 
         return this.items.size();
     }
 
+    @NotNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         B binding = DataBindingUtil.inflate(LayoutInflater.from(this.context), this.getLayoutResId(viewType), parent, false);
         return new BaseBindingViewHolder(binding.getRoot());
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull RecyclerView.ViewHolder holder, int position) {
         B binding = DataBindingUtil.getBinding(holder.itemView);
         this.onBindItem(binding, this.items.get(position));
     }
