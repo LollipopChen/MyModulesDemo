@@ -19,4 +19,11 @@ public interface AppConst {
     interface StatusParams{
         String LOAD_OVER = "false";
     }
+
+    interface SharePreferenceParams{
+        String USER_NAME = "user_name";
+        String DESCRIPTION = "description";
+        String USER_AVATAR = "user_avatar";
+    }
+
 }

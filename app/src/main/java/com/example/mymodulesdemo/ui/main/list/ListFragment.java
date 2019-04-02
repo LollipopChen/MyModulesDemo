@@ -2,6 +2,7 @@ package com.example.mymodulesdemo.ui.main.list;
 
 import android.arch.lifecycle.Observer;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,8 +16,6 @@ import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.databinding.FragmentListBinding;
 import com.example.mymodulesdemo.entity.ListTabLayoutEntity;
 import com.example.mymodulesdemo.ui.adapter.ViewPagerAdapter;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,7 @@ public class ListFragment extends BaseFragment<FragmentListBinding,ListViewModel
     }
 
     @Override
-    public int initContentView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public int initContentView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_list;
     }
 

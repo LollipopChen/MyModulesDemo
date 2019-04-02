@@ -35,11 +35,11 @@ public interface IBaseViewModel extends LifecycleObserver {
     /**
      * 注册EventBus
      */
-    void registerRxBus();
+//    void registerRxBus();
 
     /**
      * 移除RxBus
      */
-    void removeRxBus();
+//    void removeRxBus();
 
 }

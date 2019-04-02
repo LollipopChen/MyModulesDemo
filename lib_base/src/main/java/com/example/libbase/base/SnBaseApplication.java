@@ -11,6 +11,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.Settings;
@@ -21,6 +22,11 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
+import com.sankuai.waimai.router.Router;
+import com.sankuai.waimai.router.common.DefaultRootUriHandler;
+import com.sankuai.waimai.router.components.DefaultLogger;
+import com.sankuai.waimai.router.components.DefaultOnCompleteListener;
+import com.sankuai.waimai.router.core.Debugger;
 
 import java.io.ByteArrayInputStream;
 import java.security.cert.CertificateException;
@@ -53,6 +59,47 @@ public class SnBaseApplication extends Application {
 
         setupLogger();
         ToastAlert.init(this);
+
+        initRouter();
+    }
+
+    /**
+     * 初始化路由
+     */
+    @SuppressLint("StaticFieldLeak")
+    private void initRouter() {
+
+        // Log开关，建议测试环境下开启，方便排查问题。
+        Debugger.setEnableLog(true);
+
+        // 调试开关，建议测试环境下开启。调试模式下，严重问题直接抛异常，及时暴漏出来。
+        Debugger.setEnableDebug(true);
+
+        // 创建RootHandler
+        DefaultRootUriHandler rootHandler = new DefaultRootUriHandler(this);
+
+        // 设置全局跳转完成监听器，可用于跳转失败时统一弹Toast提示，做埋点统计等。
+        rootHandler.setGlobalOnCompleteListener(DefaultOnCompleteListener.INSTANCE);
+
+        // 初始化
+        Router.init(rootHandler);
+
+        // 懒加载后台初始化（可选）
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                Router.lazyInit();
+                return null;
+            }
+        }.execute();
+    }
+
+    /**
+     * 当前是否为DeBug版本
+     * @return boolean
+     */
+    private boolean isDebug() {
+        return true;
     }
 
     /**

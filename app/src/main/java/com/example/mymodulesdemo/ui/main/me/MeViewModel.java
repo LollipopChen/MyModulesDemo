@@ -8,11 +8,14 @@ import com.example.libbase.base.BaseViewModel;
 import com.example.libbase.binding.command.BindingAction;
 import com.example.libbase.binding.command.BindingCommand;
 import com.example.libbase.widget.toast.ToastAlert;
+import com.example.mymodulesdemo.console.RouterManager;
 import com.example.mymodulesdemo.entity.UserInfoEntity;
 import com.example.mymodulesdemo.ui.main.me.about.AboutActivity;
 import com.example.mymodulesdemo.ui.main.me.video.VideoActivity;
+import com.sankuai.waimai.router.common.FragmentUriRequest;
 
 /**
+ * MeFragment
  * @author ChenQiuE
  * Date：2019/3/6 16:32
  * Email：1077503420@qq.com
@@ -28,32 +31,19 @@ public class MeViewModel extends BaseViewModel {
     /**
      * 信息点击
      */
-    public BindingCommand onMessageClick = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            ToastAlert.show("信息点击");
-        }
-    });
+    public BindingCommand onMessageClick = new BindingCommand(() ->
+            new FragmentUriRequest(MeFragment.getInstance(), RouterManager.UiConstant.MESSAGE_WITH_LOGIN).start());
 
     /**
      * 设置点击
      */
-    public BindingCommand onSettingClick = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            ToastAlert.show("设置点击");
-        }
-    });
+    public BindingCommand onSettingClick = new BindingCommand(() -> ToastAlert.show("设置点击"));
 
     /**
      * 登录或点击用户信息
      */
-    public BindingCommand onLoginClickOrInfo = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            ToastAlert.show("登录或点击用户信息");
-        }
-    });
+    public BindingCommand onLoginClickOrInfo = new BindingCommand(() ->
+            new FragmentUriRequest(MeFragment.getInstance(), RouterManager.UiConstant.USER_INFO_WITH_LOGIN).start());
 
     /**
      * 跳转关于

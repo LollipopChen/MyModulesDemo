@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -18,7 +19,7 @@ import com.example.libbase.R;
 import com.example.libbase.bus.Messenger;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
-import org.jetbrains.annotations.NotNull;
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -51,8 +52,11 @@ public abstract class BaseFragment<V extends ViewDataBinding,VM extends BaseView
         Messenger.getDefault().unregister(viewModel);
         //解除ViewModel生命周期感应
         getLifecycle().removeObserver(viewModel);
-        if (viewModel != null) {
-            viewModel.removeRxBus();
+//        if (viewModel != null) {
+//            viewModel.removeRxBus();
+//        }
+        if (isRegisterEventBus()){
+            EventBus.getDefault().unregister(this);
         }
         if(binding != null){
             binding.unbind();
@@ -60,7 +64,7 @@ public abstract class BaseFragment<V extends ViewDataBinding,VM extends BaseView
     }
 
     @Override
-    public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, initContentView(inflater, container, savedInstanceState), container, false);
         viewModelId = initVariableId();
         viewModel = initViewModel();
@@ -97,8 +101,11 @@ public abstract class BaseFragment<V extends ViewDataBinding,VM extends BaseView
         initData();
         //页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
         initViewObservable();
-        //注册RxBus
-        viewModel.registerRxBus();
+        //注册Bus
+//        viewModel.registerRxBus();
+        if (isRegisterEventBus()){
+            EventBus.getDefault().register(this);
+        }
     }
 
     /**
@@ -185,7 +192,7 @@ public abstract class BaseFragment<V extends ViewDataBinding,VM extends BaseView
      *
      * @return 布局layout的id
      */
-    public abstract int initContentView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
+    public abstract int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
 
     /**
      * 初始化ViewModel的id
@@ -205,6 +212,10 @@ public abstract class BaseFragment<V extends ViewDataBinding,VM extends BaseView
 
 
     public boolean isBackPressed() {
+        return false;
+    }
+
+    protected boolean isRegisterEventBus(){
         return false;
     }
 

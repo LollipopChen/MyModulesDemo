@@ -2,8 +2,7 @@
 <layout
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:binding="http://schemas.android.com/apk/res-auto">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
@@ -27,7 +26,7 @@
             android:contentDescription="@string/app_name"
             android:src="@mipmap/ic_back"
             android:visibility="@{toolbarViewModel.leftIconVisibleObservable}"
-            binding:onClickCommand="@{toolbarViewModel.backOnClick}"/>
+            app:onClickCommand="@{toolbarViewModel.backOnClick}"/>
 
         <TextView
             android:layout_width="@dimen/dimen_0_dp"
@@ -53,7 +52,7 @@
             android:contentDescription="@string/app_name"
             android:src="@{toolbarViewModel.rightIcon}"
             android:visibility="@{toolbarViewModel.rightIconVisibleObservable}"
-            binding:onClickCommand="@{toolbarViewModel.moreOnClick}"/>
+            app:onClickCommand="@{toolbarViewModel.moreOnClick}"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

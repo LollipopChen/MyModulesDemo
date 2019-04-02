@@ -2,6 +2,7 @@ package com.example.mymodulesdemo.ui.main.home;
 
 import android.databinding.Observable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -15,8 +16,6 @@ import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.databinding.FragmentHomeBinding;
 import com.example.mymodulesdemo.entity.BannerEntity;
 import com.example.mymodulesdemo.ui.web.WebViewActivity;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding,HomeViewModel
     }
 
     @Override
-    public int initContentView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public int initContentView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_home;
     }
 

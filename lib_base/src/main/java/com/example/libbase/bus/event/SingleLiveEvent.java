@@ -6,9 +6,6 @@ import android.arch.lifecycle.Observer;
 import android.support.annotation.MainThread;
 
 import com.orhanobut.logger.Logger;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import io.reactivex.annotations.Nullable;
@@ -31,7 +28,7 @@ public class SingleLiveEvent<T> extends MutableLiveData<T> {
 
     @Override
     @MainThread
-    public void observe(@NotNull LifecycleOwner owner, @NotNull final Observer<T> observer) {
+    public void observe(LifecycleOwner owner,final Observer<T> observer) {
 
         if (hasActiveObservers()) {
             Logger.w(TAG, "Multiple observers registered but only one will be notified of changes.");

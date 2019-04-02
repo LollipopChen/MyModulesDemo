@@ -12,9 +12,6 @@ import android.view.ViewGroup;
 
 import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.ui.main.me.video.PictureFragment;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 
 /**
@@ -44,9 +41,9 @@ public class VerticalViewPagerAdapter extends PagerAdapter {
     }
 
     @SuppressLint("CommitTransaction")
-    @NotNull
+    @NonNull
     @Override
-    public Object instantiateItem(@NotNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
         if (mCurTransaction == null) {
             mCurTransaction = fragmentManager.beginTransaction();
@@ -74,7 +71,7 @@ public class VerticalViewPagerAdapter extends PagerAdapter {
 
     @SuppressLint("CommitTransaction")
     @Override
-    public void destroyItem(@NotNull ViewGroup container, int position, @NotNull Object object) {
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         if (mCurTransaction == null) {
             mCurTransaction = fragmentManager.beginTransaction();
         }
@@ -106,7 +103,7 @@ public class VerticalViewPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public void finishUpdate(@NotNull ViewGroup container) {
+    public void finishUpdate(@NonNull ViewGroup container) {
         if (mCurTransaction != null) {
             mCurTransaction.commitNowAllowingStateLoss();
             mCurTransaction = null;

@@ -1,12 +1,11 @@
 package com.example.libbase.binding.adapter.recyclerview;
 
 import android.databinding.BindingAdapter;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.libbase.binding.command.BindingCommand;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -34,7 +33,7 @@ public class RecyclerViewBindingAdapter {
             private int state;
 
             @Override
-            public void onScrolled(@NotNull RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (onScrollChangeCommand != null) {
                     onScrollChangeCommand.execute(new ScrollDataWrapper(dx, dy, state));
@@ -42,7 +41,7 @@ public class RecyclerViewBindingAdapter {
             }
 
             @Override
-            public void onScrollStateChanged(@NotNull RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 state = newState;
                 if (onScrollStateChangedCommand != null) {
@@ -79,7 +78,7 @@ public class RecyclerViewBindingAdapter {
         }
 
         @Override
-        public void onScrolled(@NotNull RecyclerView recyclerView, int dx, int dy) {
+        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
             LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
             assert layoutManager != null;
             int visibleItemCount = layoutManager.getChildCount();
@@ -93,7 +92,7 @@ public class RecyclerViewBindingAdapter {
         }
 
         @Override
-        public void onScrollStateChanged(@NotNull RecyclerView recyclerView, int newState) {
+        public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
         }
     }

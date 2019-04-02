@@ -100,15 +100,6 @@ public class SystemViewModel extends LoadingViewModel {
                 .subscribe(observer);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        observableList = null;
-        itemBinding = null;
-        adapter = null;
-        uc = null;
-    }
-
     /**
      * 列表界面变化观察者
      */

@@ -152,18 +152,6 @@ public class SearchResultViewModel extends LoadingViewModel {
         requestListData();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        uc = null;
-        observableList = null;
-        itemBinding = null;
-        adapter = null;
-        onRefreshCommand = null;
-        onLoadMoreCommand = null;
-        canLoadMore = null;
-    }
-
     /**
      * 列表界面变化观察者
      */

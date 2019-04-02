@@ -21,7 +21,11 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
 
         //MultiDex分包方法
         multiDexEnabled true
@@ -38,13 +42,13 @@ android {
         main {
             if (Boolean.valueOf(rootProject.ext.isModule)) {
                 //独立运行
-                manifest.srcFile 'src/main/login/AndroidManifest.xml'
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
             } else {
                 //合并到宿主
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 java {
                     //排除src/main/login/文件夹下的所有测试文件
-                    exclude 'src/main/login/*'
+                    exclude 'src/main/module/*'
                 }
             }
         }
@@ -70,4 +74,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    /*路由*/
+    annotationProcessor 'com.sankuai.waimai.router:compiler:1.2.0'
 }

@@ -84,11 +84,4 @@ public class SearchActivityViewModel extends SearchBarViewModel {
                 .subscribe(observer);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        observableList = null;
-        itemBinding = null;
-        adapter = null;
-    }
 }

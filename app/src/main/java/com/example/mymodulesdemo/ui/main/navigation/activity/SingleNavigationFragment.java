@@ -2,6 +2,7 @@ package com.example.mymodulesdemo.ui.main.navigation.activity;
 
 import android.databinding.Observable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -14,9 +15,6 @@ import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.databinding.FragmentNavigationChildBinding;
 import com.example.mymodulesdemo.ui.main.navigation.viewmodel.SingleNavigationChildViewModel;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
-import com.orhanobut.logger.Logger;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * @author ChenQiuE
@@ -36,7 +34,7 @@ public class SingleNavigationFragment extends BaseFragment<FragmentNavigationChi
     }
 
     @Override
-    public int initContentView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public int initContentView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_navigation_child;
     }
 

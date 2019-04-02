@@ -5,14 +5,11 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;
-import android.databinding.ObservableBoolean;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.example.libbase.bus.event.SingleLiveEvent;
 import com.trello.rxlifecycle2.LifecycleProvider;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -129,13 +126,13 @@ public class BaseViewModel extends AndroidViewModel implements IBaseViewModel{
     public void onPause() {
     }
 
-    @Override
-    public void registerRxBus() {
-    }
-
-    @Override
-    public void removeRxBus() {
-    }
+//    @Override
+//    public void registerRxBus() {
+//    }
+//
+//    @Override
+//    public void removeRxBus() {
+//    }
 
     public final class UIChangeLiveData extends SingleLiveEvent {
         private SingleLiveEvent<String> showDialogEvent;
@@ -173,7 +170,7 @@ public class BaseViewModel extends AndroidViewModel implements IBaseViewModel{
         }
 
         @Override
-        public void observe(@NotNull LifecycleOwner owner, @NotNull Observer observer) {
+        public void observe(LifecycleOwner owner,Observer observer) {
             super.observe(owner, observer);
         }
     }

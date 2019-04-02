@@ -40,6 +40,8 @@
         <activity android:name=".ui.search.SearchResultActivity" />
         <activity android:name=".ui.main.navigation.activity.SingleNavigationActivity" />
         <activity android:name=".ui.main.me.video.VideoActivity" />
+        <activity android:name=".ui.main.me.message.MessageActivity" />
+        <activity android:name=".ui.main.me.info.UserInfoActivity" />
     </application>
 
 </manifest>

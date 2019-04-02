@@ -15,6 +15,8 @@ import com.example.libbase.R;
 import com.example.libbase.bus.Messenger;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -46,8 +48,15 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         initData();
         //页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
         initViewObservable();
-        //注册RxBus
-        viewModel.registerRxBus();
+        //注册Bus
+//        viewModel.registerRxBus();
+        if (isRegisterEventBus()){
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    protected boolean isRegisterEventBus(){
+        return false;
     }
 
     /**
@@ -186,8 +195,11 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         Messenger.getDefault().unregister(viewModel);
         //解除ViewModel生命周期感应
         getLifecycle().removeObserver(viewModel);
-        if (viewModel != null) {
-            viewModel.removeRxBus();
+//        if (viewModel != null) {
+//            viewModel.removeRxBus();
+//        }
+        if (isRegisterEventBus()){
+            EventBus.getDefault().unregister(this);
         }
         if(binding != null){
             binding.unbind();

@@ -27,6 +27,10 @@ public class LoginViewModel extends BaseViewModel {
     public ObservableField<String> password = new ObservableField<>("");
     /**封装一个界面发生改变的观察者,用于跟UI交互*/
     public UiChangeObservable uc = new UiChangeObservable();
+    /**
+     * 是否登录成功
+     */
+    private boolean isLogin;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
@@ -69,21 +73,48 @@ public class LoginViewModel extends BaseViewModel {
                 ToastAlert.show("请输入用密码");
                 return;
             }
-            ToastAlert.show("登录成功，需要使用路由跳转Main");
-            finish();
+
+            if (!userName.get().equals("admin")){
+                ToastAlert.show("用户名不正确");
+                return;
+            }
+
+            if (!password.get().equals("123456")){
+                ToastAlert.show("密码不正确");
+                return;
+            }
+            //TODO 待修改↓
+            isLogin = true;
+           if (isLogin){
+               ToastAlert.show("登录成功");
+               LoginCenter.getInstance().setLogin(true);
+               LoginManager.getLoginService().notifyLoginSuccess();
+               //设置个人信息
+               uc.isLogin.setValue(isLogin);
+               finish();
+           }else {
+               ToastAlert.show("登录失败");
+               LoginCenter.getInstance().setLogin(false);
+               uc.isLogin.setValue(isLogin);
+               LoginManager.getLoginService().notifyLoginFailure();
+           }
         }
     });
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        userName = null;
-        password = null;
-        uc = null;
+    public void onBackPressed() {
+        ToastAlert.show("取消登录");
+        LoginManager.getLoginService().notifyLoginCancel();
+        super.onBackPressed();
     }
 
     public class UiChangeObservable {
         /**密码显示隐藏*/
         SingleLiveEvent<Boolean> cbSwitch = new SingleLiveEvent<>();
+
+        /**
+         * 回传数据
+         */
+        SingleLiveEvent<Boolean> isLogin = new SingleLiveEvent<>();
     }
 }

@@ -10,7 +10,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+
+        //MultiDex分包方法
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -33,7 +35,6 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
-    //noinspection GradleCompatible
     api 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -42,6 +43,12 @@ dependencies {
     api 'com.android.support.constraint:constraint-layout:1.1.3'
 
     api 'com.android.support:design:28.0.0'
+
+    /*注解*/
+//    api 'com.android.support:support-annotations:28.0.0'
+
+    /* MultiDex分包方法 */
+    api 'com.android.support:multidex:1.0.3'
 
     /* RxJava */
     api 'io.reactivex.rxjava2:rxjava:2.2.3'
@@ -80,8 +87,10 @@ dependencies {
         exclude group: 'com.android.support'
     }
     /*Google AAC*/
-    api 'android.arch.lifecycle:extensions:1.1.1'
-    api 'android.arch.lifecycle:compiler:1.1.1'
+    api ("android.arch.lifecycle:extensions:1.1.1"){
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor 'android.arch.lifecycle:compiler:1.1.1'
     /* Logger */
     api 'com.orhanobut:logger:2.1.1'
     /* Alert & Dialog */
@@ -99,4 +108,8 @@ dependencies {
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-20'
     /*标签的流式布局*/
     api 'com.google.android:flexbox:1.0.0'
+    /* WMRouter 美团路由  https://github.com/meituan/WMRouter*/
+    api ('com.sankuai.waimai.router:router:1.2.0'){
+        exclude group: 'com.android.support'
+    }
 }
