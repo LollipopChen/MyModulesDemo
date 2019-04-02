@@ -4,6 +4,8 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import com.example.libbase.widget.toast.ToastAlert;
+import com.example.login.LoginManager;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
 
 /**
@@ -21,5 +23,12 @@ public class MessageViewModel extends LoadingViewModel {
     public void initToolBar() {
         setLeftIconVisibleVisible(View.VISIBLE);
         setTitleText("我的消息");
+    }
+
+    @Override
+    public void onBackPressed() {
+        ToastAlert.show("取消登录");
+        LoginManager.getLoginService().notifyLoginCancel();
+        super.onBackPressed();
     }
 }

@@ -55,7 +55,6 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding,LoginViewMo
         });
 
         viewModel.uc.isLogin.observe(this,isLogin ->{
-//            setResult(Activity.RESULT_OK);
             EventBus.getDefault().post(new BaseRefreshDataEvent(RefreshDataTypeConst.LOGIN_STATUS));
         });
     }

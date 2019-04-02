@@ -19,7 +19,6 @@ import java.util.List;
 @RouterService(interfaces = ILoginService.class, key = LoginConstant.ServiceConstant.SERVICE_LOGIN, singleton = true)
 public class FakeLoginServiceImpl implements ILoginService {
 
-    private boolean mIsLogin = false;
     private final List<Observer> mObservers = new ArrayList<>();
 
     @RouterProvider
@@ -57,7 +56,6 @@ public class FakeLoginServiceImpl implements ILoginService {
 
     @Override
     public void notifyLoginSuccess() {
-        mIsLogin = true;
         Observer[] observers = getObservers();
         for (int i = observers.length - 1; i >= 0; --i) {
             observers[i].onLoginSuccess();
@@ -82,7 +80,6 @@ public class FakeLoginServiceImpl implements ILoginService {
 
     @Override
     public void notifyLogout() {
-        mIsLogin = false;
         Observer[] observers = getObservers();
         for (int i = observers.length - 1; i >= 0; --i) {
             observers[i].onLogout();

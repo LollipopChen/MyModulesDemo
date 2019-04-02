@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute"
+        android:networkSecurityConfig="@xml/network_security_config">
 
         <activity
             android:name=".ui.main.MainActivity"
@@ -40,8 +41,10 @@
         <activity android:name=".ui.search.SearchResultActivity" />
         <activity android:name=".ui.main.navigation.activity.SingleNavigationActivity" />
         <activity android:name=".ui.main.me.video.VideoActivity" />
-        <activity android:name=".ui.main.me.message.MessageActivity" />
-        <activity android:name=".ui.main.me.info.UserInfoActivity" />
+        <activity android:name=".ui.main.me.message.MessageActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.main.me.info.UserInfoActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>
