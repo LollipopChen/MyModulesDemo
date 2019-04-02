@@ -22,6 +22,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 /**
+ * 我的
  * @author ChenQiuE
  * Date：2019/3/6 16:34
  * Email：1077503420@qq.com
@@ -81,6 +82,7 @@ public class MeFragment extends BaseFragment<FragmentMeBinding,MeViewModel>{
             UserCenter.getInstance().setUserAvatar(userInfoEntity.getImage());
             binding.tvTip.setText(UserCenter.getInstance().getDescription());
             viewModel.setUserInfoEntity(userInfoEntity);
+
         }
     }
 }
