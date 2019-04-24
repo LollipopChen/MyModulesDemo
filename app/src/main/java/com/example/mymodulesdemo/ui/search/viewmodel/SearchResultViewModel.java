@@ -19,6 +19,7 @@ import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.entity.SearchResultEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
@@ -34,7 +35,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
  * Date：2019/3/20 16:38
  * Email：1077503420@qq.com
  */
-public class SearchResultViewModel extends LoadingViewModel {
+public class SearchResultViewModel extends ToolbarViewModel {
 
     /**
      * 界面变化监听，用于viewModel和UI交互
@@ -91,6 +92,10 @@ public class SearchResultViewModel extends LoadingViewModel {
     });
 
     public void requestListData() {
+        if(!isLoadMore){
+            setStatus(LOADING);
+        }
+
         HttpObserver observer = new HttpObserver() {
 
             @Override

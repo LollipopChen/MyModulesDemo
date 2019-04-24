@@ -18,6 +18,7 @@ import com.example.mymodulesdemo.entity.SystemEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.main.system.adapter.SystemItemAdapter;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
@@ -31,7 +32,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
  * Date：2019/3/21 11:44
  * Email：1077503420@qq.com
  */
-public class SystemViewModel extends LoadingViewModel {
+public class SystemViewModel extends ToolbarViewModel {
 
     public ObservableList<SystemItemViewModel> observableList = new ObservableArrayList<>();
     public ItemBinding<SystemItemViewModel> itemBinding = ItemBinding.of(BR.viewModel, R.layout.item_system);

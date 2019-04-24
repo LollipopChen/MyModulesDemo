@@ -7,7 +7,6 @@ package com.example.mymodulesdemo.console;
  * Email：1077503420@qq.com
  */
 public interface AppConst {
-
     interface IntentParams{
         String URL = "url";
         String ID = "id";

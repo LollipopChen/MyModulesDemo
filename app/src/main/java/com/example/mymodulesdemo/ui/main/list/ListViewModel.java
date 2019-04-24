@@ -22,7 +22,7 @@ import java.util.List;
  * Date：2019/3/6 16:29
  * Email：1077503420@qq.com
  */
-public class ListViewModel extends LoadingViewModel {
+public class ListViewModel extends ToolbarViewModel {
 
     public UiChangeObservable uc = new UiChangeObservable();
 

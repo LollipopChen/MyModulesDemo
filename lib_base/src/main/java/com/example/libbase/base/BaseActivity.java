@@ -2,23 +2,31 @@ package com.example.libbase.base;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 
 import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.example.libbase.R;
 import com.example.libbase.bus.Messenger;
+import com.example.libbase.utils.LanguageUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Locale;
 
 /**
  * @author ChenQiuE
@@ -246,5 +254,34 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
     @Override
     public void initViewObservable() {
 
+    }
+
+    /*************↓解决：在8.0以上的系统版本干掉进程后进来，语言切换无效的问题**********************/
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = languageContext(newBase);
+        super.attachBaseContext(context);
+    }
+
+    private Context languageContext(Context context) {
+        // 8.0及以上使用createConfigurationContext设置configuration
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return updateResources(context);
+        } else {
+            return context;
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private Context updateResources(Context context) {
+        Resources resources = context.getResources();
+        Locale locale = LanguageUtils.getLocale();
+        if (locale==null) {
+            return context;
+        }
+        Configuration configuration = resources.getConfiguration();
+        configuration.setLocale(locale);
+        configuration.setLocales(new LocaleList(locale));
+        return context.createConfigurationContext(configuration);
     }
 }

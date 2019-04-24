@@ -5,13 +5,14 @@ import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 
 /**
  * @author ChenQiuE
  * Date：2019/3/29 13:15
  * Email：qiue.chen@supernovachina.com
  */
-public class VideoViewModel extends LoadingViewModel {
+public class VideoViewModel extends ToolbarViewModel {
 
     public VideoViewModel(@NonNull Application application) {
         super(application);

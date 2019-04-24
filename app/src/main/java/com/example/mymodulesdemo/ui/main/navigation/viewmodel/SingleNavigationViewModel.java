@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 
 /**
  * 一个体系
@@ -12,7 +13,7 @@ import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
  * Date：2019/3/28 10:27
  * Email：qiue.chen@supernovachina.com
  */
-public class SingleNavigationViewModel extends LoadingViewModel {
+public class SingleNavigationViewModel extends ToolbarViewModel {
 
     public SingleNavigationViewModel(@NonNull Application application) {
         super(application);

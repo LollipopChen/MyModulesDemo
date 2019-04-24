@@ -24,6 +24,7 @@ import com.example.mymodulesdemo.entity.ArticleListEntity;
 import com.example.mymodulesdemo.entity.BannerEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 import com.example.mymodulesdemo.ui.search.SearchActivity;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.FragmentEvent;
@@ -38,7 +39,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
  * Date：2019/3/6 16:25
  * Email：1077503420@qq.com
  */
-public class HomeViewModel extends LoadingViewModel {
+public class HomeViewModel extends ToolbarViewModel {
     /**界面变化监听，用于viewModel和UI交互*/
     public UiChangeObservable uc = new UiChangeObservable();
     /**RecyclerView添加ObservableList*/

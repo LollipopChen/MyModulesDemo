@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.login.LoginManager;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 
 /**
  * 消息
@@ -14,7 +15,7 @@ import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
  * Date：2019/4/2 14:22
  * Email：qiue.chen@supernovachina.com
  */
-public class MessageViewModel extends LoadingViewModel {
+public class MessageViewModel extends ToolbarViewModel {
 
     public MessageViewModel(@NonNull Application application) {
         super(application);

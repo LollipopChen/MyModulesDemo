@@ -20,7 +20,7 @@ import com.example.mymodulesdemo.R;
  * Date：2019/3/11 14:05
  * Email：1077503420@qq.com
  */
-public class LoadingViewModel extends ToolbarViewModel {
+public class LoadingViewModel extends BaseViewModel {
     /**
      * 正在加载
      */

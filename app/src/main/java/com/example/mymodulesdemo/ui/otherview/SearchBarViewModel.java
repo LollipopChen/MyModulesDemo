@@ -8,7 +8,6 @@ import android.view.View;
 
 import com.example.libbase.base.BaseViewModel;
 import com.example.libbase.binding.command.BindingCommand;
-import com.example.libbase.widget.toast.ToastAlert;
 
 /**
  * 返回 + 搜索 的SearchToolBar
@@ -17,7 +16,7 @@ import com.example.libbase.widget.toast.ToastAlert;
  * Date：2019/3/19 17:20
  * Email：1077503420@qq.com
  */
-public class SearchBarViewModel extends BaseViewModel {
+public class SearchBarViewModel extends LoadingViewModel {
 
     /** 左边返回图标的观察者 */
     public ObservableInt leftIconVisibleObservable = new ObservableInt(View.VISIBLE);

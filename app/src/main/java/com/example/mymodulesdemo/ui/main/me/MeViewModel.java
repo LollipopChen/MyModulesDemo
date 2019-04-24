@@ -11,6 +11,7 @@ import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.console.RouterManager;
 import com.example.mymodulesdemo.entity.UserInfoEntity;
 import com.example.mymodulesdemo.ui.main.me.about.AboutActivity;
+import com.example.mymodulesdemo.ui.main.me.setting.SettingActivity;
 import com.example.mymodulesdemo.ui.main.me.video.VideoActivity;
 import com.sankuai.waimai.router.common.FragmentUriRequest;
 
@@ -37,7 +38,7 @@ public class MeViewModel extends BaseViewModel {
     /**
      * 设置点击
      */
-    public BindingCommand onSettingClick = new BindingCommand(() -> ToastAlert.show("设置点击"));
+    public BindingCommand onSettingClick = new BindingCommand(() -> startActivity(SettingActivity.class));
 
     /**
      * 登录或点击用户信息

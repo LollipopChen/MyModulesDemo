@@ -67,10 +67,10 @@ dependencies {
     //引用module
     //公共module
     implementation project(':lib_base')
-//    if (!Boolean.valueOf(rootProject.ext.isModule)) {
+    if (!Boolean.valueOf(rootProject.ext.isModule)) {
         //登录模块
         implementation project(':login')
-//    }
+    }
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

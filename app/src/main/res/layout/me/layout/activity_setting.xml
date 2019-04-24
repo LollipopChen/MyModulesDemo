@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.mymodulesdemo.ui.main.me.setting.SettingViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_back_title_bar"
+            app:toolbarViewModel="@{viewModel}"/>
+
+        <TextView
+            android:id="@+id/tv_language"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            android:paddingStart="@dimen/dimen_10_dp"
+            android:paddingEnd="@dimen/dimen_10_dp"
+            android:drawableEnd="@mipmap/ic_right"
+            android:drawablePadding="@dimen/dimen_10_dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_14_sp"
+            android:textColor="@color/text_color"
+            app:onClickCommand="@{viewModel.languageChange}"
+            android:text="语言设置（部分文字在xml中设置了多语言）"/>
+
+        <View
+            style="@style/LineStyle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_language"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

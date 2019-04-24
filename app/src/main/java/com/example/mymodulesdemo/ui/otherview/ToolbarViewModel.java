@@ -17,7 +17,7 @@ import com.example.libbase.binding.command.BindingCommand;
  * Date：2019/3/6 18:07
  * Email：1077503420@qq.com
  */
-public class ToolbarViewModel extends BaseViewModel {
+public class ToolbarViewModel extends LoadingViewModel {
 
     /** 标题文字 */
     public ObservableField<String> titleText = new ObservableField<>("");

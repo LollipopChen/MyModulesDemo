@@ -10,12 +10,12 @@ import com.example.libbase.json.SNGsonHelper;
 import com.example.libbase.net.http.exception.ApiException;
 import com.example.libbase.net.http.observer.HttpObservable;
 import com.example.libbase.net.http.observer.HttpObserver;
-import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.entity.HotSearchEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
+import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
 import com.example.mymodulesdemo.ui.otherview.SearchBarViewModel;
 import com.example.mymodulesdemo.ui.search.HotFlagAdapter;
 import com.example.mymodulesdemo.ui.search.SearchResultActivity;
@@ -56,6 +56,9 @@ public class SearchActivityViewModel extends SearchBarViewModel {
      * 获取热门搜索词
      */
     public void getHotFlagList() {
+
+        setStatus(LoadingViewModel.LOADING);
+
         HttpObserver observer = new HttpObserver() {
             @Override
             protected void onSuccess(Object response) {

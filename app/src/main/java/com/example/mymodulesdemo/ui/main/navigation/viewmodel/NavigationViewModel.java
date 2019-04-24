@@ -19,6 +19,7 @@ import com.example.mymodulesdemo.entity.NavigationEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.main.navigation.adapter.NavigationItemAdapter;
 import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
@@ -32,7 +33,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
  * Date：2019/3/21 11:43
  * Email：1077503420@qq.com
  */
-public class NavigationViewModel extends LoadingViewModel {
+public class NavigationViewModel extends ToolbarViewModel {
 
     public UiChangeObservable uc = new UiChangeObservable();
     public ObservableList<NavigationItemViewModel> observableList = new ObservableArrayList<>();

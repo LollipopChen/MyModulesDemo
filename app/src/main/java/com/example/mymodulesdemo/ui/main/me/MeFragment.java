@@ -82,7 +82,6 @@ public class MeFragment extends BaseFragment<FragmentMeBinding,MeViewModel>{
             UserCenter.getInstance().setUserAvatar(userInfoEntity.getImage());
             binding.tvTip.setText(UserCenter.getInstance().getDescription());
             viewModel.setUserInfoEntity(userInfoEntity);
-
         }
     }
 }

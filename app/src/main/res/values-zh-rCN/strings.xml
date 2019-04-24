@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MvvmDemo</string>
+
+    <string name="action_home">首页</string>
+    <string name="action_system">体系</string>
+    <string name="action_view">公众号</string>
+    <string name="action_navigation">导航</string>
+    <string name="action_me">我的</string>
+
+    <string name="toast_double_click_to_exit">再按一下退出~</string>
+
+    <string name="no_data">暂无数据</string>
+    <string name="loading_again">重新加载</string>
+
+    <string name="cut_line">/</string>
+</resources>
