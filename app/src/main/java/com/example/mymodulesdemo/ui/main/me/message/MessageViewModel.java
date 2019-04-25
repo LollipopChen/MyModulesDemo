@@ -24,6 +24,7 @@ public class MessageViewModel extends ToolbarViewModel {
     public void initToolBar() {
         setLeftIconVisibleVisible(View.VISIBLE);
         setTitleText("我的消息");
+        setStatus(NO_DATA);
     }
 
     @Override
