@@ -17,7 +17,6 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-
     <!--灰色分割线-->
     <style name="LineStyle">
         <item name="android:layout_width">@dimen/dimen_0_dp</item>

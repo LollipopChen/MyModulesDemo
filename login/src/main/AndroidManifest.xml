@@ -3,6 +3,7 @@
 
     <application>
         <activity android:name=".LoginActivity"/>
+        <activity android:name="com.example.register.RegisterActivity"/>
     </application>
 
 </manifest>

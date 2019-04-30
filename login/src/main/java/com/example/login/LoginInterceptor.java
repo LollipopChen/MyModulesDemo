@@ -23,7 +23,7 @@ public class LoginInterceptor implements UriInterceptor {
         if (service.isLogin()){
             callback.onNext();
         }else {
-            ToastAlert.show("请先登录");
+//            ToastAlert.show("请先登录");
             service.registerObserver(new ILoginService.Observer() {
                 @Override
                 public void onLoginSuccess() {

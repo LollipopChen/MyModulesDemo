@@ -18,6 +18,8 @@
             layout="@layout/layout_back_title_bar"
             app:toolbarViewModel="@{viewModel}"/>
 
+
+
     </android.support.constraint.ConstraintLayout>
 
 </layout>

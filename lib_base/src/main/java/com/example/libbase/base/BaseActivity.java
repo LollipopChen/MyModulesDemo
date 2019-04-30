@@ -275,7 +275,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
     private Context updateResources(Context context) {
         Resources resources = context.getResources();
         Locale locale = LanguageUtils.getLocale();
-        if (locale==null) {
+        if (locale == null) {
             return context;
         }
         Configuration configuration = resources.getConfiguration();

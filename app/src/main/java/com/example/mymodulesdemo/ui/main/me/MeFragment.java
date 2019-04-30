@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.libbase.base.BaseFragment;
+import com.example.libbase.event.BaseEntityEvent;
 import com.example.libbase.event.BaseRefreshDataEvent;
 import com.example.libbase.event.RefreshDataTypeConst;
 import com.example.login.LoginCenter;
@@ -16,6 +17,7 @@ import com.example.mymodulesdemo.center.UserCenter;
 import com.example.mymodulesdemo.console.RouterManager;
 import com.example.mymodulesdemo.databinding.FragmentMeBinding;
 import com.example.mymodulesdemo.entity.UserInfoEntity;
+import com.example.register.RegisterLoginEntity;
 import com.sankuai.waimai.router.annotation.RouterUri;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -71,10 +73,11 @@ public class MeFragment extends BaseFragment<FragmentMeBinding,MeViewModel>{
      * @param event event
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onRefresh(BaseRefreshDataEvent event){
-        if (event.getType() == RefreshDataTypeConst.LOGIN_STATUS) {
+    public void onRefresh(BaseEntityEvent<RegisterLoginEntity.DataEntity> event){
+        RegisterLoginEntity.DataEntity entity = event.getEntity();
+        if (entity != null) {
             UserInfoEntity userInfoEntity = new UserInfoEntity();
-            userInfoEntity.setUserName("MvvM DEMO E");
+            userInfoEntity.setUserName(entity.getUsername());
             userInfoEntity.setImage("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551954435661&di=01620611af17a4feafb940171167fda0&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20181204%2Fbfef8528ad444fe6a6cbf22da6a690ac.jpeg");
             //TODO 存sp
             UserCenter.getInstance().setUserName(userInfoEntity.getUserName());
