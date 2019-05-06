@@ -58,4 +58,10 @@ public class UserCenter {
         this.userAvatar = userAvatar;
         SNPreferenceManager.getDefault().put(AppConst.SharePreferenceParams.USER_AVATAR,userAvatar);
     }
+
+    public void clear(){
+        setUserAvatar(null);
+        setDescription(null);
+        setUserName(null);
+    }
 }

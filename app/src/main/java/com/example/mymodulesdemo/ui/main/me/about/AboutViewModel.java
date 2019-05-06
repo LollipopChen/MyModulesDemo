@@ -16,7 +16,6 @@ import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
  */
 public class AboutViewModel extends ToolbarViewModel {
 
-    public ObservableField<Drawable> urlIcon = new ObservableField<>();
     public ObservableField<String> appName = new ObservableField<>();
     public ObservableField<String> appVersion = new ObservableField<>();
 
@@ -28,20 +27,6 @@ public class AboutViewModel extends ToolbarViewModel {
         setTitleText(title);
         setLeftIconVisibleVisible(View.VISIBLE);
         setRightIconVisibleVisible(View.INVISIBLE);
-    }
-
-    /**
-     * 设置app图标
-     * @param drawable app图标
-     */
-    public void setAppIcon(Drawable drawable) {
-        this.urlIcon.set(drawable);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        urlIcon = null;
     }
 
     public void setAppName(String applicationName) {

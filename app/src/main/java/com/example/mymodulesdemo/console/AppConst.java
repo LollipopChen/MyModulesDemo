@@ -25,4 +25,7 @@ public interface AppConst {
         String USER_AVATAR = "user_avatar";
     }
 
+    interface RefreshDataParams{
+        int LOGOUT = 0;
+    }
 }

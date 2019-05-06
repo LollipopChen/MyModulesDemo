@@ -25,9 +25,7 @@
             app:layout_constraintTop_toBottomOf="@+id/layout_bar"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:src="@{viewModel.urlIcon}"
-            android:layout_marginTop="@dimen/dimen_60_dp"
-            binding:placeholderRes="@{R.drawable.ic_launcher_background}"/>
+            android:layout_marginTop="@dimen/dimen_60_dp"/>
 
         <TextView
             android:id="@+id/app_name"

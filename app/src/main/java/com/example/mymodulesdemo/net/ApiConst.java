@@ -51,6 +51,11 @@ public interface ApiConst {
      */
     String SYSTEM_CHILD = "article/list/{page}/json";
 
+    /**
+     * 退出登录
+     */
+    String LOGOUT = "user/logout/json";
+
     interface Params{
         String PAGE = "page";
         String ID = "id";

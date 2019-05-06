@@ -29,7 +29,7 @@ public class AboutActivity extends BaseActivity<ActivityAboutBinding,AboutViewMo
     @Override
     public void initData() {
         viewModel.initToolBar("关于");
-        viewModel.setAppIcon(SnBaseApplication.getApplicationIcon());
+        binding.appIcon.setImageDrawable(SnBaseApplication.getApplicationIcon());
         viewModel.setAppName(SnBaseApplication.getApplicationName());
         viewModel.setAppVersion("v" + SnBaseApplication.getApplicationVersionName());
     }

@@ -59,4 +59,10 @@ public class LoginCenter {
         this.password = password;
         SNPreferenceManager.getDefault().put(PASSWORD,password);
     }
+
+    public void clear(){
+        setPassword(null);
+        setUserName(null);
+        setLogin(false);
+    }
 }

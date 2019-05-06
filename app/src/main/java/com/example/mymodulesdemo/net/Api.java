@@ -1,5 +1,8 @@
 package com.example.mymodulesdemo.net;
 
+import android.databinding.ObservableField;
+
+import com.example.libbase.console.SNResponseEntity;
 import com.example.mymodulesdemo.entity.ArticleListEntity;
 import com.example.mymodulesdemo.entity.BannerEntity;
 import com.example.mymodulesdemo.entity.HotSearchEntity;
@@ -96,4 +99,11 @@ public interface Api {
      */
     @GET(ApiConst.SYSTEM_CHILD)
     Observable<NavigationItemEntity> getNavigationChildData(@Path(ApiConst.Params.PAGE) String page, @QueryMap Map<String, Object> params);
+
+    /**
+     * 退出登录
+     * @return 数据
+     */
+    @GET(ApiConst.LOGOUT)
+    Observable<SNResponseEntity> logout();
 }

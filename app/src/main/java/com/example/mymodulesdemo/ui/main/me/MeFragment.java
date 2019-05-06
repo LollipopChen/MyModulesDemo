@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import com.example.libbase.base.BaseFragment;
 import com.example.libbase.event.BaseEntityEvent;
 import com.example.libbase.event.BaseRefreshDataEvent;
-import com.example.libbase.event.RefreshDataTypeConst;
 import com.example.login.LoginCenter;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.center.UserCenter;
+import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.console.RouterManager;
 import com.example.mymodulesdemo.databinding.FragmentMeBinding;
 import com.example.mymodulesdemo.entity.UserInfoEntity;
@@ -85,6 +85,21 @@ public class MeFragment extends BaseFragment<FragmentMeBinding,MeViewModel>{
             UserCenter.getInstance().setUserAvatar(userInfoEntity.getImage());
             binding.tvTip.setText(UserCenter.getInstance().getDescription());
             viewModel.setUserInfoEntity(userInfoEntity);
+        }
+    }
+
+    /**
+     * 退出登录
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLogout(BaseRefreshDataEvent event){
+        if (event.getType() == AppConst.RefreshDataParams.LOGOUT){
+            UserInfoEntity userInfoEntity = new UserInfoEntity();
+            userInfoEntity.setUserName("");
+            userInfoEntity.setImage(null);
+            viewModel.setUserInfoEntity(userInfoEntity);
+
+            binding.tvTip.setText("登录后数据不丢失");
         }
     }
 }

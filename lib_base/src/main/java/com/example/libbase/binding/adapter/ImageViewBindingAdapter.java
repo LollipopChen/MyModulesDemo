@@ -1,6 +1,8 @@
 package com.example.libbase.binding.adapter;
 
 import android.databinding.BindingAdapter;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.DrawableRes;
 import android.widget.ImageView;
 
@@ -32,6 +34,10 @@ public class ImageViewBindingAdapter {
             }else {
                 ImageUtils.loadImage(imageView,url,placeholderRes);
             }
+        }else {
+            Glide.with(imageView.getContext())
+                    .load(placeholderRes)
+                    .into(imageView);
         }
     }
 }

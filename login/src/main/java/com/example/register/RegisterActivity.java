@@ -59,14 +59,11 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding,Regis
             binding.etRePassword.setSelection(Objects.requireNonNull(binding.etRePassword.getText()).toString().length());
         });
 
-        viewModel.uc.isShowDialogEvent.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(@Nullable Boolean isShow) {
-                if (isShow != null && isShow){
-                    snLoadingDialog.showProgress();
-                }else {
-                    snLoadingDialog.dismissProgress();
-                }
+        viewModel.uc.isShowDialogEvent.observe(this, isShow -> {
+            if (isShow != null && isShow){
+                snLoadingDialog.showProgress();
+            }else {
+                snLoadingDialog.dismissProgress();
             }
         });
     }

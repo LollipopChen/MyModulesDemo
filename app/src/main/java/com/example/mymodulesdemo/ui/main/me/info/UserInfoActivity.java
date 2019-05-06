@@ -6,6 +6,7 @@ import com.example.libbase.base.BaseActivity;
 import com.example.login.LoginInterceptor;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.center.UserCenter;
 import com.example.mymodulesdemo.console.RouterManager;
 import com.example.mymodulesdemo.databinding.ActivityUserInfoBinding;
 import com.sankuai.waimai.router.annotation.RouterUri;
@@ -33,5 +34,6 @@ public class UserInfoActivity extends BaseActivity<ActivityUserInfoBinding,UserI
     @Override
     public void initData() {
         viewModel.initToolBar();
+        viewModel.setUserName(UserCenter.getInstance().getUserName());
     }
 }
