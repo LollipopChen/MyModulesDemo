@@ -15,6 +15,7 @@ import com.example.mymodulesdemo.ui.main.me.video.PictureFragment;
 import java.util.List;
 
 /**
+ * 上下翻页viewpager适配器
  * @author ChenQiuE
  * Date：2019/3/29 15:21
  * Email：qiue.chen@supernovachina.com

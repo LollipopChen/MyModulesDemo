@@ -18,6 +18,8 @@ public interface RouterManager {
         String MESSAGE_WITH_LOGIN = "/message_with_login";
         /**个人信息*/
         String USER_INFO_WITH_LOGIN = "/user_info_with_login";
+        /**我的收藏*/
+        String COLLECTION_WITH_LOGIN = "/collection_with_login";
     }
 
 

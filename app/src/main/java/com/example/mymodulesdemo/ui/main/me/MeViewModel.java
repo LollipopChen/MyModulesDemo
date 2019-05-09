@@ -56,6 +56,12 @@ public class MeViewModel extends BaseViewModel {
      */
     public BindingCommand onVideoClick = new BindingCommand(() -> startActivity(VideoActivity.class));
 
+    /**
+     * 我的收藏
+     */
+    public BindingCommand onCollectionClick = new BindingCommand(() ->
+            new FragmentUriRequest(MeFragment.getInstance(), RouterManager.UiConstant.COLLECTION_WITH_LOGIN).start());
+
     @Override
     public void onDestroy() {
         super.onDestroy();
