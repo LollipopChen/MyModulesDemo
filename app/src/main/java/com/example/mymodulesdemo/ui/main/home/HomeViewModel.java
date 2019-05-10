@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.example.libbase.base.BaseDataInterface;
 import com.example.libbase.binding.command.BindingAction;
 import com.example.libbase.binding.command.BindingCommand;
 import com.example.libbase.bus.event.SingleLiveEvent;
@@ -16,7 +15,6 @@ import com.example.libbase.json.SNGsonHelper;
 import com.example.libbase.net.http.exception.ApiException;
 import com.example.libbase.net.http.observer.HttpObservable;
 import com.example.libbase.net.http.observer.HttpObserver;
-import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.console.AppConst;
@@ -83,7 +81,7 @@ public class HomeViewModel extends ToolbarViewModel {
      */
     public void initView(String title, Drawable icon){
         setTitleText(title);
-        setRightIconVisibleVisible(View.VISIBLE);
+        setRightIconVisible(View.VISIBLE);
         setRightMoreIcon(icon);
         setStatus(LoadingViewModel.LOADING);
     }

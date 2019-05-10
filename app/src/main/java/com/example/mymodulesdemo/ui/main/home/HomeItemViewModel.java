@@ -15,7 +15,6 @@ import com.example.mymodulesdemo.ui.web.WebViewActivity;
 import java.util.Objects;
 
 /**
- * recycler view 可不写Adapter
  * @author ChenQiuE
  * Date：2019/3/11 10:19
  * Email：1077503420@qq.com
@@ -32,13 +31,10 @@ public class HomeItemViewModel extends ItemViewModel<HomeViewModel> {
     /**
      * recyclerView Item点击
      */
-    public BindingCommand itemClick = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            //跳转到指定界面,传入条目的参数
-            Bundle mBundle = new Bundle();
-            mBundle.putString(AppConst.IntentParams.URL, Objects.requireNonNull(entity.get()).getLink());
-            viewModel.startActivity(WebViewActivity.class,mBundle);
-        }
+    public BindingCommand itemClick = new BindingCommand(() -> {
+        //跳转到指定界面,传入条目的参数
+        Bundle mBundle = new Bundle();
+        mBundle.putString(AppConst.IntentParams.URL, Objects.requireNonNull(entity.get()).getLink());
+        viewModel.startActivity(WebViewActivity.class,mBundle);
     });
 }

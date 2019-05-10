@@ -159,7 +159,7 @@
             android:textSize="@dimen/text_size_14_sp"
             android:textColor="@color/text_color"
             android:text="我的收藏"
-            onClickCommand="@{viewModel.onCollectionClick}"/>
+            app:onClickCommand="@{viewModel.onCollectionClick}"/>
 
         <View
             android:id="@+id/line3"
@@ -169,7 +169,7 @@
             app:layout_constraintRight_toRightOf="parent"/>
 
         <TextView
-            android:id="@+id/tv_money"
+            android:id="@+id/tv_widget"
             android:layout_width="@dimen/dimen_0_dp"
             android:layout_height="@dimen/dimen_40_dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -183,12 +183,13 @@
             android:gravity="center_vertical"
             android:textSize="@dimen/text_size_14_sp"
             android:textColor="@color/text_color"
-            android:text="我的资产"/>
+            android:text="控件"
+            app:onClickCommand="@{viewModel.onViewClick}"/>
 
         <View
             android:id="@+id/line4"
             style="@style/LineStyle"
-            app:layout_constraintTop_toBottomOf="@+id/tv_money"
+            app:layout_constraintTop_toBottomOf="@+id/tv_widget"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 

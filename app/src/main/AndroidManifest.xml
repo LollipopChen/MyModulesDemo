@@ -48,6 +48,7 @@
         <activity android:name=".ui.main.me.setting.SettingActivity" />
         <activity android:name=".ui.main.me.collection.CollectionActivity"
             android:launchMode="singleTask" />
+        <activity android:name=".ui.main.me.widget.WidgetActivity" />
 
     </application>
 

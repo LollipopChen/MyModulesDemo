@@ -21,8 +21,8 @@ public class WebViewModel extends ToolbarViewModel {
     }
 
     public void initToolbar() {
-        setLeftIconVisibleVisible(View.VISIBLE);
-        setRightIconVisibleVisible(View.INVISIBLE);
+        setLeftIconVisible(View.VISIBLE);
+        setRightIconVisible(View.INVISIBLE);
     }
 
     public void setLink(String link) {

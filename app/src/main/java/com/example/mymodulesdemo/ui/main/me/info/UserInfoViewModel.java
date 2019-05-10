@@ -5,11 +5,8 @@ import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.example.libbase.binding.command.BindingAction;
 import com.example.libbase.binding.command.BindingCommand;
-import com.example.libbase.console.SNResponseEntity;
 import com.example.libbase.event.BaseRefreshDataEvent;
-import com.example.libbase.json.SNGsonHelper;
 import com.example.libbase.net.http.exception.ApiException;
 import com.example.libbase.net.http.observer.HttpObservable;
 import com.example.libbase.net.http.observer.HttpObserver;
@@ -37,7 +34,7 @@ public class UserInfoViewModel extends ToolbarViewModel {
     }
 
     public void initToolBar() {
-        setLeftIconVisibleVisible(View.VISIBLE);
+        setLeftIconVisible(View.VISIBLE);
         setTitleText("个人信息");
     }
 

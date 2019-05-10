@@ -23,7 +23,7 @@ public class SettingViewModel extends ToolbarViewModel {
     }
 
     public void initToolBar(String title){
-        setLeftIconVisibleVisible(View.VISIBLE);
+        setLeftIconVisible(View.VISIBLE);
         setTitleText(title);
     }
 

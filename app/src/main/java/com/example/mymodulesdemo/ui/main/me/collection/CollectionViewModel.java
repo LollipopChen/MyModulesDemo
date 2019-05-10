@@ -13,10 +13,9 @@ public class CollectionViewModel extends ToolbarViewModel {
     }
 
     public void initToolBar(String title){
-        setLeftIconVisibleVisible(View.VISIBLE);
-        setRightIconVisibleVisible(View.INVISIBLE);
+        setLeftIconVisible(View.VISIBLE);
+        setRightIconVisible(View.INVISIBLE);
         setTitleText(title);
     }
-
 
 }

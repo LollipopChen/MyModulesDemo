@@ -44,7 +44,7 @@ public class ToolbarViewModel extends LoadingViewModel {
      * 设置左边返回按钮是否显示
      * @param visibility 显示状态
      */
-    public void setLeftIconVisibleVisible(int visibility){
+    public void setLeftIconVisible(int visibility){
         leftIconVisibleObservable.set(visibility);
     }
 
@@ -52,7 +52,7 @@ public class ToolbarViewModel extends LoadingViewModel {
      * 设置右边按钮是否显示
      * @param visibility 显示状态
      */
-    public void setRightIconVisibleVisible(int visibility){
+    public void setRightIconVisible(int visibility){
         rightIconVisibleObservable.set(visibility);
     }
 

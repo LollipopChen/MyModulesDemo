@@ -7,7 +7,6 @@ import android.databinding.ObservableList;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.example.libbase.binding.command.BindingAction;
 import com.example.libbase.binding.command.BindingCommand;
 import com.example.libbase.json.SNGsonHelper;
 import com.example.libbase.net.http.exception.ApiException;
@@ -69,7 +68,7 @@ public class SearchResultViewModel extends ToolbarViewModel {
 
     public void initTooBar(String keyWord) {
         this.keyWord = keyWord;
-        setLeftIconVisibleVisible(View.VISIBLE);
+        setLeftIconVisible(View.VISIBLE);
         setTitleText(keyWord);
     }
 

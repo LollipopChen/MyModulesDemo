@@ -1,4 +1,4 @@
-package com.example.mymodulesdemo.ui.main.navigation.viewmodel;
+package com.example.mymodulesdemo.ui.main.me.widget;
 
 import android.app.Application;
 import android.support.annotation.NonNull;
@@ -7,19 +7,19 @@ import android.view.View;
 import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 
 /**
- * 一个体系
+ * 控件
  * @author ChenQiuE
- * Date：2019/3/28 10:27
- * Email：qiue.chen@supernovachina.com
+ * @date 2019/5/10
  */
-public class SingleNavigationViewModel extends ToolbarViewModel {
+public class WidgetViewModel extends ToolbarViewModel {
 
-    public SingleNavigationViewModel(@NonNull Application application) {
+    public WidgetViewModel(@NonNull Application application) {
         super(application);
     }
 
     public void initToolBar(String title) {
         setLeftIconVisible(View.VISIBLE);
+        setRightIconVisible(View.INVISIBLE);
         setTitleText(title);
     }
 }

@@ -4,7 +4,6 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
 import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 
 /**
@@ -19,7 +18,7 @@ public class VideoViewModel extends ToolbarViewModel {
     }
 
     public void initToolBar(String title) {
-        setLeftIconVisibleVisible(View.VISIBLE);
+        setLeftIconVisible(View.VISIBLE);
         setTitleText(title);
     }
 }

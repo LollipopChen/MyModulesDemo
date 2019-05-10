@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.login.LoginManager;
-import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
 import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
 
 /**
@@ -22,7 +21,7 @@ public class MessageViewModel extends ToolbarViewModel {
     }
 
     public void initToolBar() {
-        setLeftIconVisibleVisible(View.VISIBLE);
+        setLeftIconVisible(View.VISIBLE);
         setTitleText("我的消息");
         setStatus(NO_DATA);
     }

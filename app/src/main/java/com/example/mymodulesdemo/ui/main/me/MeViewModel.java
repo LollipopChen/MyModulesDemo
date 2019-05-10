@@ -13,6 +13,7 @@ import com.example.mymodulesdemo.entity.UserInfoEntity;
 import com.example.mymodulesdemo.ui.main.me.about.AboutActivity;
 import com.example.mymodulesdemo.ui.main.me.setting.SettingActivity;
 import com.example.mymodulesdemo.ui.main.me.video.VideoActivity;
+import com.example.mymodulesdemo.ui.main.me.widget.WidgetActivity;
 import com.sankuai.waimai.router.common.FragmentUriRequest;
 
 /**
@@ -61,6 +62,11 @@ public class MeViewModel extends BaseViewModel {
      */
     public BindingCommand onCollectionClick = new BindingCommand(() ->
             new FragmentUriRequest(MeFragment.getInstance(), RouterManager.UiConstant.COLLECTION_WITH_LOGIN).start());
+
+    /**
+     * 控件
+     */
+    public BindingCommand onViewClick = new BindingCommand(() -> startActivity(WidgetActivity.class));
 
     @Override
     public void onDestroy() {

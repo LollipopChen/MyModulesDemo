@@ -2,7 +2,6 @@ package com.example.mymodulesdemo.ui.main.me.about;
 
 import android.app.Application;
 import android.databinding.ObservableField;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -25,8 +24,8 @@ public class AboutViewModel extends ToolbarViewModel {
 
     public void initToolBar(String title) {
         setTitleText(title);
-        setLeftIconVisibleVisible(View.VISIBLE);
-        setRightIconVisibleVisible(View.INVISIBLE);
+        setLeftIconVisible(View.VISIBLE);
+        setRightIconVisible(View.INVISIBLE);
     }
 
     public void setAppName(String applicationName) {
