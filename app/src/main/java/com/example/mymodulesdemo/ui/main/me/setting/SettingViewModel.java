@@ -33,6 +33,6 @@ public class SettingViewModel extends ToolbarViewModel {
     public BindingCommand languageChange = new BindingCommand(() -> uc.languageEvent.call());
 
     public class UiChangeObservable{
-        public SingleLiveEvent languageEvent = new SingleLiveEvent();
+        public SingleLiveEvent<Void> languageEvent = new SingleLiveEvent<>();
     }
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.mymodulesdemo.ui.main.me.widget.selector.SelectorViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_back_title_bar"
+            app:toolbarViewModel="@{viewModel}"/>
+
+        <TextView
+            android:id="@+id/tv_date_selector"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_14_sp"
+            android:gravity="center"
+            android:text="时间选择器"
+            app:onClickCommand="@{viewModel.onDataClick}"/>
+
+        <TextView
+            android:id="@+id/tv_address_selector"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date_selector"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_14_sp"
+            android:gravity="center"
+            android:text="地址三级联动"
+            app:onClickCommand="@{viewModel.onAddressClick}"/>
+
+        <TextView
+            android:id="@+id/tv_lunar_calendar_selector"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address_selector"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_14_sp"
+            android:gravity="center"
+            android:text="农历日期"/>
+
+        <TextView
+            android:id="@+id/tv_list_selector"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lunar_calendar_selector"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_14_sp"
+            android:gravity="center"
+            android:text="单行列表"/>
+
+        <TextView
+            android:id="@+id/tv_more_selector"
+            android:layout_width="@dimen/dimen_0_dp"
+            android:layout_height="@dimen/dimen_40_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_selector"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_14_sp"
+            android:gravity="center"
+            android:text="多级不联动"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

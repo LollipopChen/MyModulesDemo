@@ -210,5 +210,4 @@ public class HomeViewModel extends ToolbarViewModel {
         /**列表数据*/
         public SingleLiveEvent<List<BannerEntity.BannerItemEntity>> dataList = new SingleLiveEvent<>();
     }
-
 }

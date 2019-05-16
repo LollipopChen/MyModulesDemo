@@ -83,4 +83,7 @@ dependencies {
 
     /*路由*/
     annotationProcessor 'com.sankuai.waimai.router:compiler:1.2.0'
+
+    /*多功能选择器*/
+    implementation 'com.contrarywind:Android-PickerView:4.1.8'
 }

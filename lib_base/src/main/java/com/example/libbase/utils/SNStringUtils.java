@@ -33,7 +33,8 @@ public final class SNStringUtils {
     public static String replaceBlank(String str) {
         String dest = "";
         if (str != null) {
-            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Pattern p = Pattern.compile("\\s*|\t" +
+                    "|\\n");
             Matcher m = p.matcher(str);
             dest = m.replaceAll("");
         }
@@ -119,18 +120,20 @@ public final class SNStringUtils {
      * 判断是不是一个合法的手机号码
      */
     public static boolean isPhone(CharSequence phoneNum) {
-        if (isEmpty(phoneNum))
+        if (isEmpty(phoneNum)) {
             return false;
+        }
         return phone.matcher(phoneNum).matches();
     }
 
     /**
      * 判断是否是一个身份证号码
      */
-    public static boolean isIDCard(CharSequence IDCardNumber) {
-        if (isEmpty(IDCardNumber))
+    public static boolean isIDCard(CharSequence idCardNumber) {
+        if (isEmpty(idCardNumber)) {
             return false;
-        return IDCard.matcher(IDCardNumber).matches();
+        }
+        return IDCard.matcher(idCardNumber).matches();
     }
 
     public static boolean isEightNumber(CharSequence number){
@@ -294,5 +297,15 @@ public final class SNStringUtils {
             distanceD = SNDoubleUtils.round(distanceD, 1, BigDecimal.ROUND_HALF_UP);
             return SNStringUtils.formatNum(distanceD) + "m";
         }
+    }
+
+    /**
+     * 获取现在时间
+     *
+     * @return返回字符串格式 yyyy-MM-dd HH:mm:ss
+     */
+    public static String getStringDate(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return formatter.format(date);
     }
 }

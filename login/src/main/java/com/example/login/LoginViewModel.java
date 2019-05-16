@@ -46,12 +46,7 @@ public class LoginViewModel extends BaseViewModel {
     /**
      * 眼睛
      */
-    public BindingCommand<Boolean> passwordShowAndHideOnClick = new BindingCommand<>(new BindingConsumer<Boolean>() {
-        @Override
-        public void call(Boolean isChecked) {
-            uc.cbSwitch.setValue(isChecked);
-        }
-    });
+    public BindingCommand<Boolean> passwordShowAndHideOnClick = new BindingCommand<>(isChecked -> uc.cbSwitch.setValue(isChecked));
 
     /**
      * 忘记密码

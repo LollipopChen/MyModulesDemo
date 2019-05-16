@@ -49,6 +49,7 @@
         <activity android:name=".ui.main.me.collection.CollectionActivity"
             android:launchMode="singleTask" />
         <activity android:name=".ui.main.me.widget.WidgetActivity" />
+        <activity android:name=".ui.main.me.widget.selector.SelectorActivity" />
 
     </application>
 
