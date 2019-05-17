@@ -53,6 +53,7 @@
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_14_sp"
             android:gravity="center"
+            app:onClickCommand="@{viewModel.onLunarClick}"
             android:text="农历日期"/>
 
         <TextView
@@ -65,6 +66,7 @@
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_14_sp"
             android:gravity="center"
+            app:onClickCommand="@{viewModel.onListClick}"
             android:text="单行列表"/>
 
         <TextView
@@ -77,6 +79,7 @@
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_14_sp"
             android:gravity="center"
+            app:onClickCommand="@{viewModel.onMoreClick}"
             android:text="多级不联动"/>
 
     </android.support.constraint.ConstraintLayout>
