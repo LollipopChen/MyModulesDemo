@@ -10,8 +10,7 @@ import com.example.libbase.net.http.observer.HttpObservable;
 import com.example.libbase.net.http.observer.HttpObserver;
 import com.example.mymodulesdemo.entity.ListTabLayoutEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
-import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
-import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.ToolbarViewModel;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 

@@ -6,7 +6,6 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableList;
 import android.support.annotation.NonNull;
 
-import com.example.libbase.binding.command.BindingAction;
 import com.example.libbase.binding.command.BindingCommand;
 import com.example.libbase.json.SNGsonHelper;
 import com.example.libbase.net.http.exception.ApiException;
@@ -17,8 +16,7 @@ import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.entity.SystemEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
 import com.example.mymodulesdemo.ui.main.system.adapter.SystemItemAdapter;
-import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
-import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.ToolbarViewModel;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 

@@ -14,7 +14,7 @@ import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.databinding.FragmentNavigationChildBinding;
 import com.example.mymodulesdemo.ui.main.navigation.viewmodel.SingleNavigationChildViewModel;
-import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.LoadingViewModel;
 
 /**
  * @author ChenQiuE

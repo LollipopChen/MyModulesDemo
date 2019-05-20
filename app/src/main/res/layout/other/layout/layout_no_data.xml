@@ -8,7 +8,7 @@
     <data>
         <variable
             name="loadingViewModel"
-            type="com.example.mymodulesdemo.ui.otherview.LoadingViewModel"/>
+            type="com.example.mymodulesdemo.ui.otherview.viewmodel.LoadingViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

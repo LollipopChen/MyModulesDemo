@@ -18,7 +18,7 @@ import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.entity.NavigationItemEntity;
 import com.example.mymodulesdemo.net.ApiCenter;
-import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.LoadingViewModel;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 

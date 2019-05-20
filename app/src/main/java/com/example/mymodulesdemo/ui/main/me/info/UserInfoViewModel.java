@@ -15,7 +15,7 @@ import com.example.login.LoginCenter;
 import com.example.mymodulesdemo.center.UserCenter;
 import com.example.mymodulesdemo.console.AppConst;
 import com.example.mymodulesdemo.net.ApiCenter;
-import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.ToolbarViewModel;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import org.greenrobot.eventbus.EventBus;

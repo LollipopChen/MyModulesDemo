@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.login.LoginManager;
-import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.ToolbarViewModel;
 
 /**
  * 消息

@@ -1,4 +1,4 @@
-package com.example.mymodulesdemo.ui.otherview;
+package com.example.mymodulesdemo.ui.otherview.viewmodel;
 
 import android.app.Application;
 import android.databinding.ObservableField;
@@ -6,7 +6,6 @@ import android.databinding.ObservableInt;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.example.libbase.base.BaseViewModel;
 import com.example.libbase.binding.command.BindingCommand;
 
 /**

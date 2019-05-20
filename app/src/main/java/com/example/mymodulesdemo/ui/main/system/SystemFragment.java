@@ -12,7 +12,7 @@ import com.example.mymodulesdemo.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.databinding.FragmentSystemBinding;
 import com.example.mymodulesdemo.ui.main.system.viewmodel.SystemViewModel;
-import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.LoadingViewModel;
 
 /**
  * 导航

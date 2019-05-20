@@ -4,10 +4,10 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.example.libbase.binding.command.BindingAction;
 import com.example.libbase.binding.command.BindingCommand;
+import com.example.mymodulesdemo.ui.main.me.widget.count.CountActivity;
 import com.example.mymodulesdemo.ui.main.me.widget.selector.SelectorActivity;
-import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.ToolbarViewModel;
 
 /**
  * 控件
@@ -30,4 +30,9 @@ public class WidgetViewModel extends ToolbarViewModel {
      * 多功能选择器
      */
     public BindingCommand onSelectorClick = new BindingCommand(() -> startActivity(SelectorActivity.class));
+
+    /**
+     * 数字控件
+     */
+    public BindingCommand onCountViewClick = new BindingCommand(() -> startActivity(CountActivity.class));
 }

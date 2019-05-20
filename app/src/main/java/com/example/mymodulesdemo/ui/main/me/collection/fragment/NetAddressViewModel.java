@@ -3,7 +3,7 @@ package com.example.mymodulesdemo.ui.main.me.collection.fragment;
 import android.app.Application;
 import android.support.annotation.NonNull;
 
-import com.example.mymodulesdemo.ui.otherview.LoadingViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.LoadingViewModel;
 
 public class NetAddressViewModel extends LoadingViewModel {
 

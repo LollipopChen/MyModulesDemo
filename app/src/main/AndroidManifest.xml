@@ -50,6 +50,7 @@
             android:launchMode="singleTask" />
         <activity android:name=".ui.main.me.widget.WidgetActivity" />
         <activity android:name=".ui.main.me.widget.selector.SelectorActivity" />
+        <activity android:name=".ui.main.me.widget.count.CountActivity" />
 
     </application>
 

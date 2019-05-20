@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.example.libbase.binding.command.BindingCommand;
 import com.example.libbase.bus.event.SingleLiveEvent;
-import com.example.mymodulesdemo.ui.otherview.ToolbarViewModel;
+import com.example.mymodulesdemo.ui.otherview.viewmodel.ToolbarViewModel;
 
 /**
  * 多功能选择器

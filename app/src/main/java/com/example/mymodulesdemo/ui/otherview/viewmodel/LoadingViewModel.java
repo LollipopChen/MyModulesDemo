@@ -1,4 +1,4 @@
-package com.example.mymodulesdemo.ui.otherview;
+package com.example.mymodulesdemo.ui.otherview.viewmodel;
 
 import android.app.Application;
 import android.databinding.ObservableBoolean;
