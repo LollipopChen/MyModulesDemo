@@ -53,23 +53,17 @@ public class HomeViewModel extends ToolbarViewModel {
     public ObservableBoolean canLoadMore = new ObservableBoolean(false);
 
     /**下拉刷新*/
-    public BindingCommand onRefreshCommand = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            isLoadMore = false;
-            page = 0;
-            requestListData();
-        }
+    public BindingCommand onRefreshCommand = new BindingCommand(() -> {
+        isLoadMore = false;
+        page = 0;
+        requestListData();
     });
 
     /**上拉加载*/
-    public BindingCommand onLoadMoreCommand = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            isLoadMore = true;
-            page++;
-            requestListData();
-        }
+    public BindingCommand onLoadMoreCommand = new BindingCommand(() -> {
+        isLoadMore = true;
+        page++;
+        requestListData();
     });
 
     public HomeViewModel(@NonNull Application application) {

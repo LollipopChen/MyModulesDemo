@@ -76,5 +76,4 @@ public class ToolbarViewModel extends LoadingViewModel {
     protected void moreOnClick(){
 
     }
-
 }

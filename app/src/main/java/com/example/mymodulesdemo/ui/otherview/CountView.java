@@ -37,6 +37,8 @@ public class CountView extends LinearLayout {
     /**是否支持如输入 默认不支持*/
     private boolean input = false;
 
+    private OnClickLister onClickLister;
+
     private Context context;
     private LayoutCountViewBinding dataBinding;
 
@@ -63,6 +65,12 @@ public class CountView extends LinearLayout {
         dataBinding.ivAdd.setOnClickListener(v -> onAddCalculate());
         dataBinding.ivMinus.setOnClickListener(v -> onMinCalculate());
 
+        dataBinding.tvCount.setOnClickListener(v -> {
+            if (input){
+               //TODO  弹出可输入对话框
+            }
+        });
+
         judgeTheViews(getCount());
     }
 
@@ -72,13 +80,17 @@ public class CountView extends LinearLayout {
      */
     private void judgeTheViews(int count) {
         if (count <= getMinCount()) {
+            dataBinding.ivMinus.setClickable(false);
             dataBinding.ivMinus.setImageResource(minusNot);
         } else {
+            dataBinding.ivMinus.setClickable(true);
             dataBinding.ivMinus.setImageResource(minusCan);
         }
         if (count >= getMaxCount()) {
+            dataBinding.ivAdd.setClickable(false);
             dataBinding.ivAdd.setImageResource(addNot);
         } else {
+            dataBinding.ivAdd.setClickable(true);
             dataBinding.ivAdd.setImageResource(addCan);
         }
     }
@@ -89,9 +101,10 @@ public class CountView extends LinearLayout {
     private void onAddCalculate(){
         int count = Integer.valueOf(dataBinding.tvCount.getText().toString());
         if (count < getMaxCount()){
-            dataBinding.tvCount.setText(String.valueOf(count++));
+            dataBinding.tvCount.setText(String.valueOf(++count));
         }
         judgeTheViews(count);
+        onCallBack();
     }
 
     /**
@@ -100,9 +113,22 @@ public class CountView extends LinearLayout {
     private void onMinCalculate(){
         int count = Integer.valueOf(dataBinding.tvCount.getText().toString());
         if (count > getMinCount()){
-            dataBinding.tvCount.setText(String.valueOf(count--));
+            dataBinding.tvCount.setText(String.valueOf(--count));
         }
         judgeTheViews(count);
+        onCallBack();
+    }
+
+    /**
+     * 回调接口
+     */
+    private void onCallBack() {
+        if (onClickLister != null){
+            onClickLister.onAfterClick(getCount());
+            if (getCount() == getMinCount()){
+                onClickLister.onMin();
+            }
+        }
     }
 
     /**
@@ -151,6 +177,10 @@ public class CountView extends LinearLayout {
         this.input = input;
     }
 
+    public void setOnClickLister(OnClickLister onClickLister) {
+        this.onClickLister = onClickLister;
+    }
+
     /**
      * 设置加减控件的资源文件
      */
@@ -178,5 +208,18 @@ public class CountView extends LinearLayout {
         if (textColor != 0) {
             dataBinding.tvCount.setTextColor(getResources().getColor(textColor));
         }
+    }
+
+    public interface OnClickLister{
+        /**
+         * 加减以后回调的方法
+         * @param value 值
+         */
+        void onAfterClick(int value);
+
+        /**
+         * 最小值
+         */
+        void onMin();
     }
 }
