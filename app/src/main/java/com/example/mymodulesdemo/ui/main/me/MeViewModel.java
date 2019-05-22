@@ -12,6 +12,7 @@ import com.example.mymodulesdemo.console.RouterManager;
 import com.example.mymodulesdemo.entity.UserInfoEntity;
 import com.example.mymodulesdemo.ui.main.me.about.AboutActivity;
 import com.example.mymodulesdemo.ui.main.me.setting.SettingActivity;
+import com.example.mymodulesdemo.ui.main.me.tangram.TangramActivity;
 import com.example.mymodulesdemo.ui.main.me.video.VideoActivity;
 import com.example.mymodulesdemo.ui.main.me.widget.WidgetActivity;
 import com.sankuai.waimai.router.common.FragmentUriRequest;
@@ -67,6 +68,11 @@ public class MeViewModel extends BaseViewModel {
      * 控件
      */
     public BindingCommand onViewClick = new BindingCommand(() -> startActivity(WidgetActivity.class));
+
+    /**
+     * Tangram
+     */
+    public BindingCommand onTangramClick = new BindingCommand(() ->startActivity(TangramActivity.class));
 
     @Override
     public void onDestroy() {

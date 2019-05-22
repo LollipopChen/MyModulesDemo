@@ -1,0 +1,84 @@
+[
+  {
+    "type":"container-banner",
+    "style": {
+      "pageWidth": 200,
+      "pageHeight": 100,
+      "indicatorMargin": "5",
+      "infinite": "true",
+      "indicatorImg2": "https://img.alicdn.com/tps/TB1XRNFNXXXXXXKXXXXXXXXXXXX-32-4.png",
+      "indicatorImg1": "https://img.alicdn.com/tps/TB16i4qNXXXXXbBXFXXXXXXXXXX-32-4.png",
+      "scrollMarginLeft": "10",
+      "indicatorGap": "2",
+      "indicatorHeight": "1.5",
+      "itemRatio": "2.654",
+      "scrollMarginRight": "10",
+      "indicatorGravity": "center",
+      "hGap": "20"
+    },
+    "items": [
+      {
+        "type": "bannerView",
+        "msg": "info1",
+        "imgUrl": "http://pic.58pic.com/58pic/15/68/59/71X58PICNjx_1024.jpg",
+        "style": {
+        }
+      },
+      {
+        "type":"bannerView",
+        "msg": "info2",
+        "imgUrl": "http://pic.58pic.com/58pic/15/68/59/71X58PICNjx_1024.jpg",
+        "style": {
+        }
+      },
+      {
+        "type": "bannerView",
+        "msg": "info3",
+        "imgUrl": "http://pic.58pic.com/58pic/15/68/59/71X58PICNjx_1024.jpg",
+        "style": {
+        }
+      },
+      {
+        "type": "bannerView",
+        "msg": "info4",
+        "imgUrl": "http://pic.58pic.com/58pic/15/68/59/71X58PICNjx_1024.jpg",
+        "style": {
+        }
+      }
+    ]
+  },
+
+  {
+    "type": "container-fourColumn",
+    "items": [
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "title": "标题1",
+        "content": "点击了标题1",
+        "type": "menuView"
+      },
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "title": "标题2",
+        "content": "点击了标题2",
+        "type": "menuView"
+      },
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "title": "标题3",
+        "content": "点击了标题3",
+        "type": "menuView"
+      },
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "title": "标题4",
+        "content": "点击了标题4",
+        "type": "menuView"
+      }
+    ]
+  }
+]
