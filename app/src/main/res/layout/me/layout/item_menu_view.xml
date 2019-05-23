@@ -16,15 +16,11 @@
 
         <ImageView
             android:id="@+id/iv_menu"
-            android:layout_width="@dimen/dimen_70_dp"
-            android:layout_height="@dimen/dimen_70_dp"
-            tools:ignore="ContentDescription"
-            tools:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="1111" />
+            android:minHeight="@dimen/dimen_100_dp"
+            tools:ignore="ContentDescription"
+            tools:src="@mipmap/ic_launcher"
+            android:scaleType="fitXY"/>
     </LinearLayout>
 </layout>

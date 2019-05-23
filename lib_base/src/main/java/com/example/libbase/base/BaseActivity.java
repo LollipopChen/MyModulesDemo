@@ -20,6 +20,7 @@ import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.example.libbase.R;
 import com.example.libbase.bus.Messenger;
 import com.example.libbase.utils.LanguageUtils;
+import com.gyf.immersionbar.ImmersionBar;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -61,10 +62,23 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         if (isRegisterEventBus()){
             EventBus.getDefault().register(this);
         }
+
+        if (isNeedImmersive()){
+            setImmersionBar();
+        }
     }
 
     protected boolean isRegisterEventBus(){
         return false;
+    }
+
+    protected boolean isNeedImmersive(){
+        return false;
+    }
+
+    protected void setImmersionBar(){
+        ImmersionBar.with(this)
+                .navigationBarColor(R.color.black).init();
     }
 
     /**

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:padding="@dimen/dimen_10_dp"
+            android:text="综合排序"
+            android:textColor="@color/text_color"
+            android:gravity="center"
+            android:drawableEnd="@mipmap/ic_down_gray"
+            android:drawablePadding="@dimen/dimen_3_dp"/>
+
+        <TextView
+            android:id="@+id/tv_sell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_sort"
+            android:text="销量"
+            android:textColor="@color/text_color"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10_dp"/>
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_sell"
+            android:text="距离"
+            android:textColor="@color/text_color"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10_dp"/>
+
+        <TextView
+            android:id="@+id/tv_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="筛选"
+            android:textColor="@color/text_color"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10_dp"
+            android:drawableEnd="@mipmap/ic_down_gray"
+            android:drawablePadding="@dimen/dimen_3_dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

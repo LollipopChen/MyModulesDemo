@@ -1,47 +1,45 @@
 [
   {
-    "type":"container-banner",
+    "type": "container-banner",
+    "content": "这个是广告",
     "style": {
-      "pageWidth": 200,
-      "pageHeight": 100,
-      "indicatorMargin": "5",
+      "indicatorMargin": 5,
       "infinite": "true",
       "indicatorImg2": "https://img.alicdn.com/tps/TB1XRNFNXXXXXXKXXXXXXXXXXXX-32-4.png",
       "indicatorImg1": "https://img.alicdn.com/tps/TB16i4qNXXXXXbBXFXXXXXXXXXX-32-4.png",
-      "scrollMarginLeft": "10",
-      "indicatorGap": "2",
-      "indicatorHeight": "1.5",
-      "itemRatio": "2.654",
-      "scrollMarginRight": "10",
+      "indicatorGap": 0,
+      "indicatorHeight": "3",
+      "itemRatio": "2.4",
       "indicatorGravity": "center",
-      "hGap": "20"
+      "hGap": "20",
+      "autoScroll": 3000
     },
     "items": [
       {
         "type": "bannerView",
         "msg": "info1",
-        "imgUrl": "http://pic.58pic.com/58pic/15/68/59/71X58PICNjx_1024.jpg",
+        "imgUrl": "http://pic37.nipic.com/20140113/8800276_184927469000_2.png",
         "style": {
         }
       },
       {
-        "type":"bannerView",
+        "type": "bannerView",
         "msg": "info2",
-        "imgUrl": "http://pic.58pic.com/58pic/15/68/59/71X58PICNjx_1024.jpg",
+        "imgUrl": "http://ku.90sjimg.com/element_origin_min_pic/16/06/12/10575cc7afdc808.jpg",
         "style": {
         }
       },
       {
         "type": "bannerView",
         "msg": "info3",
-        "imgUrl": "http://pic.58pic.com/58pic/15/68/59/71X58PICNjx_1024.jpg",
+        "imgUrl": "http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg",
         "style": {
         }
       },
       {
         "type": "bannerView",
         "msg": "info4",
-        "imgUrl": "http://pic.58pic.com/58pic/15/68/59/71X58PICNjx_1024.jpg",
+        "imgUrl": "http://pic1.nipic.com/2009-02-17/200921701719614_2.jpg",
         "style": {
         }
       }
@@ -49,35 +47,220 @@
   },
 
   {
-    "type": "container-fourColumn",
+    "type": "container-oneColumn",
+    "content": "这个是可翻页MenuView",
     "items": [
       {
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
-        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "type": "menuView",
+        "items": [
+          {
+            "thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558608631854&di=ec779f41968967ca3480cac753c44b02&imgtype=0&src=http%3A%2F%2Fi7.hexunimg.cn%2F2013-08-23%2F157365531.jpg",
+            "title":"小标题1",
+            "id": "1",
+            "clickType": "1"
+          },
+          {
+            "thumb": "http://ku.90sjimg.com/element_origin_min_pic/16/06/12/10575cc7afdc808.jpg",
+            "title":"小标题2",
+            "id": "2",
+            "clickType": "1"
+          },
+          {
+            "thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558608631854&di=ec779f41968967ca3480cac753c44b02&imgtype=0&src=http%3A%2F%2Fi7.hexunimg.cn%2F2013-08-23%2F157365531.jpg",
+            "title":"小标题3",
+            "id": "3",
+            "clickType": "1"
+          },
+          {
+            "thumb": "http://ku.90sjimg.com/element_origin_min_pic/16/06/12/10575cc7afdc808.jpg",
+            "title":"小标题4",
+            "id": "4",
+            "clickType": "1"
+          },
+          {
+            "thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558608631854&di=ec779f41968967ca3480cac753c44b02&imgtype=0&src=http%3A%2F%2Fi7.hexunimg.cn%2F2013-08-23%2F157365531.jpg",
+            "title":"小标题5",
+            "id": "5",
+            "clickType": "1"
+          },
+          {
+            "thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558608631854&di=ec779f41968967ca3480cac753c44b02&imgtype=0&src=http%3A%2F%2Fi7.hexunimg.cn%2F2013-08-23%2F157365531.jpg",
+            "title":"小标题6",
+            "id": "6",
+            "clickType": "1"
+          },
+          {
+            "thumb": "http://ku.90sjimg.com/element_origin_min_pic/16/06/12/10575cc7afdc808.jpg",
+            "title":"小标题7",
+            "id": "7",
+            "clickType": "1"
+          },
+          {
+            "thumb": "http://ku.90sjimg.com/element_origin_min_pic/16/06/12/10575cc7afdc808.jpg",
+            "title":"小标题8",
+            "id": "8",
+            "clickType": "1"
+          },
+          {
+            "thumb": "http://ku.90sjimg.com/element_origin_min_pic/16/06/12/10575cc7afdc808.jpg",
+            "title":"小标题9",
+            "id": "9",
+            "clickType": "1"
+          },
+          {
+            "thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558608631854&di=ec779f41968967ca3480cac753c44b02&imgtype=0&src=http%3A%2F%2Fi7.hexunimg.cn%2F2013-08-23%2F157365531.jpg",
+            "title":"小标题10",
+            "id": "10",
+            "clickType": "1"
+          },
+          {
+            "thumb": "http://ku.90sjimg.com/element_origin_min_pic/16/06/12/10575cc7afdc808.jpg",
+            "title":"小标题11",
+            "id": "11",
+            "clickType": "1"
+          },
+          {
+            "thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558608631854&di=ec779f41968967ca3480cac753c44b02&imgtype=0&src=http%3A%2F%2Fi7.hexunimg.cn%2F2013-08-23%2F157365531.jpg",
+            "title":"小标题12",
+            "id": "12",
+            "clickType": "1"
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "type": "container-onePlusN",
+    "content": "这个是瓷片区1拖2",
+    "style": {
+      "aspectRatio": 2,
+      "bgColor": "#e3e3e3",
+      "cols": [
+        50,50
+      ],
+      "margin": [
+        10,10,10,10
+      ]
+    },
+    "items": [
+      {
+        "imgUrl": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=364055337,609376702&fm=26&gp=0.jpg",
         "title": "标题1",
         "content": "点击了标题1",
-        "type": "menuView"
+        "type": "itemImageView"
       },
       {
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
-        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "imgUrl": "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1558599204&di=24f355c1104e63f2ea4001bb971b18f4&src=http://pic7.photophoto.cn/20080602/0042040356379479_b.jpg",
         "title": "标题2",
         "content": "点击了标题2",
-        "type": "menuView"
+        "type": "itemImageView"
       },
       {
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
-        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "imgUrl": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558609358350&di=9b3af28e5eb82eccc8d895d78673629d&imgtype=0&src=http%3A%2F%2Fpic116.huitu.com%2Fres%2F20190403%2F1935063_20190403154257081020_1.jpg",
         "title": "标题3",
         "content": "点击了标题3",
-        "type": "menuView"
+        "type": "itemImageView"
+      }
+    ]
+  },
+
+  {
+    "type": "container-sticky",
+    "content": "这是一个吸顶/吸底布局",
+    "style": {
+      "sticky": "start",
+      "offset": "-5"
+    },
+    "items": [
+      {
+        "type": "stickyView"
+      }
+    ]
+  },
+
+  {
+    "type": "container-oneColumn",
+    "items": [
+      {
+        "type": "listView",
+        "title": "标题1",
+        "content": "内容1"
       },
       {
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
-        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "type": "listView",
+        "title": "标题2",
+        "content": "内容2"
+      },
+      {
+        "type": "listView",
+        "title": "标题3",
+        "content": "内容3"
+      },
+      {
+        "type": "listView",
         "title": "标题4",
-        "content": "点击了标题4",
-        "type": "menuView"
+        "content": "内容4"
+      },
+      {
+        "type": "listView",
+        "title": "标题5",
+        "content": "内容5"
+      },
+      {
+        "type": "listView",
+        "title": "标题6",
+        "content": "内容6"
+      },
+      {
+        "type": "listView",
+        "title": "标题7",
+        "content": "内容7"
+      },
+      {
+        "type": "listView",
+        "title": "标题8",
+        "content": "内容8"
+      },
+      {
+        "type": "listView",
+        "title": "标题9",
+        "content": "内容9"
+      },
+      {
+        "type": "listView",
+        "title": "标题10",
+        "content": "内容10"
+      },
+      {
+        "type": "listView",
+        "title": "标题11",
+        "content": "内容11"
+      },
+      {
+        "type": "listView",
+        "title": "标题12",
+        "content": "内容12"
+      },
+      {
+        "type": "listView",
+        "title": "标题13",
+        "content": "内容13"
+      },
+      {
+        "type": "listView",
+        "title": "标题14",
+        "content": "内容14"
+      },
+      {
+        "type": "listView",
+        "title": "标题15",
+        "content": "内容15"
+      },
+      {
+        "type": "listView",
+        "title": "标题16",
+        "content": "内容16"
       }
     ]
   }

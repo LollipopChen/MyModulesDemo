@@ -86,7 +86,7 @@ public class SNGsonHelper {
         return null;
     }
 
-    public static List toList(@NonNull String json, @NonNull TypeToken typeToken) {
+    public static <T> List<T> toList(@NonNull String json, @NonNull TypeToken typeToken) {
         if (gson == null) {
             initGson();
         }

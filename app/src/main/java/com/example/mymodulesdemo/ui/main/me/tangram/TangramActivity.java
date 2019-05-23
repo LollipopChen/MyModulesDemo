@@ -16,7 +16,11 @@ import com.example.libbase.json.SNGsonHelper;
 import com.example.login.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.databinding.ActivityTangramBinding;
-import com.libra.Utils;
+import com.example.mymodulesdemo.ui.main.me.tangram.view.BannerView;
+import com.example.mymodulesdemo.ui.main.me.tangram.view.ItemImageView;
+import com.example.mymodulesdemo.ui.main.me.tangram.view.ListItemView;
+import com.example.mymodulesdemo.ui.main.me.tangram.view.StickyBarView;
+import com.example.mymodulesdemo.ui.main.me.tangram.view.menu.MenuView;
 import com.orhanobut.logger.Logger;
 import com.tmall.wireless.tangram3.TangramBuilder;
 import com.tmall.wireless.tangram3.TangramEngine;
@@ -48,6 +52,7 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding,Tangram
 
     @Override
     public void initData() {
+        viewModel.initToolBar("阿里七巧板");
         initTangram();
     }
 
@@ -56,7 +61,7 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding,Tangram
         TangramBuilder.init(this, new IInnerImageSetter() {
             @Override
             public <IMAGE extends ImageView> void doLoadImageUrl(@NonNull IMAGE view, @Nullable String url) {
-                Glide.with(TangramActivity.this).load(url).into(view);
+                Glide.with(TangramActivity.this.getApplicationContext()).load(url).into(view);
             }
         },ImageView.class);
 
@@ -64,8 +69,11 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding,Tangram
         builder = TangramBuilder.newInnerBuilder(this);
 
         //Step 3: register business cells and cards
-        builder.registerCell("bannerView",BannerView.class);
-        builder.registerCell("menuView",MenuView.class);
+        builder.registerCell("bannerView", BannerView.class);
+        builder.registerCell("menuView", MenuView.class);
+        builder.registerCell("itemImageView", ItemImageView.class);
+        builder.registerCell("stickyView", StickyBarView.class);
+        builder.registerCell("listView", ListItemView.class);
 
         //Step 4: new engine
         engine = builder.build();
