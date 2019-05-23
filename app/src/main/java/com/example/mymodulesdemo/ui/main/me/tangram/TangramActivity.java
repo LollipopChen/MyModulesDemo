@@ -83,6 +83,7 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding,Tangram
         //Step 6: enable auto load more if your page's data is lazy loaded
         engine.enableAutoLoadMore(true);
 
+
         //Step 7: bind recyclerView to engine
         engine.bindView(binding.recyclerView);
 
