@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.example.libbase.R;
 import com.example.libbase.bus.Messenger;
+import com.gyf.immersionbar.ImmersionBar;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import org.greenrobot.eventbus.EventBus;
@@ -106,6 +107,19 @@ public abstract class BaseFragment<V extends ViewDataBinding,VM extends BaseView
         if (isRegisterEventBus()){
             EventBus.getDefault().register(this);
         }
+
+        if (isNeedImmersive()){
+            setImmersionBar();
+        }
+    }
+
+    protected boolean isNeedImmersive(){
+        return false;
+    }
+
+    protected void setImmersionBar(){
+        ImmersionBar.with(this)
+                .navigationBarColor(R.color.black).init();
     }
 
     /**

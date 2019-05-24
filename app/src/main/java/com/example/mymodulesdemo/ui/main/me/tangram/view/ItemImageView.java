@@ -12,11 +12,13 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.console.TangramViewConst;
 import com.example.mymodulesdemo.databinding.ItemMenuViewBinding;
 import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleScrollSupport;
 import com.orhanobut.logger.Logger;
 import com.tmall.wireless.tangram3.structure.BaseCell;
 import com.tmall.wireless.tangram3.structure.view.ITangramViewLifeCycle;
+import com.tmall.wireless.tangram3.support.SimpleClickSupport;
 
 /**
  * @author ChenQiuE
@@ -48,29 +50,17 @@ public class ItemImageView extends LinearLayout implements ITangramViewLifeCycle
         this.cell = cell;
         if (cell.serviceManager != null){
             SampleScrollSupport scrollSupport = cell.serviceManager.getService(SampleScrollSupport.class);
-            scrollSupport.register(this);
+            if (scrollSupport != null){
+                scrollSupport.register(this);
+            }
         }
     }
 
     @Override
     public void postBindView(BaseCell cell) {
-        int pos = cell.pos;
-        String parent = "";
-        if (cell.parent != null){
-            parent = cell.parent.getClass().getSimpleName();
-        }
-        Logger.e("Class:" + parent);
-
         Glide.with(this.getContext())
                 .load((String)cell.extras.get("imgUrl"))
                 .into(dataBinding.ivMenu);
-
-        dataBinding.layout.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastAlert.show((String)cell.extras.get("content"));
-            }
-        });
     }
 
     @Override

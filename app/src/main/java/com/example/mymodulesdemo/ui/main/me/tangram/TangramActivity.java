@@ -19,13 +19,12 @@ import com.example.login.BR;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.console.TangramViewConst;
 import com.example.mymodulesdemo.databinding.ActivityTangramBinding;
-import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleClickSupport;
+import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleScrollSupport;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.BannerView;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.ItemImageView;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.ListItemView;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.StickyBarView;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.menu.MenuView;
-import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleScrollSupport;
 import com.orhanobut.logger.Logger;
 import com.tmall.wireless.tangram3.TangramBuilder;
 import com.tmall.wireless.tangram3.TangramEngine;
@@ -39,10 +38,11 @@ import java.io.InputStream;
 
 /**
  * 阿里七巧板
+ *
  * @author ChenQiuE
  * @date 2019/5/21
  */
-public class TangramActivity extends BaseActivity<ActivityTangramBinding,TangramViewModel> {
+public class TangramActivity extends BaseActivity<ActivityTangramBinding, TangramViewModel> {
 
     private TangramBuilder.InnerBuilder builder;
     private TangramEngine engine;
@@ -70,7 +70,7 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding,Tangram
             public <IMAGE extends ImageView> void doLoadImageUrl(@NonNull IMAGE view, @Nullable String url) {
                 Glide.with(TangramActivity.this.getApplicationContext()).load(url).into(view);
             }
-        },ImageView.class);
+        }, ImageView.class);
 
         //Step 2: init angramBuilder
         builder = TangramBuilder.newInnerBuilder(this);
@@ -121,27 +121,56 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding,Tangram
         engine.register(SampleScrollSupport.class, new SampleScrollSupport(binding.recyclerView));
 
         //点击
-        engine.addSimpleClickSupport(new SimpleClickSupport() {
-            @Override
-            public void setOptimizedMode(boolean optimizedMode) {
-                super.setOptimizedMode(true);
-            }
-
+        engine.addSimpleClickSupport(new SimpleClickSupport(){
             @Override
             public void defaultClick(View targetView, BaseCell cell, int eventType) {
-//                super.defaultClick(targetView, cell, eventType);
-                if (cell.stringType.equals(TangramViewConst.STICKY_VIEW)){
-                    ToastAlert.show("点击的是：" + targetView.getTag());
+                switch (cell.stringType){
+                    case TangramViewConst.BANNER_VIEW:
+                        ToastAlert.show("点击了广告" + cell.extras.get("msg"));
+                        break;
+                    case TangramViewConst.ITEM_IMAGE_VIEW:
+                        ToastAlert.show("点击了卡片:" + cell.extras.get("title"));
+                        break;
+                    case TangramViewConst.STICKY_VIEW:
+                        onStickyBar(targetView,eventType);
+                        break;
+                    case TangramViewConst.LIST_VIEW:
+                        ToastAlert.show("点击列表：" + cell.extras.get("title"));
+                        break;
+                    default:break;
                 }
             }
         });
 
     }
 
+    /**
+     * stickyBar on click event 悬浮条点击事件
+     * @param targetView view
+     * @param eventType clickType
+     */
+    private void onStickyBar(View targetView,int eventType) {
+        switch (eventType){
+            case TangramViewConst.StickyBarViewConst.SORT:
+                ToastAlert.show("综合排序");
+                break;
+            case TangramViewConst.StickyBarViewConst.SELL:
+                ToastAlert.show("销量");
+                break;
+            case TangramViewConst.StickyBarViewConst.DISTANCE:
+                ToastAlert.show("距离");
+                break;
+            case TangramViewConst.StickyBarViewConst.FILTRATE:
+                ToastAlert.show("筛选");
+                                break;
+                default:break;
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (engine != null){
+        if (engine != null) {
             engine.destroy();
         }
     }

@@ -149,6 +149,6 @@ public class MenuView extends ConstraintLayout implements ITangramViewLifeCycle,
 
     @Override
     public void onMenuItemClick(int position, MenuEntity item) {
-        ToastAlert.show("点击的是" + item.getTitle());
+        ToastAlert.show("在MenuView中onMenuItemClick" + item.getTitle());
     }
 }

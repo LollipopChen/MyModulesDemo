@@ -10,24 +10,25 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
-import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.console.TangramViewConst;
 import com.example.mymodulesdemo.databinding.LayoutStickyBarBinding;
 import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleScrollSupport;
 import com.tmall.wireless.tangram3.structure.BaseCell;
 import com.tmall.wireless.tangram3.structure.view.ITangramViewLifeCycle;
+import com.tmall.wireless.tangram3.support.SimpleClickSupport;
 
 /**
  * @author ChenQiuE
  * @date 2019/5/22
  */
-public class StickyBarView extends LinearLayout implements ITangramViewLifeCycle , SampleScrollSupport.IScrollListener {
+public class StickyBarView extends LinearLayout implements ITangramViewLifeCycle, SampleScrollSupport.IScrollListener {
 
     private LayoutStickyBarBinding dataBinding;
     private BaseCell cell;
 
     public StickyBarView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public StickyBarView(Context context, @Nullable AttributeSet attrs) {
@@ -40,12 +41,12 @@ public class StickyBarView extends LinearLayout implements ITangramViewLifeCycle
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.layout_sticky_bar, this, true);
 
-        Drawable drawable = ContextCompat.getDrawable(context,R.mipmap.ic_down_gray);
-        dataBinding.tvSort.setCompoundDrawablesWithIntrinsicBounds(null,null,drawable,null);
+        Drawable drawable = ContextCompat.getDrawable(context, R.mipmap.ic_down_gray);
+        dataBinding.tvSort.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
         dataBinding.tvSort.setCompoundDrawablePadding(4);
 
-        Drawable drawableFiltrate = ContextCompat.getDrawable(context,R.mipmap.ic_filtrate);
-        dataBinding.tvSelector.setCompoundDrawablesWithIntrinsicBounds(null,null,drawableFiltrate,null);
+        Drawable drawableFiltrate = ContextCompat.getDrawable(context, R.mipmap.ic_filtrate);
+        dataBinding.tvSelector.setCompoundDrawablesWithIntrinsicBounds(null, null, drawableFiltrate, null);
         dataBinding.tvSelector.setCompoundDrawablePadding(4);
     }
 
@@ -53,18 +54,40 @@ public class StickyBarView extends LinearLayout implements ITangramViewLifeCycle
     public void cellInited(BaseCell cell) {
         setOnClickListener(cell);
         this.cell = cell;
-        if (cell.serviceManager != null){
+        if (cell.serviceManager != null) {
+            //滑动
             SampleScrollSupport scrollSupport = cell.serviceManager.getService(SampleScrollSupport.class);
-            scrollSupport.register(this);
+            if (scrollSupport != null){
+                scrollSupport.register(this);
+            }
+            //点击
+            SimpleClickSupport support = cell.serviceManager.getService(SimpleClickSupport.class);
+            dataBinding.tvSort.setOnClickListener(view ->{
+                if (support != null){
+                    support.defaultClick(this,cell, TangramViewConst.StickyBarViewConst.SORT);
+                }
+            });
+            dataBinding.tvSell.setOnClickListener(v ->{
+                if (support != null){
+                    support.defaultClick(this,cell,TangramViewConst.StickyBarViewConst.SELL);
+                }
+            });
+            dataBinding.tvDistance.setOnClickListener(v ->{
+                if (support != null){
+                    support.defaultClick(this,cell,TangramViewConst.StickyBarViewConst.DISTANCE);
+                }
+            });
+            dataBinding.tvSelector.setOnClickListener(v ->{
+                if (support != null){
+                    support.defaultClick(this,cell,TangramViewConst.StickyBarViewConst.FILTRATE);
+                }
+            });
         }
     }
 
     @Override
     public void postBindView(BaseCell cell) {
-        dataBinding.tvSort.setOnClickListener(v -> ToastAlert.show("综合排序"));
-        dataBinding.tvSell.setOnClickListener(v -> ToastAlert.show("销量"));
-        dataBinding.tvDistance.setOnClickListener(v -> ToastAlert.show("距离"));
-        dataBinding.tvSelector.setOnClickListener(v -> ToastAlert.show("筛选"));
+
     }
 
     @Override
