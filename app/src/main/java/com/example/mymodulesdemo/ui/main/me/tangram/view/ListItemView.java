@@ -2,7 +2,6 @@ package com.example.mymodulesdemo.ui.main.me.tangram.view;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -11,8 +10,7 @@ import android.widget.LinearLayout;
 
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.databinding.ItemListBinding;
-import com.example.mymodulesdemo.ui.main.me.tangram.SampleScrollSupport;
-import com.orhanobut.logger.Logger;
+import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleScrollSupport;
 import com.tmall.wireless.tangram3.structure.BaseCell;
 import com.tmall.wireless.tangram3.structure.view.ITangramViewLifeCycle;
 

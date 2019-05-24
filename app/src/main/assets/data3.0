@@ -169,8 +169,7 @@
     "type": "container-sticky",
     "content": "这是一个吸顶/吸底布局",
     "style": {
-      "sticky": "start",
-      "offset": "-5"
+      "sticky": "start"
     },
     "items": [
       {

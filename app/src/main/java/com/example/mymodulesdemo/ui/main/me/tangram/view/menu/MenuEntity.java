@@ -8,14 +8,14 @@ public class MenuEntity {
     private String id;
     private String thumb;
     private String title;
-    private String type;
+    private String clickType;
 
     @Override public String toString() {
         return "MenuEntity{" +
                 "id='" + id + '\'' +
                 ", thumb='" + thumb + '\'' +
                 ", title='" + title + '\'' +
-                ", type='" + type + '\'' +
+                ", clickType='" + clickType + '\'' +
                 '}';
     }
 
@@ -44,10 +44,10 @@ public class MenuEntity {
     }
 
     public String getType() {
-        return type;
+        return clickType;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.clickType = type;
     }
 }

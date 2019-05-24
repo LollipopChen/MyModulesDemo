@@ -1,12 +1,13 @@
-package com.example.mymodulesdemo.ui.main.me.tangram;
+package com.example.mymodulesdemo.ui.main.me.tangram.support;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SampleScrollSupport {
+
     public interface IScrollListener {
         public void onScrollStateChanged(RecyclerView recyclerView, int newState);
 
@@ -19,16 +20,16 @@ public class SampleScrollSupport {
 
     public SampleScrollSupport(RecyclerView recyclerView) {
         this.recyclerView = recyclerView;
-        recyclerView.addOnScrollListener(new OnScrollListener() {
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 for (IScrollListener listener : scrollListeners) {
                     listener.onScrollStateChanged(recyclerView, newState);
                 }
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 for (IScrollListener listener : scrollListeners) {
                     listener.onScrolled(recyclerView, dx, dy);
                 }

@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.databinding.ItemMenuViewBinding;
-import com.example.mymodulesdemo.ui.main.me.tangram.SampleScrollSupport;
+import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleScrollSupport;
 import com.orhanobut.logger.Logger;
 import com.tmall.wireless.tangram3.structure.BaseCell;
 import com.tmall.wireless.tangram3.structure.view.ITangramViewLifeCycle;

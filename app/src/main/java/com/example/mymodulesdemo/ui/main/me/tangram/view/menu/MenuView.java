@@ -2,7 +2,6 @@ package com.example.mymodulesdemo.ui.main.me.tangram.view.menu;
 
 import android.content.Context;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.ViewPager;
@@ -13,10 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.libbase.json.SNGsonHelper;
-import com.example.libbase.utils.SNStringUtils;
 import com.example.libbase.widget.toast.ToastAlert;
 import com.example.mymodulesdemo.R;
-import com.example.mymodulesdemo.ui.main.me.tangram.SampleScrollSupport;
+import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleScrollSupport;
 import com.google.gson.reflect.TypeToken;
 import com.orhanobut.logger.Logger;
 import com.tmall.wireless.tangram3.structure.BaseCell;
