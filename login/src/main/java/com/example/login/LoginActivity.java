@@ -1,19 +1,14 @@
 package com.example.login;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 
 import com.example.libbase.base.BaseActivity;
 import com.example.libbase.event.BaseEntityEvent;
-import com.example.libbase.event.BaseRefreshDataEvent;
-import com.example.libbase.event.RefreshDataTypeConst;
 import com.example.login.databinding.ActivityLoginBinding;
-import com.example.register.RegisterLoginEntity;
 import com.sankuai.waimai.router.annotation.RouterUri;
 
 import org.greenrobot.eventbus.EventBus;
