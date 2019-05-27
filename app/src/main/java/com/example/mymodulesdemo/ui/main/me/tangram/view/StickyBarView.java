@@ -5,20 +5,28 @@ import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
+import com.example.libbase.json.SNGsonHelper;
 import com.example.mymodulesdemo.R;
 import com.example.mymodulesdemo.console.TangramViewConst;
 import com.example.mymodulesdemo.databinding.LayoutStickyBarBinding;
+import com.example.mymodulesdemo.ui.main.me.tangram.adapter.ListAdapter;
 import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleScrollSupport;
+import com.google.gson.reflect.TypeToken;
+import com.orhanobut.logger.Logger;
 import com.tmall.wireless.tangram3.structure.BaseCell;
 import com.tmall.wireless.tangram3.structure.view.ITangramViewLifeCycle;
 import com.tmall.wireless.tangram3.support.SimpleClickSupport;
 
+import java.util.List;
+
 /**
+ * 悬浮布局
  * @author ChenQiuE
  * @date 2019/5/22
  */
@@ -87,7 +95,8 @@ public class StickyBarView extends LinearLayout implements ITangramViewLifeCycle
 
     @Override
     public void postBindView(BaseCell cell) {
-
+        Logger.e("sortItems:" + cell.extras.get("sortItems"));
+        Logger.e("discountItems:" + cell.extras.get("discountItems"));
     }
 
     @Override

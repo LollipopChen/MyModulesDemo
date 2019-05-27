@@ -89,6 +89,9 @@ dependencies {
     /*多功能选择器*/
     implementation 'com.contrarywind:Android-PickerView:4.1.8'
 
+    /* recyclerView万能适配器 */
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+
     /**Tangram*/
     implementation 'com.alibaba.android:tangram:3.3.6@aar'
     implementation ('com.alibaba.android:virtualview:1.4.6@aar') {

@@ -173,7 +173,9 @@
     },
     "items": [
       {
-        "type": "stickyView"
+        "type": "stickyView",
+        "sortItems": ["综合排序","最低消费"],
+        "discountItems": ["满减","下单立减","满送可乐","折扣商品"]
       }
     ]
   },

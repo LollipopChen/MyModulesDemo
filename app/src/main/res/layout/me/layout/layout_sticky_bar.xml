@@ -58,7 +58,6 @@
             android:padding="@dimen/dimen_10_dp"
             android:drawableEnd="@mipmap/ic_down_gray"
             android:drawablePadding="@dimen/dimen_3_dp"/>
-
     </android.support.constraint.ConstraintLayout>
 
 </layout>

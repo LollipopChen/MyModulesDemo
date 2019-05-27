@@ -31,4 +31,10 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <!--弹窗动画-->
+    <style name="popupWindowAnim">
+        <item name="android:windowEnterAnimation">@anim/window_show</item>
+        <item name="android:windowExitAnimation">@anim/window_hide</item>
+    </style>
+
 </resources>

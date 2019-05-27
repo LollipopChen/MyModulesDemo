@@ -23,8 +23,10 @@ import com.example.mymodulesdemo.ui.main.me.tangram.support.SampleScrollSupport;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.BannerView;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.ItemImageView;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.ListItemView;
+import com.example.mymodulesdemo.ui.main.me.tangram.view.ListPopupWindow;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.StickyBarView;
 import com.example.mymodulesdemo.ui.main.me.tangram.view.menu.MenuView;
+import com.google.gson.reflect.TypeToken;
 import com.orhanobut.logger.Logger;
 import com.tmall.wireless.tangram3.TangramBuilder;
 import com.tmall.wireless.tangram3.TangramEngine;
@@ -35,6 +37,7 @@ import com.tmall.wireless.tangram3.util.IInnerImageSetter;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * 阿里七巧板
@@ -42,10 +45,11 @@ import java.io.InputStream;
  * @author ChenQiuE
  * @date 2019/5/21
  */
-public class TangramActivity extends BaseActivity<ActivityTangramBinding, TangramViewModel> {
+public class TangramActivity extends BaseActivity<ActivityTangramBinding, TangramViewModel> implements ListPopupWindow.ItemClickListener {
 
     private TangramBuilder.InnerBuilder builder;
     private TangramEngine engine;
+    private ListPopupWindow sortList;
 
     @Override
     public int getLayoutId(Bundle savedInstanceState) {
@@ -121,10 +125,10 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
         engine.register(SampleScrollSupport.class, new SampleScrollSupport(binding.recyclerView));
 
         //点击
-        engine.addSimpleClickSupport(new SimpleClickSupport(){
+        engine.addSimpleClickSupport(new SimpleClickSupport() {
             @Override
             public void defaultClick(View targetView, BaseCell cell, int eventType) {
-                switch (cell.stringType){
+                switch (cell.stringType) {
                     case TangramViewConst.BANNER_VIEW:
                         ToastAlert.show("点击了广告" + cell.extras.get("msg"));
                         break;
@@ -132,12 +136,13 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
                         ToastAlert.show("点击了卡片:" + cell.extras.get("title"));
                         break;
                     case TangramViewConst.STICKY_VIEW:
-                        onStickyBar(targetView,eventType);
+                        onStickyBar(targetView, cell, eventType);
                         break;
                     case TangramViewConst.LIST_VIEW:
                         ToastAlert.show("点击列表：" + cell.extras.get("title"));
                         break;
-                    default:break;
+                    default:
+                        break;
                 }
             }
         });
@@ -146,13 +151,22 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
 
     /**
      * stickyBar on click event 悬浮条点击事件
+     *
      * @param targetView view
-     * @param eventType clickType
+     * @param cell       cell
+     * @param eventType  clickType
      */
-    private void onStickyBar(View targetView,int eventType) {
-        switch (eventType){
+    private void onStickyBar(View targetView, BaseCell cell, int eventType) {
+        switch (eventType) {
             case TangramViewConst.StickyBarViewConst.SORT:
-                ToastAlert.show("综合排序");
+                if (sortList == null) {
+                    sortList = new ListPopupWindow(this);
+                    sortList.setItemClickListener(this);
+                    List<String> list = SNGsonHelper.toList("" + cell.extras.get("sortItems"), new TypeToken<List<String>>() {
+                    });
+                    sortList.setData(list);
+                }
+                sortList.showPopupWindow(targetView);
                 break;
             case TangramViewConst.StickyBarViewConst.SELL:
                 ToastAlert.show("销量");
@@ -162,8 +176,18 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
                 break;
             case TangramViewConst.StickyBarViewConst.FILTRATE:
                 ToastAlert.show("筛选");
-                                break;
-                default:break;
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        if (position == 0) {
+            ToastAlert.show("综合排序");
+        } else {
+            ToastAlert.show("最低消费");
         }
     }
 
