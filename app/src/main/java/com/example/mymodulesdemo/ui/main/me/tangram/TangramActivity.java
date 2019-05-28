@@ -108,10 +108,10 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
             }
         });
 
-        //Step 9: set an offset to fix card 设置悬浮类型布局的偏移
+        // Step 9: set an offset to fix card 设置悬浮类型布局的偏移
 //        engine.getLayoutManager().setFixOffset(0, 0, 0, 0);
 
-        //Step 10: get tangram data and pass it to engine
+        // Step 10: get tangram data and pass it to engine 设置数据
         String json = new String(getAssertsFile(this, "data3.0"));
         Logger.e("Json:" + SNGsonHelper.toJson(json));
         JSONArray data = null;
@@ -129,8 +129,6 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
         engine.addSimpleClickSupport(new SimpleClickSupport() {
             @Override
             public void defaultClick(View targetView, BaseCell cell, int eventType) {
-                //吸顶
-                engine.topPosition(cell);
                 switch (cell.stringType) {
                     case TangramViewConst.BANNER_VIEW:
                         ToastAlert.show("点击了广告" + cell.extras.get("msg"));
@@ -139,6 +137,8 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
                         ToastAlert.show("点击了卡片:" + cell.extras.get("title"));
                         break;
                     case TangramViewConst.STICKY_VIEW:
+                        //吸顶
+                        engine.topPosition(cell);
                         onStickyBar(targetView, cell, eventType);
                         break;
                     case TangramViewConst.LIST_VIEW:
@@ -149,7 +149,6 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
                 }
             }
         });
-
     }
 
     /**
@@ -162,44 +161,89 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
     private void onStickyBar(View targetView, BaseCell cell, int eventType) {
         switch (eventType) {
             case TangramViewConst.StickyBarViewConst.SORT:
-                //综合排序
-                if (sortList == null) {
-                    sortList = new ListPopupWindow(this);
-                    sortList.setItemClickListener(this);
-                    List<String> list = SNGsonHelper.toList("" + cell.extras.get("sortItems"), new TypeToken<List<String>>() {
-                    });
-                    sortList.setData(list);
-                }
-                sortList.showPopupWindow(targetView);
+                onSortClick(targetView, cell);
                 break;
             case TangramViewConst.StickyBarViewConst.SELL:
-                ToastAlert.show("销量");
+                onSellClick();
                 break;
             case TangramViewConst.StickyBarViewConst.DISTANCE:
-                ToastAlert.show("距离");
+                onDistanceClick();
                 break;
             case TangramViewConst.StickyBarViewConst.FILTRATE:
-                if (filtrateList == null){
-                    filtrateList = new FiltratePopupWindow(this);
-                    filtrateList.setItemClickListener(this);
-                    List<String> list = SNGsonHelper.toList("" + cell.extras.get("discountItems"), new TypeToken<List<String>>() {
-                    });
-                    filtrateList.setData(list);
-                }
-                filtrateList.showPopupWindow(targetView);
+                onFiltrateClick(targetView, cell);
                 break;
             default:
                 break;
         }
     }
 
-    @Override
-    public void onItemClick(int position) {
-        if (position == 0) {
-            ToastAlert.show("综合排序");
-        } else {
-            ToastAlert.show("最低消费");
+    /**
+     * 综合排序
+     *
+     * @param targetView targetView
+     * @param cell       cell
+     */
+    private void onSortClick(View targetView, BaseCell cell) {
+        ((StickyBarView) targetView).setSortDrawable(this, R.mipmap.ic_up_green);
+        if (sortList == null) {
+            sortList = new ListPopupWindow(this);
+            sortList.setItemClickListener(targetView, this);
+            List<String> list = SNGsonHelper.toList("" + cell.extras.get("sortItems"), new TypeToken<List<String>>() {
+            });
+            sortList.setData(list);
         }
+        sortList.showPopupWindow(targetView);
+    }
+
+    /**
+     * 距离
+     */
+    private void onDistanceClick() {
+        ToastAlert.show("距离");
+        if (sortList != null) {
+            sortList.setSelectCount(-1);
+        }
+    }
+
+    /**
+     * 销量
+     */
+    private void onSellClick() {
+        ToastAlert.show("销量");
+        if (sortList != null) {
+            sortList.setSelectCount(-1);
+        }
+    }
+
+    /**
+     * 筛选
+     *
+     * @param targetView targetView
+     * @param cell   cell
+     */
+    private void onFiltrateClick(View targetView, BaseCell cell) {
+        if (filtrateList == null) {
+            filtrateList = new FiltratePopupWindow(this);
+            filtrateList.setItemClickListener(this);
+            List<String> list = SNGsonHelper.toList("" + cell.extras.get("discountItems"), new TypeToken<List<String>>() {
+            });
+            filtrateList.setData(list);
+        }
+        filtrateList.showPopupWindow(targetView);
+    }
+
+    @Override
+    public void onItemClick(View targetView, int position) {
+        if (position == 0) {
+            ((StickyBarView) targetView).setSortText("综合排序");
+        } else {
+            ((StickyBarView) targetView).setSortText("最低消费");
+        }
+    }
+
+    @Override
+    public void onItemDismiss(View targetView) {
+        ((StickyBarView) targetView).setSortDrawable(this, R.mipmap.ic_down_gray);
     }
 
     @Override

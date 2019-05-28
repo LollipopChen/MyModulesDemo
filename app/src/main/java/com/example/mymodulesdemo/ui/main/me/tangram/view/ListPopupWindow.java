@@ -1,10 +1,10 @@
 package com.example.mymodulesdemo.ui.main.me.tangram.view;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +13,7 @@ import android.widget.PopupWindow;
 
 import com.example.libbase.utils.SNStringUtils;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.databinding.LayoutPopupWindowBinding;
 import com.example.mymodulesdemo.ui.main.me.tangram.adapter.ListAdapter;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class ListPopupWindow extends PopupWindow {
 
     private ListAdapter adapter;
     public ItemClickListener itemClickListener;
-    private View spaceView;
-    private RecyclerView recyclerView;
+    private LayoutPopupWindowBinding binding;
+    private View targetView;
 
     public ListPopupWindow(Context context) {
         this(context,null);
@@ -43,15 +44,16 @@ public class ListPopupWindow extends PopupWindow {
         initWindow(context);
     }
 
-    public void setItemClickListener(ItemClickListener itemClickListener) {
+    public void setItemClickListener(View targetView, ItemClickListener itemClickListener) {
+        this.targetView = targetView;
         this.itemClickListener = itemClickListener;
     }
 
     private void initWindow(Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.layout_popup_window, null);
+        binding = DataBindingUtil.inflate(inflater,R.layout.layout_popup_window,null,false);
         //设置popupWindow
-        this.setContentView(contentView);
+        this.setContentView(binding.getRoot());
         //设置宽高
         this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
@@ -65,37 +67,37 @@ public class ListPopupWindow extends PopupWindow {
         this.setBackgroundDrawable(colorDrawable);
         this.setAnimationStyle(R.style.popupWindowAnim);
 
-        initView(contentView);
         initEvent(context);
     }
 
-    private void initView(View contentView) {
-        spaceView = contentView.findViewById(R.id.space_view);
-        recyclerView = contentView.findViewById(R.id.recycler_view);
-    }
-
     private void initEvent(Context context) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(context));
         adapter = new ListAdapter(R.layout.item_text_view);
-        recyclerView.setAdapter(adapter);
+        binding.recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener((adapter, view, position) -> {
             String item = ((ListAdapter) adapter).getData().get(position);
             if (!SNStringUtils.isEmpty(item)){
                 ((ListAdapter) adapter).setSelectCount(position);
                 if (itemClickListener != null){
-                    itemClickListener.onItemClick(position);
+                    itemClickListener.onItemClick(targetView,position);
                 }
                 this.dismiss();
             }
         });
 
-        spaceView.setOnClickListener(v -> this.dismiss());
+        binding.spaceView.setOnClickListener(v -> this.dismiss());
     }
 
     public void setData(List<String> list){
         if (adapter != null){
             adapter.setNewData(list);
+        }
+    }
+
+    public void setSelectCount(int position){
+        if (adapter != null){
+            adapter.setSelectCount(position);
         }
     }
 
@@ -112,7 +114,17 @@ public class ListPopupWindow extends PopupWindow {
         }
     }
 
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        if (itemClickListener != null){
+            itemClickListener.onItemDismiss(targetView);
+        }
+    }
+
     public interface ItemClickListener{
-        void onItemClick(int position);
+        void onItemClick(View targetView,int position);
+
+        void onItemDismiss(View targetView);
     }
 }

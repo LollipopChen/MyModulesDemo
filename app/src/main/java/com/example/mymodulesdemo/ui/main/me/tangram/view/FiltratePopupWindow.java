@@ -1,10 +1,10 @@
 package com.example.mymodulesdemo.ui.main.me.tangram.view;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +13,7 @@ import android.widget.PopupWindow;
 
 import com.example.libbase.utils.SNStringUtils;
 import com.example.mymodulesdemo.R;
+import com.example.mymodulesdemo.databinding.LayoutFiltratePopupWindowBinding;
 import com.example.mymodulesdemo.ui.main.me.tangram.adapter.ListAdapter;
 
 import java.util.List;
@@ -26,8 +27,7 @@ public class FiltratePopupWindow extends PopupWindow {
 
     private ListAdapter adapter;
     public FiltrateItemClickListener itemClickListener;
-    private View spaceView;
-    private RecyclerView recyclerView;
+    private LayoutFiltratePopupWindowBinding binding;
 
     public FiltratePopupWindow(Context context) {
         this(context,null);
@@ -49,9 +49,10 @@ public class FiltratePopupWindow extends PopupWindow {
 
     private void initWindow(Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.layout_popup_window, null);
+        binding = DataBindingUtil.inflate(inflater,R.layout.layout_filtrate_popup_window,null,false);
+
         //设置popupWindow
-        this.setContentView(contentView);
+        this.setContentView(binding.getRoot());
         //设置宽高
         this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
@@ -65,19 +66,13 @@ public class FiltratePopupWindow extends PopupWindow {
         this.setBackgroundDrawable(colorDrawable);
         this.setAnimationStyle(R.style.popupWindowAnim);
 
-        initView(contentView);
         initEvent(context);
     }
 
-    private void initView(View contentView) {
-        spaceView = contentView.findViewById(R.id.space_view);
-        recyclerView = contentView.findViewById(R.id.recycler_view);
-    }
-
     private void initEvent(Context context) {
-        recyclerView.setLayoutManager(new GridLayoutManager(context,2));
+        binding.recyclerView.setLayoutManager(new GridLayoutManager(context,2));
         adapter = new ListAdapter(R.layout.item_text_view);
-        recyclerView.setAdapter(adapter);
+        binding.recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener((adapter, view, position) -> {
             String item = ((ListAdapter) adapter).getData().get(position);
@@ -90,7 +85,7 @@ public class FiltratePopupWindow extends PopupWindow {
             }
         });
 
-        spaceView.setOnClickListener(v -> this.dismiss());
+        binding.spaceView.setOnClickListener(v -> this.dismiss());
     }
 
     public void setData(List<String> list){
