@@ -66,6 +66,10 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
     @Override
     public void initData() {
         viewModel.initToolBar("阿里七巧板");
+
+        sortList = new ListPopupWindow(this);
+        filtrateList = new FiltratePopupWindow(this);
+
         initTangram();
     }
 
@@ -185,13 +189,10 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
      */
     private void onSortClick(View targetView, BaseCell cell) {
         ((StickyBarView) targetView).setSortDrawable(this, R.mipmap.ic_up_green);
-        if (sortList == null) {
-            sortList = new ListPopupWindow(this);
-            sortList.setItemClickListener(targetView, this);
-            List<String> list = SNGsonHelper.toList("" + cell.extras.get("sortItems"), new TypeToken<List<String>>() {
-            });
-            sortList.setData(list);
-        }
+        sortList.setItemClickListener(targetView, this);
+        List<String> list = SNGsonHelper.toList("" + cell.extras.get("sortItems"), new TypeToken<List<String>>() {
+        });
+        sortList.setData(list);
         sortList.showPopupWindow(targetView);
     }
 
@@ -219,16 +220,13 @@ public class TangramActivity extends BaseActivity<ActivityTangramBinding, Tangra
      * 筛选
      *
      * @param targetView targetView
-     * @param cell   cell
+     * @param cell       cell
      */
     private void onFiltrateClick(View targetView, BaseCell cell) {
-        if (filtrateList == null) {
-            filtrateList = new FiltratePopupWindow(this);
-            filtrateList.setItemClickListener(this);
-            List<String> list = SNGsonHelper.toList("" + cell.extras.get("discountItems"), new TypeToken<List<String>>() {
-            });
-            filtrateList.setData(list);
-        }
+        filtrateList.setItemClickListener(this);
+        List<String> list = SNGsonHelper.toList("" + cell.extras.get("discountItems"), new TypeToken<List<String>>() {
+        });
+        filtrateList.setData(list);
         filtrateList.showPopupWindow(targetView);
     }
 
