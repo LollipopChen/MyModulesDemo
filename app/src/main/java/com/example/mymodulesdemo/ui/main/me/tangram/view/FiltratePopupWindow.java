@@ -3,7 +3,7 @@ package com.example.mymodulesdemo.ui.main.me.tangram.view;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -18,32 +18,32 @@ import com.example.mymodulesdemo.ui.main.me.tangram.adapter.ListAdapter;
 import java.util.List;
 
 /**
- * 综合排序弹窗--列表类型
+ * 筛选弹窗--列表类型
  * @author ChenQiuE
- * @date 2019/5/27
+ * @date 2019/5/28
  */
-public class ListPopupWindow extends PopupWindow {
+public class FiltratePopupWindow extends PopupWindow {
 
     private ListAdapter adapter;
-    public ItemClickListener itemClickListener;
+    public FiltrateItemClickListener itemClickListener;
     private View spaceView;
     private RecyclerView recyclerView;
 
-    public ListPopupWindow(Context context) {
+    public FiltratePopupWindow(Context context) {
         this(context,null);
     }
 
-    public ListPopupWindow(Context context, AttributeSet attrs) {
+    public FiltratePopupWindow(Context context, AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public ListPopupWindow(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FiltratePopupWindow(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         initWindow(context);
     }
 
-    public void setItemClickListener(ItemClickListener itemClickListener) {
+    public void setItemClickListener(FiltrateItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
@@ -75,7 +75,7 @@ public class ListPopupWindow extends PopupWindow {
     }
 
     private void initEvent(Context context) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setLayoutManager(new GridLayoutManager(context,2));
         adapter = new ListAdapter(R.layout.item_text_view);
         recyclerView.setAdapter(adapter);
 
@@ -84,7 +84,7 @@ public class ListPopupWindow extends PopupWindow {
             if (!SNStringUtils.isEmpty(item)){
                 ((ListAdapter) adapter).setSelectCount(position);
                 if (itemClickListener != null){
-                    itemClickListener.onItemClick(position);
+                    itemClickListener.onFiltrateItemClick(item);
                 }
                 this.dismiss();
             }
@@ -112,7 +112,7 @@ public class ListPopupWindow extends PopupWindow {
         }
     }
 
-    public interface ItemClickListener{
-        void onItemClick(int position);
+    public interface FiltrateItemClickListener{
+        void onFiltrateItemClick(String value);
     }
 }
