@@ -32,6 +32,7 @@ public class MenuView extends ConstraintLayout implements ITangramViewLifeCycle,
     private int indicatorMargin;
     private int lastPosition;
     private BaseCell cell;
+    private boolean isFirst = true;
 
     public MenuView(Context context) {
         this(context, null);
@@ -111,6 +112,8 @@ public class MenuView extends ConstraintLayout implements ITangramViewLifeCycle,
         if (cell.serviceManager != null){
             SampleScrollSupport scrollSupport = cell.serviceManager.getService(SampleScrollSupport.class);
             scrollSupport.register(this);
+
+            adapter.setOnMenuItemClickListener(this);
         }
     }
 
@@ -125,11 +128,12 @@ public class MenuView extends ConstraintLayout implements ITangramViewLifeCycle,
         if (list == null || list.isEmpty()){
             return;
         }
-        adapter.setOnMenuItemClickListener(this);
         adapter.setDataList(list);
         adapter.notifyDataSetChanged();
-        createIndicators();
-        viewPager.setCurrentItem(0);
+        if (isFirst){
+            createIndicators();
+            isFirst = false;
+        }
     }
 
     @Override

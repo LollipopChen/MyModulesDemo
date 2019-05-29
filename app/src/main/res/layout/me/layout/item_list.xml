@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.example.mymodulesdemo.ui.main.list.ListChildrenItemViewModel"/>
 
+        <variable
+            name="viewModel"
+            type="ListChildrenItemViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -12,7 +16,8 @@
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/dimen_10_dp"
         android:paddingEnd="@dimen/dimen_10_dp"
-        android:paddingTop="@dimen/dimen_10_dp">
+        android:paddingTop="@dimen/dimen_10_dp"
+        app:onClickCommand="@{viewModel.itemClick}">
 
         <TextView
             android:id="@+id/tv_title"
@@ -22,6 +27,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/colorPrimary"
+            android:text="@{viewModel.observableField.title}"
             android:textSize="@dimen/text_size_16_sp"
             tools:text="标题1"/>
 
@@ -32,6 +38,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            android:text="@{viewModel.observableField.author}"
             android:textSize="@dimen/text_size_14_sp"
             android:textColor="@color/text_color"
             tools:text="内容"/>

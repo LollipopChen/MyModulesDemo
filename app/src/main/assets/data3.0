@@ -4,11 +4,11 @@
     "content": "这个是广告",
     "style": {
       "indicatorMargin": 5,
-      "infinite": "true",
+      "infinite": true,
       "indicatorImg2": "https://img.alicdn.com/tps/TB1XRNFNXXXXXXKXXXXXXXXXXXX-32-4.png",
       "indicatorImg1": "https://img.alicdn.com/tps/TB16i4qNXXXXXbBXFXXXXXXXXXX-32-4.png",
       "indicatorGap": 0,
-      "indicatorHeight": "3",
+      "indicatorHeight": 3,
       "itemRatio": "2.4",
       "indicatorGravity": "center",
       "hGap": "20",
