@@ -29,7 +29,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * Date：2019/3/6 16:34
  * Email：1077503420@qq.com
  */
-@RouterUri(path = RouterManager.UiConstant.ME_FRAGMENT)
+//@RouterUri(path = RouterManager.UiConstant.ME_FRAGMENT)
 public class MeFragment extends BaseFragment<FragmentMeBinding,MeViewModel>{
 
     private static MeFragment instance = null;

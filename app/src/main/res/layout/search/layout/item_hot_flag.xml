@@ -16,7 +16,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_ellipse_gray"
         android:gravity="center"
-        android:orientation="horizontal"
         android:paddingStart="@dimen/dimen_10_dp"
         android:paddingEnd="@dimen/dimen_10_dp"
         android:paddingTop="@dimen/dimen_5_dp"
