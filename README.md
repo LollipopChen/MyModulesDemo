@@ -1,4 +1,4 @@
-### MyModulesDemo (Mvvm开发模式 + dataBinding学习和基本使用方法)
+### WanAndroidModuleDemo (Mvvm开发模式 + dataBinding学习和基本使用方法)
 #### UI参考了《玩Android》相关的app，此用于学习Mvvm+dataBinding结合的使用（已接入WMRouter美团路由）
 ##### WMRouter 美团路由  https://github.com/meituan/WMRouter
 ##### app使用的接口均来自《玩Android》张鸿洋的Api：https://www.wanandroid.com/blog/show/2
